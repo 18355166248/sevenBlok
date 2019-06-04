@@ -7,10 +7,6 @@
 <script>
 export default {
   props: {
-    message: {
-      type: String,
-      required: true
-    },
     theme: {
       type: String,
       default: '#fff'
@@ -27,8 +23,10 @@ export default {
 }
 </script>
 
-<style scoped lang='less'>
+<style scoped lang='scss'>
 .card {
+  margin: 10px 0;
+  font-style: italic;
   border-radius: 6px;
   padding: 10px 18px;
 }
