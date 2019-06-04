@@ -40,6 +40,12 @@ module.exports = {
         }, {
           text: 'HTML',
           link: '/HTML/'
+        }, {
+          text: 'Vue',
+          link: '/Vue/'
+        }, {
+          text: 'Webpack',
+          link: '/Webpack/'
         }]
       },
       {
@@ -61,6 +67,26 @@ module.exports = {
           children: [
             '/JavaScript/array1', // 以docs为根目录来查找文件 
             // 上面地址查找的是：docs>accumulate>JS>test.md 文件
+          ]
+        }
+      ],
+      '/Vue/': [
+        '/Vue/',
+        {
+          title: '进阶散点',
+          collapsable: false,
+          children: [
+            '/Vue/scatter'
+          ]
+        }
+      ],
+      '/Webpack/': [
+        '/Webpack/',
+        {
+          title: '指南',
+          collapsable: false,
+          children: [
+            '/Webpack/manageResource'
           ]
         }
       ]
