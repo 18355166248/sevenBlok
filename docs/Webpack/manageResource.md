@@ -2,7 +2,7 @@
 
 ## 1. 加载 css
 
-为了从 JavaScript 模块中 import 一个 CSS 文件，你需要在 module 配置中 安装并添加 style-loader 和 css-loader：
+为了从 javascript 模块中 import 一个 CSS 文件，你需要在 module 配置中 安装并添加 style-loader 和 css-loader：
 
 `npm install --save-dev style-loader css-loader`
 
@@ -138,4 +138,101 @@ plugins: [
     allChunks: true
   })
 ]
+```
+
+## 3. 加载图片
+
+使用 file-loader 粗粒图标和图片
+
+`npm install --save-dev file-loader`
+
+#### webpack.config.js
+
+```js
+const path = require('path')
+
+  module.exports = {
+    entry: './src/index.js',
+    output: {
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    },
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            'css-loader'
+          ]
+        },
++       {
++         test: /\.(png|svg|jpg|gif)$/,
++         use: [
++           'file-loader'
++         ]
++       }
+      ]
+    }
+  }
+```
+
+<card-primary theme="#DCF2FD" font-size="16px" color="#618ca0">
+  压缩和优化你的图像。查看 [image-webpack-loader](https://github.com/tcoopman/image-webpack-loader) 和 [url-loader](https://www.webpackjs.com/loaders/url-loader/)，以了解更多关于如果增强加载处理图片功能。
+</card-primary>
+
+## 4. 加载字体, json 文件, CSV, TSV 和 XML
+
+使用 file-loader 和 url-loader 可以处理任何类型的文件, 包括字体
+CSV、TSV 和 XML，你可以使用 csv-loader 和 xml-loader
+
+`npm install --save-dev csv-loader xml-loader`
+
+#### webpack.config.js
+
+```js {26}
+  const path = require('path');
+
+  module.exports = {
+    entry: './src/index.js',
+    output: {
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    },
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            'css-loader'
+          ]
+        },
+        {
+          test: /\.(png|svg|jpg|gif)$/,
+          use: [
+            'file-loader'
+          ]
+        },
++       {
++         test: /\.(woff|woff2|eot|ttf|otf)$/,
++         use: [
++           'file-loader'
++         ]
++       },
++       {
++         test: /\.(csv|tsv)$/,
++         use: [
++           'csv-loader'
++         ]
++       },
++       {
++         test: /\.xml$/,
++         use: [
++           'xml-loader'
++         ]
++       }
+      ]
+    }
+  };
 ```

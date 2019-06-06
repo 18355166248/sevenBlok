@@ -2,7 +2,7 @@
 home: true
 heroImage: /seven.png
 actionText: start
-actionLink: /JavaScript/
+actionLink: /javascript/
 features:
   - title: 前端1
     details: 问题和知识点进行记录和整理

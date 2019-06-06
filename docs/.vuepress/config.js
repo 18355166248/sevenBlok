@@ -5,11 +5,14 @@ module.exports = {
   base: '/',
   dest: 'docs/.vuepress/distBlok',
   head: [
-    ['link', {
-      rel: 'shortcut con',
-      type: "image/x-icon",
-      href: '/favicon.ico'
-    }]
+    [
+      'link',
+      {
+        rel: 'shortcut con',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
+      }
+    ]
   ],
   markdown: {
     lineNumbers: true
@@ -21,32 +24,36 @@ module.exports = {
       }
     }
   },
-  postcss: {
-
-  },
+  postcss: {},
   themeConfig: {
     lastUpdated: 'Last Updated',
     sidebarDepth: 2,
     displayAllHeaders: true,
-    nav: [{
+    nav: [
+      {
         text: '首页',
         link: '/'
       },
       {
         text: '前端',
-        items: [{
-          text: 'JavaScript',
-          link: '/JavaScript/'
-        }, {
-          text: 'HTML',
-          link: '/HTML/'
-        }, {
-          text: 'Vue',
-          link: '/Vue/'
-        }, {
-          text: 'Webpack',
-          link: '/Webpack/'
-        }]
+        items: [
+          {
+            text: 'javascript',
+            link: '/javascript/'
+          },
+          {
+            text: 'HTML',
+            link: '/HTML/'
+          },
+          {
+            text: 'Vue',
+            link: '/Vue/'
+          },
+          {
+            text: 'Webpack',
+            link: '/Webpack/'
+          }
+        ]
       },
       {
         text: 'GitHub',
@@ -54,18 +61,17 @@ module.exports = {
       }
     ],
     sidebar: {
-      '/JavaScript/': [
-        '/JavaScript/',
+      '/javascript/': [
+        '/javascript/',
         {
-          title: 'JavaScript技巧',
-          children: [
-            '/JavaScript/js28'
-          ]
+          title: 'javascript技巧',
+          collapsable: false,
+          children: ['/javascript/js28']
         },
         {
           title: '数组',
           children: [
-            '/JavaScript/array1', // 以docs为根目录来查找文件 
+            '/javascript/array1' // 以docs为根目录来查找文件
             // 上面地址查找的是：docs>accumulate>JS>test.md 文件
           ]
         }
@@ -75,9 +81,7 @@ module.exports = {
         {
           title: '进阶散点',
           collapsable: false,
-          children: [
-            '/Vue/scatter'
-          ]
+          children: ['/Vue/scatter']
         }
       ],
       '/Webpack/': [
@@ -86,7 +90,13 @@ module.exports = {
           title: '指南',
           collapsable: false,
           children: [
-            '/Webpack/manageResource'
+            '/Webpack/manageResource',
+            '/Webpack/manageOutput',
+            '/Webpack/development',
+            '/Webpack/HMR',
+            '/Webpack/treeShaking',
+            '/Webpack/productionBuild',
+            '/Webpack/lazyLoading'
           ]
         }
       ]
