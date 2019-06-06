@@ -96,7 +96,10 @@ module.exports = {
             '/Webpack/HMR',
             '/Webpack/treeShaking',
             '/Webpack/productionBuild',
-            '/Webpack/lazyLoading'
+            '/Webpack/lazyLoading',
+            '/Webpack/cache',
+            '/Webpack/shamming',
+            '/Webpack/NODE_ENV'
           ]
         }
       ]
