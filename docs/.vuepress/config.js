@@ -52,6 +52,10 @@ module.exports = {
           {
             text: 'Webpack',
             link: '/Webpack/'
+          },
+          {
+            text: '正则表达式',
+            link: '/regex/'
           }
         ]
       },
@@ -93,14 +97,20 @@ module.exports = {
             '/Webpack/manageResource',
             '/Webpack/manageOutput',
             '/Webpack/development',
-            '/Webpack/HMR',
+            '/Webpack/hmr',
             '/Webpack/treeShaking',
             '/Webpack/productionBuild',
             '/Webpack/lazyLoading',
             '/Webpack/cache',
-            '/Webpack/shamming',
-            '/Webpack/NODE_ENV'
+            '/Webpack/shimming',
+            '/Webpack/node_env'
           ]
+        }
+      ],
+      '/regex/': [
+        '/regex/',
+        {
+          
         }
       ]
     }
