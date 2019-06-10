@@ -108,10 +108,8 @@ module.exports = {
         }
       ],
       '/regex/': [
-        '/regex/',
-        {
-          
-        }
+        '',
+        '/regex/use'
       ]
     }
   }
