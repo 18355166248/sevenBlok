@@ -78,6 +78,12 @@ module.exports = {
             '/javascript/array1' // 以docs为根目录来查找文件
             // 上面地址查找的是：docs>accumulate>JS>test.md 文件
           ]
+        },
+        {
+          title: '异步Promise',
+          children: [
+            '/javascript/promise'
+          ]
         }
       ],
       '/Vue/': [
