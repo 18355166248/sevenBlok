@@ -12,6 +12,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "husky": "^4.2.3",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
     "scss-loader": "^0.0.1"
@@ -204,6 +207,11 @@
     "yallist": "^2.1.2",
     "yargs": "^7.1.0",
     "yargs-parser": "^5.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "description": ""
 }
