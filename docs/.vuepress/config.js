@@ -99,6 +99,11 @@ module.exports = {
           title: "进阶散点",
           collapsable: false,
           children: ["/ForentEnd/Vue/scatter"]
+        },
+        {
+          title: "压缩图片",
+          collapsable: false,
+          children: ["/ForentEnd/Vue/CompressPictures"]
         }
       ],
       "/ForentEnd/Webpack/": [
