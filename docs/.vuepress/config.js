@@ -50,6 +50,10 @@ module.exports = {
             link: "/ForentEnd/Vue/"
           },
           {
+            text: "React",
+            link: "/ForentEnd/React/"
+          },
+          {
             text: "Webpack",
             link: "/ForentEnd/Webpack/"
           },
@@ -91,6 +95,23 @@ module.exports = {
         {
           title: "异步Promise",
           children: ["/ForentEnd/JavaScript/promise"]
+        },
+        {
+          title: "控制器初始化层级状态",
+          children: [
+            {
+              title: "测试代码",
+              children: ["/ForentEnd/JavaScript/Blocking/BlockingTest"]
+            },
+            {
+              title: "代码实现",
+              children: ["/ForentEnd/JavaScript/Blocking/"]
+            }
+          ]
+        },
+        {
+          title: "多语言配置",
+          children: ["/ForentEnd/JavaScript/MultilingualTranslation/"]
         }
       ],
       "/ForentEnd/Vue/": [
@@ -102,8 +123,20 @@ module.exports = {
         },
         {
           title: "压缩图片",
-          collapsable: false,
           children: ["/ForentEnd/Vue/CompressPictures"]
+        },
+        {
+          title: "组件",
+          children: [
+            {
+              title: "前言",
+              children: ["/ForentEnd/Vue/Components/"]
+            },
+            {
+              title: "组件通讯",
+              children: ["/ForentEnd/Vue/Components/Communication"]
+            }
+          ]
         }
       ],
       "/ForentEnd/Webpack/": [
@@ -125,6 +158,7 @@ module.exports = {
           ]
         }
       ],
+      "ForentEnd/React/": [""],
       "/ForentEnd/Regex/": ["", "/ForentEnd/Regex/use"]
     }
   }

@@ -2,7 +2,7 @@
 home: true
 heroImage: /seven.png
 actionText: start
-actionLink: /javascript/
+actionLink: /ForentEnd/javascript/
 features:
   - title: 树欲静而风不止
     details: 子欲养而亲不待
