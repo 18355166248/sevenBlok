@@ -9,7 +9,7 @@ export default {
   props: {
     theme: {
       type: String,
-      default: '#fff'
+      default: '#DCF2FD'
     },
     fontSize: {
       type: String,
@@ -17,7 +17,7 @@ export default {
     },
     color: {
       type: String,
-      default: '#000'
+      default: '#618ca0'
     }
   }
 }

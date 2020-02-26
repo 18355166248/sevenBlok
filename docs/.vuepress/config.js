@@ -88,8 +88,8 @@ module.exports = {
         {
           title: "数组",
           children: [
-            "/ForentEnd/JavaScript/array1" // 以docs为根目录来查找文件
-            // 上面地址查找的是：docs>accumulate>JS>test.md 文件
+            "/ForentEnd/JavaScript/array1" // 以ForentEnd为根目录来查找文件
+            // 上面地址查找的是：ForentEnd>JavaScript>JS>array1.md 文件
           ]
         },
         {
@@ -112,6 +112,10 @@ module.exports = {
         {
           title: "多语言配置",
           children: ["/ForentEnd/JavaScript/MultilingualTranslation/"]
+        },
+        {
+          title: "手动实现一个词法编译器",
+          children: ["/ForentEnd/JavaScript/SuperTinyCompiler"]
         }
       ],
       "/ForentEnd/Vue/": [
@@ -135,6 +139,10 @@ module.exports = {
             {
               title: "组件通讯",
               children: ["/ForentEnd/Vue/Components/Communication"]
+            },
+            {
+              title: "删除组件",
+              children: ["/ForentEnd/Vue/Components/DeleteComponent"]
             }
           ]
         }
