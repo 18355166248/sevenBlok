@@ -1,5 +1,7 @@
 # 测试代码
 
+::: details 点击查看测试代码
+
 ```js
 import LeaveStatesMange from "./Blocking.constructor";
 import "regenerator-runtime/runtime";
@@ -63,6 +65,7 @@ describe("测试 LeaveStatesMange", () => {
 
   test("执行canLeave方法", async () => {
     leaveStates.add("a");
+    leaveStates.add("a.b.c1", () => true);
     leaveStates.add("a.b.c", () => false);
     leaveStates.add("a.b");
 
@@ -170,3 +173,5 @@ describe("测试 LeaveStatesMange", () => {
   });
 });
 ```
+
+:::

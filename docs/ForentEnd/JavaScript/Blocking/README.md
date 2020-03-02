@@ -6,6 +6,8 @@
 - 然后可以多层级传回调函数
 - 也可以销毁不需要判断的层级(两种方案, 具体看测试用例)
 
+::: details 点击查看实现代码
+
 ```js
 import _ from "lodash";
 
@@ -197,11 +199,24 @@ function onChildrenCallback(leaveStatus) {
         return;
       }
 
+      const objLength = Object.keys(leaveStatus).length;
+      let num = 2;
+
       for (let key in leaveStatus) {
         if (key !== "id" && key !== "onCallback") {
           onChildrenCallback(leaveStatus[key])
             .then(res => {
-              resolve(res);
+              num++;
+
+              if (!res) {
+                resolve(res);
+
+                return;
+              }
+
+              if (num === objLength) {
+                resolve(res);
+              }
             })
             .catch();
         }
@@ -258,3 +273,5 @@ function onFindStateByName(nameList, currentList) {
 
 export default Blocking;
 ```
+
+:::

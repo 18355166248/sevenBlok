@@ -60,6 +60,10 @@ module.exports = {
           {
             text: "正则表达式",
             link: "/ForentEnd/Regex/"
+          },
+          {
+            text: "Eslint",
+            link: "/ForentEnd/Eslint/"
           }
         ]
       },
@@ -166,8 +170,10 @@ module.exports = {
           ]
         }
       ],
-      "ForentEnd/React/": [""],
-      "/ForentEnd/Regex/": ["", "/ForentEnd/Regex/use"]
+      "/ForentEnd/React/": [""],
+      "/ForentEnd/Regex/": ["", "/ForentEnd/Regex/use"],
+      "/ForentEnd/Eslint/": ["", "/ForentEnd/Eslint/jiang-eslint-setting"],
+      "/CodeManage/Git/": ["", "/CodeManage/Git/Git-Hooks"]
     }
   }
 };

@@ -1,5 +1,5 @@
 <template>
-  <div class="card" :style="{ backgroundColor: theme, fontSize, color  }">
+  <div class="card" :style="themeList[type]">
     <slot></slot>
   </div>
 </template>
@@ -7,20 +7,24 @@
 <script>
 export default {
   props: {
-    theme: {
+    type: {
       type: String,
-      default: '#DCF2FD'
-    },
-    fontSize: {
-      type: String,
-      default: '16px'
-    },
-    color: {
-      type: String,
-      default: '#618ca0'
+      default: "primary"
     }
+  },
+  data() {
+    return {
+      // 样式列表
+      themeList: {
+        primary: {
+          backgroundColor: "#DCF2FD",
+          fontSize: "16px",
+          color: "#618ca0"
+        }
+      }
+    };
   }
-}
+};
 </script>
 
 <style scoped lang='scss'>

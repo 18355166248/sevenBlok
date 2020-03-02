@@ -1,7 +1,3 @@
----
-sidebar: auto
----
-
 # Git 常用功能记录
 
 ## git 功能
