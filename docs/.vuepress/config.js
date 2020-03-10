@@ -170,7 +170,7 @@ module.exports = {
           ]
         }
       ],
-      "/ForentEnd/React/": [""],
+      "/ForentEnd/React/": ["", "/ForentEnd/React/Hook"],
       "/ForentEnd/Regex/": ["", "/ForentEnd/Regex/use"],
       "/ForentEnd/Eslint/": ["", "/ForentEnd/Eslint/jiang-eslint-setting"],
       "/CodeManage/Git/": ["", "/CodeManage/Git/Git-Hooks"]
