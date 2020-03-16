@@ -147,7 +147,8 @@ module.exports = {
             {
               title: "删除组件",
               children: ["/ForentEnd/Vue/Components/DeleteComponent"]
-            }
+            },
+            "/ForentEnd/Vue/Components/Tree"
           ]
         }
       ],
