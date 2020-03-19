@@ -70,7 +70,7 @@ mock 数据:
 - 渲染每一行的节点样式, 包含展开收缩按钮, 复选框(checkbox)按钮, 标题(title)名称
 - 点击展开收缩按钮, 控制节点 expand 的值, false 的时候隐藏所有子节点, true 的时候显示所有子节点, 并通过 findComponentUpward 方法找到 jTree 实例触发特定方法用于触发调用组件传入的监听方法
 - 点击 checkbox, 控制节点 checked 的值, 如果有子节点, 递归所有子节点设置为当前 checked 的值
-- 监听当前节点的子节点, 如果节点存在, 判断所有节点是否存在 checked 不选中, 如果有, 当前节点 checked 就为 false, 如果所有子节点都选中, 当前节点就为 true 
+- 监听当前节点的子节点, 如果节点存在, 判断所有节点是否存在 checked 不选中, 如果有, 当前节点 checked 就为 false, 如果所有子节点都选中, 当前节点就为 true 测试Jenkins
 
 
 ## 具体代码实现Demo
