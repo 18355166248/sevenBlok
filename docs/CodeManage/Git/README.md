@@ -29,3 +29,7 @@ $ git remote -v  #查看 fetch的地址
 #origin <主仓库地址> (fetch)
 #origin <自己的 fork 仓库地址> (push)
 ```
+
+## 常用命令
+
+1. git 克隆远程指定分支 git clone -b <指定分支名> <远程仓库地址>

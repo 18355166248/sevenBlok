@@ -131,6 +131,7 @@ module.exports = {
           children: ['/ForentEnd/JavaScript/SuperTinyCompiler']
         }
       ],
+      '/ForentEnd/HTML/': ['', '/ForentEnd/HTML/HTMLTransformPDF'],
       '/ForentEnd/Vue/': [
         '',
         {
