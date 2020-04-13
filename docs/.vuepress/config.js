@@ -140,7 +140,7 @@ module.exports = {
         }
       ],
       '/ForentEnd/HTML/': ['', '/ForentEnd/HTML/HTMLTransformPDF'],
-      '/ForentEnd/CSS/': ['', '/ForentEnd/CSS/Less'],
+      '/ForentEnd/CSS/': ['', '/ForentEnd/CSS/Less', '/ForentEnd/CSS/Style.md'],
       '/ForentEnd/Vue/': [
         '',
         {
