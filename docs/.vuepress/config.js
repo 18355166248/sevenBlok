@@ -191,7 +191,7 @@ module.exports = {
         },
         {
           title: '优化',
-          children: ['/ForentEnd/Webpack/optimize']
+          children: ['/ForentEnd/Webpack/optimize', '/ForentEnd/Webpack/plugins']
         }
       ],
       '/ForentEnd/React/': ['', '/ForentEnd/React/Hook'],
