@@ -110,6 +110,19 @@ window.less
   });
 ```
 
-## 注意点
+### 5. antd 组件按需引入要处理
 
-### 1. 如果样式没成功 可以在入口 main.js 里面添加 import 'antd/dist/antd.css' 重点!重点!重点!
+```json
+{
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "es",
+        "style": "css" // 这里要从true 改为 css 因为true会去加载less  但是这里其实已经全局引入动态样式了, 而且还是css的 所以这里引入正常的css样式就行了 不需要加载less 重点!!!!!!
+      }
+    ]
+  ]
+}
+```
