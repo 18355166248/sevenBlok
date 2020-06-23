@@ -194,7 +194,10 @@ module.exports = {
           children: ['/ForentEnd/Webpack/optimize', '/ForentEnd/Webpack/plugins']
         }
       ],
-      '/ForentEnd/React/': ['', '/ForentEnd/React/Hook'],
+      '/ForentEnd/React/': ['', '/ForentEnd/React/Hook', {
+        title: 'Antd动态主题',
+        children: ['/ForentEnd/React/AntdTheme']
+      }],
       '/ForentEnd/Regex/': ['', '/ForentEnd/Regex/use'],
       '/ForentEnd/Eslint/': ['', '/ForentEnd/Eslint/jiang-eslint-setting'],
       '/CodeManage/Git/': ['', '/CodeManage/Git/Git-Hooks'],
