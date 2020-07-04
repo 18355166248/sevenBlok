@@ -90,6 +90,15 @@ module.exports = {
         ]
       },
       {
+        text: '算法',
+        items: [
+          {
+            text: 'LeetCode',
+            link: '/Algorithm/LeetCode/'
+          }
+        ]
+      },
+      {
         text: 'GitHub',
         link: 'https://github.com/18355166248'
       }
@@ -201,7 +210,16 @@ module.exports = {
       '/ForentEnd/Regex/': ['', '/ForentEnd/Regex/use'],
       '/ForentEnd/Eslint/': ['', '/ForentEnd/Eslint/jiang-eslint-setting'],
       '/CodeManage/Git/': ['', '/CodeManage/Git/Git-Hooks'],
-      '/Tools/Jenkins/': ['', '/Tools/Jenkins/WithGitHub']
+      '/Tools/Jenkins/': ['', '/Tools/Jenkins/WithGitHub'],
+      '/Algorithm/LeetCode/': [
+        '',
+        {
+          title: '题解',
+          children: [
+            '/Algorithm/LeetCode/221最大正方形'
+          ]
+        }
+      ]
     }
   }
 }
