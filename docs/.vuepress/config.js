@@ -216,7 +216,8 @@ module.exports = {
         {
           title: '题解',
           children: [
-            '/Algorithm/LeetCode/221最大正方形'
+            '/Algorithm/LeetCode/221最大正方形',
+            '/Algorithm/LeetCode/1277统计全为1的正方形子矩阵',
           ]
         }
       ]
