@@ -210,7 +210,7 @@
     "y18n": "^3.2.1",
     "yallist": "^2.1.2",
     "yargs": "^7.1.0",
-    "yargs-parser": "^5.0.0"
+    "yargs-parser": "^13.1.2"
   },
   "husky": {
     "hooks": {
