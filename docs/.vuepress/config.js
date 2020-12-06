@@ -69,6 +69,10 @@ module.exports = {
             text: "Eslint",
             link: "/ForentEnd/Eslint/",
           },
+          {
+            text: "组件封装",
+            link: "/ForentEnd/Component/",
+          },
         ],
       },
       {
@@ -220,6 +224,11 @@ module.exports = {
       ],
       "/ForentEnd/Regex/": ["", "/ForentEnd/Regex/use"],
       "/ForentEnd/Eslint/": ["", "/ForentEnd/Eslint/jiang-eslint-setting"],
+      "/ForentEnd/Component/": [
+        "",
+        "/ForentEnd/Component/reactWithAntd",
+        "/ForentEnd/Component/importNeed",
+      ],
       "/CodeManage/Git/": ["", "/CodeManage/Git/Git-Hooks"],
       "/Tools/Jenkins/": ["", "/Tools/Jenkins/WithGitHub"],
       "/Algorithm/LeetCode/": [
