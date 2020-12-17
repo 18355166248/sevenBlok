@@ -73,6 +73,10 @@ module.exports = {
             text: "组件封装",
             link: "/ForentEnd/Component/",
           },
+          {
+            text: "性能优化",
+            link: "/ForentEnd/Performance/",
+          },
         ],
       },
       {
@@ -229,6 +233,7 @@ module.exports = {
         "/ForentEnd/Component/reactWithAntd",
         "/ForentEnd/Component/importNeed",
       ],
+      "/ForentEnd/Performance/": ["", "/ForentEnd/Performance/sitespeed"],
       "/CodeManage/Git/": ["", "/CodeManage/Git/Git-Hooks"],
       "/Tools/Jenkins/": ["", "/Tools/Jenkins/WithGitHub"],
       "/Algorithm/LeetCode/": [
