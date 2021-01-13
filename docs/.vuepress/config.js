@@ -77,6 +77,10 @@ module.exports = {
             text: "性能优化",
             link: "/ForentEnd/Performance/",
           },
+          {
+            text: "常用工具",
+            link: "/ForentEnd/Utils/",
+          },
         ],
       },
       {
@@ -154,6 +158,10 @@ module.exports = {
         {
           title: "微信",
           children: ["/ForentEnd/JavaScript/WeiXin"],
+        },
+        {
+          title: "接口缓存",
+          children: ["/ForentEnd/JavaScript/oneHandler"],
         },
       ],
       "/ForentEnd/HTML/": ["", "/ForentEnd/HTML/HTMLTransformPDF"],
