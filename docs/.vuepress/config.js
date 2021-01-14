@@ -81,6 +81,10 @@ module.exports = {
             text: "常用工具",
             link: "/ForentEnd/Utils/",
           },
+          {
+            text: "面试题",
+            link: "/ForentEnd/CaseQuestions/",
+          },
         ],
       },
       {
@@ -242,6 +246,16 @@ module.exports = {
         "/ForentEnd/Component/importNeed",
       ],
       "/ForentEnd/Performance/": ["", "/ForentEnd/Performance/sitespeed"],
+      "/ForentEnd/CaseQuestions/": [
+        {
+          title: "JavaScript",
+          children: ["/ForentEnd/CaseQuestions/JavaScript"],
+        },
+        {
+          title: "Webpack",
+          children: ["/ForentEnd/CaseQuestions/Webpack"],
+        },
+      ],
       "/CodeManage/Git/": ["", "/CodeManage/Git/Git-Hooks"],
       "/Tools/Jenkins/": ["", "/Tools/Jenkins/WithGitHub"],
       "/Algorithm/LeetCode/": [

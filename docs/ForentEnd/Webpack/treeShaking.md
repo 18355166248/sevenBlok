@@ -60,9 +60,9 @@ module.rules: [
 
 ```js {3}
 module.exports = {
-  entry: './src/index.js',
-  mode: 'production'
-}
+  entry: "./src/index.js",
+  mode: "production",
+};
 ```
 
 <card-primary theme="#DCF2FD" font-size="16px" color="#618ca0">
