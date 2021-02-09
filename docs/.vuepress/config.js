@@ -1,3 +1,5 @@
+const leecodeSidebar = require("./sidebar/leecode.json");
+
 module.exports = {
   title: "柒世(SMegalo)",
   description: "2020, 学习进步!",
@@ -258,16 +260,7 @@ module.exports = {
       ],
       "/CodeManage/Git/": ["", "/CodeManage/Git/Git-Hooks"],
       "/Tools/Jenkins/": ["", "/Tools/Jenkins/WithGitHub"],
-      "/Algorithm/LeetCode/": [
-        "",
-        {
-          title: "题解",
-          children: [
-            "/Algorithm/LeetCode/221最大正方形",
-            "/Algorithm/LeetCode/1277统计全为1的正方形子矩阵",
-          ],
-        },
-      ],
+      "/Algorithm/LeetCode/": leecodeSidebar,
     },
   },
 };

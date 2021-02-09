@@ -6,7 +6,8 @@
     "dev": "vuepress dev docs",
     "start": "npm run dev",
     "build": "vuepress build docs",
-    "push": "bash deploy.sh"
+    "push": "bash deploy.sh",
+    "leecodeSidebar": "cd ./docs/.vuepress/sidebar && node index.js"
   },
   "keywords": [],
   "author": "",
