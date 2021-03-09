@@ -51,9 +51,30 @@ useCallback 计算结果是函数，用于缓存函数
 
 ## 6. 在两个组件中使用相同的自定义 Hook 会共享 state 吗？
 
+不会共享
+
+> 注意：
+
+自定义 Hook 必须以 “use” 开头
+在两个组件中使用相同的 Hook 不会 共享 state
+自定义 Hook 每次调用 Hook，它都会获取独立的 stat
+
 ## 7. 如何做到只有在更新时运行 effect ？
 
+https://blog.csdn.net/NinthMonee/article/details/113564439
+
+这是个比较罕见的使用场景。如果你需要的话，你可以 使用一个可变的 ref 手动存储一个布尔值来表示是首次渲染还是后续渲染，然后在你的 effect 中检查这个标识。（如果你发现自己经常在这么做，你可以为之创建一个自定义 Hook。）
+
 ## 8. 惰性初始值应用场景？
+
+initialState 参数只会在组件的初始渲染中起作用，后续渲染时会被忽略。其应用场景在于：创建初始 state 很昂贵时，例如需要通过复杂计算获得；那么则可以传入一个函数，在函数中计算并返回初始的 state，此函数只在初始渲染时被调用：
+
+```js
+const [state, setState] = useState(() => {
+  const initialState = someExpensiveComputation(props);
+  return initialState;
+});
+```
 
 ## 9. 组件中定义的函数，在每次重新渲染中是否相同？
 
