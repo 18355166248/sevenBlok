@@ -1,8 +1,4 @@
----
-sidebar: auto
----
-
-# JavascriptCode.md
+# JavascriptCode
 
 ## 以下代码输出什么，为什么？
 

@@ -1,7 +1,3 @@
----
-sidebar: auto
----
-
 # JavaScript
 
 ## 1.common.js 和 es6 中模块引入的区别？
@@ -24,3 +20,25 @@ sidebar: auto
 1. 虚拟 DOM 不会立马进行排版与重绘操作
 2. 虚拟 DOM 进行频繁修改，然后一次性比较并修改真实 DOM 中需要改的部分，最后在真实 DOM 中进行排版与重绘，减少过多 DOM 节点排版与重绘损耗
 3. 虚拟 DOM 有效降低大面积真实 DOM 的重绘与排版，因为最终与真实 DOM 比较差异，可以只渲染局部
+
+## 4. 面向对象
+
+封装：也就是把客观事物封装成抽象的类，并且类可以把自己的数据和方法只让可信的类或者对象操作，对不可信的进行信息隐藏。
+继承：通过继承创建的新类称为“子类”或“派生类”。继承的过程，就是从一般到特殊的过程。
+多态：对象的多功能，多方法，一个方法多种表现形式。
+Javascript是一种基于对象（object-based）的语言。但是，它又不是一种真正的面向对象编程（OOP）语言，因为它的语法中没有class（类）—–es6以前是这样的。所以es5只有使用函数模拟的面向对象。
+
+## 5. 原型链
+
+构造函数有自己的原型
+const Cat() = function() {}
+
+Cat.prototype
+
+原型的constructor = Cat
+
+实例的__proto__指向构造函数的原型
+const cat = new Cat()
+cat.__proto__ = Cat.prototype
+
+可以通过Object.getPrototypeOf(cat) === Cat.prototype // true

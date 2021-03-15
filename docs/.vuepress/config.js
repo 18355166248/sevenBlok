@@ -251,7 +251,10 @@ module.exports = {
       "/ForentEnd/CaseQuestions/": [
         {
           title: "JavaScript",
-          children: ["/ForentEnd/CaseQuestions/JavaScript"],
+          children: [
+            "/ForentEnd/CaseQuestions/JavaScript",
+            "/ForentEnd/CaseQuestions/JavascriptCode",
+          ],
         },
         {
           title: "Webpack",
