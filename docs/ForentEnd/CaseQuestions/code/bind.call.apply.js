@@ -26,15 +26,52 @@ Function.prototype.bind2 = function(context) {
   return returnFn;
 };
 
-const obj = { name: 11 };
+// const obj = { name: 11 };
 
-function bb() {
+// function bb() {
+//   console.log(this.name, "log");
+// }
+
+// const bb1 = bb.bind2(obj, 123, 456);
+
+// bb1.prototype.value = 1;
+
+// console.log(bb1.prototype.value);
+// console.log(bb.prototype.value);
+
+Function.prototype.call2 = function(context) {
+  var context = context || window;
+  context.fn = this;
+
+  var args = Array.prototype.slice.call(arguments, 1);
+
+  var result = eval("context.fn(" + args + ")");
+
+  delete context.fn;
+
+  return result;
+};
+
+Function.prototype.apply2 = function(context, args) {
+  var context = context || window;
+  context.fn = this;
+
+  var result = eval("context.fn(" + args + ")");
+
+  delete context.fn;
+
+  result;
+};
+
+var obj = { name: 11 };
+
+function bb(num) {
   console.log(this.name, "log");
+  console.log(num);
 }
 
-const bb1 = bb.bind2(obj, 123, 456);
+bb.call2(obj, 777777);
+bb.call(obj, 777777);
 
-bb1.prototype.value = 1;
-
-console.log(bb1.prototype.value);
-console.log(bb.prototype.value);
+bb.apply2(obj, [88888]);
+bb.apply(obj, [88888]);
