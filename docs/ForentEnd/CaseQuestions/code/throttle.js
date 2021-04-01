@@ -1,20 +1,14 @@
 function throttle(fn, wait) {
   var time;
-  var date = Date.now();
 
   return function() {
     var context = this;
     var args = arguments;
-    var newDate = Date.now();
 
-    if (newDate - date > wait) {
-      fn.apply(context, args);
-      date = newDate;
-      clearTimeout(time);
-      time = null;
-    } else {
+    if (!time) {
       time = setTimeout(() => {
-        fn.apply(context, args);
+        time = null
+        fn.call(context, args)
       }, wait);
     }
   };
@@ -27,6 +21,6 @@ function add() {
 const a = throttle(add, 500);
 
 setTimeout(a, 400);
-setTimeout(a, 450);
-setTimeout(a, 550);
-setTimeout(a, 600);
+setTimeout(a, 950);
+setTimeout(a, 1250);
+setTimeout(a, 1550);
