@@ -16,8 +16,8 @@
     "fsevents": "*"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
     "husky": "^4.2.3",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
@@ -212,7 +212,7 @@
     "y18n": "^3.2.1",
     "yallist": "^2.1.2",
     "yargs": "^7.1.0",
-    "yargs-parser": "^5.0.0"
+    "yargs-parser": "^20.2.7"
   },
   "husky": {
     "hooks": {
