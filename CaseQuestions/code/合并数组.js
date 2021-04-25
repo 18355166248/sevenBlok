@@ -1,0 +1,20 @@
+var merge = function(nums1, m, nums2, n) {
+  let l1 = 0,
+    l2 = 0;
+  while (l2 < n) {
+    if (nums2[l2] < nums1[l1++]) {
+      nums1.splice(l1 - 1, 0, nums2[l2++]);
+    } else if (l1 >= m) {
+      nums1[l1] = nums2[l2++];
+    }
+  }
+
+  return nums1;
+};
+
+const nums1 = [1, 2, 3, 0, 0, 0],
+  m = 3,
+  nums2 = [2, 5, 6],
+  n = 3;
+
+console.log(merge(nums1, m, nums2, n));

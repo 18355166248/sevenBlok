@@ -1,4 +1,9 @@
+const path = require("path");
 const leecodeSidebar = require("./sidebar/leecode.json");
+
+function resolve(pathname) {
+  return path.resolve(__dirname, pathname);
+}
 
 module.exports = {
   title: "柒世(SMegalo)",
@@ -22,7 +27,7 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        "@public": "./public",
+        "@public": resolve("./public"),
       },
     },
   },
@@ -259,6 +264,22 @@ module.exports = {
         {
           title: "Webpack",
           children: ["/ForentEnd/CaseQuestions/Webpack"],
+        },
+        {
+          title: "React",
+          children: ["/ForentEnd/CaseQuestions/React"],
+        },
+        {
+          title: "Vue",
+          children: ["/ForentEnd/CaseQuestions/Vue"],
+        },
+        {
+          title: "Project",
+          children: ["/ForentEnd/CaseQuestions/project"],
+        },
+        {
+          title: "Http",
+          children: ["/ForentEnd/CaseQuestions/Http"],
         },
       ],
       "/CodeManage/Git/": ["", "/CodeManage/Git/Git-Hooks"],

@@ -18,21 +18,29 @@
 </head>
 
 <body>
-  <div onclick="fn()">点击触发</div>
+  <!-- <div onclick="fn()" >点击触发</div> -->
+  <div id="btn">点击触发</div>
 
   <script>
-    document.body.addEventListener('click', () => {
+    // document.body.addEventListener('click', () => {
+    //   Promise.resolve().then(() => console.log(1))
+    //   console.log(2);
+    // }, false)
+
+    // document.body.addEventListener('click', () => {
+    //   Promise.resolve().then(() => console.log(3))
+    //   console.log(4);
+    // }, false)
+    document.getElementById('btn').addEventListener('click', () => {
       Promise.resolve().then(() => console.log(1))
       console.log(2);
     }, false)
 
-    document.body.addEventListener('click', () => {
+    document.getElementById('btn').addEventListener('click', () => {
       Promise.resolve().then(() => console.log(3))
       console.log(4);
     }, false)
-
-    // 鼠标点击屏幕  2143
-    // js执行： document.body.click() 2413
+    // 点击屏幕应该打印什么
 
     function fn() {
       document.body.click()
