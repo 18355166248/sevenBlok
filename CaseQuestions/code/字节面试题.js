@@ -22,3 +22,15 @@ foo.say1.call(bar); // window
 foo.say2()(); // foo
 foo.say2.call(bar)(); // bar
 foo.say2().call(bar); // foo
+
+class Nww {
+  a() {
+    console.log(this);
+  }
+  b = () => {
+    console.log(this);
+  };
+}
+
+const n = new Nww();
+console.log(n.a(), n.b());

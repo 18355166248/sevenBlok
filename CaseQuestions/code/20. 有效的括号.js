@@ -1,0 +1,43 @@
+// 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
+// 有效字符串需满足：
+// 左括号必须用相同类型的右括号闭合。
+// 左括号必须以正确的顺序闭合。
+
+var isValid = function(s) {
+  if (s.length % 2 === 1) return false;
+
+  const map = new Map([
+    [")", "("],
+    ["]", "["],
+    ["}", "{"],
+  ]);
+
+  const stk = [];
+  const sArr = s.split("");
+
+  for (let i = 0; i < sArr.length; i++) {
+    const string = sArr[i];
+
+    if (map.has(string)) {
+      if (!stk.length || stk[stk.length - 1] !== map.get(string)) {
+        stk.length = 1;
+        break;
+      }
+      stk.pop();
+    } else {
+      stk.push(string);
+    }
+  }
+
+  return stk.length === 0;
+};
+
+// const s = "{[]}";
+// const s1 = "()[]{}";
+// const s2 = "(([]){})";
+const s3 = "){";
+
+// console.log(isValid(s));
+// console.log(isValid(s1));
+// console.log(isValid(s2));
+console.log(isValid(s3));
