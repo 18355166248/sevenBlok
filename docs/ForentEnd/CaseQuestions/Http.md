@@ -96,3 +96,99 @@ Content-Type is not allowed by Access-Control-Allow-Headers in preflight respons
 
 4. 给OPTIONS 添加 204的返回，是为了处理在发送POST请求时Nginx依然拒绝访问的错误
 发送"预检请求"时，需要用到方法 OPTIONS ,所以服务器需要允许该方法。
+
+
+## HTTP 报文包含内容
+
+### 请求报文结构
+
++ 第一行是请求的url, 请求的方法还有协议版本
++ 接下来多行都是请求手部的Header, 每个首部都有首部的key值, 以及对应的值
++ 一个空行用来区分首部和内容主体body
++ 最后是请求的内容主体
+
+```shell
+GET http://www.example.com/ HTTP/1.1
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8
+Cache-Control: max-age=0
+Host: www.example.com
+If-Modified-Since: Thu, 17 Oct 2019 07:18:26 GMT
+If-None-Match: "3147526947+gzip"
+Proxy-Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 xxx
+
+param1=1&param2=2
+```
+
+### 请求的头部信息
+
++ Accept 浏览器能够处理的内容类型
++ Accept-Charset 浏览器能够显示的字符集
++ Accept-Encoding 浏览器处理的压缩编码
++ Accept-language 浏览器支持的语言
++ Connection 浏览器和服务器之间的链接类型
++ Cookie 当前页面设置的任何cookie
++ Host 发送请求页面所在的域
++ Referer 发送请求页面的url
++ User-Agent 浏览器的用户代理字符串
+
+![](~@public/Casequestion/httpRequestHeader.png)
+
+
+### 响应报文结构
+
++ 第一行包含协议版本, 请求的code码, 以及描述, 200表示请求成功了
++ 下面多行也是首部内容
++ 一个空行分割首部和内容主体
++ 最后是响应的内容主体
+
+```shell
+HTTP/1.1 200 OK
+Age: 529651
+Cache-Control: max-age=604800
+Connection: keep-alive
+Content-Encoding: gzip
+Content-Length: 648
+Content-Type: text/html; charset=UTF-8
+Date: Mon, 02 Nov 2020 17:53:39 GMT
+Etag: "3147526947+ident+gzip"
+Expires: Mon, 09 Nov 2020 17:53:39 GMT
+Keep-Alive: timeout=4
+Last-Modified: Thu, 17 Oct 2019 07:18:26 GMT
+Proxy-Connection: keep-alive
+Server: ECS (sjc/16DF)
+Vary: Accept-Encoding
+X-Cache: HIT
+
+<!doctype html>
+<html>
+<head>
+    <title>Example Domain</title>
+</body>
+</html>
+```
+
+### 响应的头部信息
+
++ Age 推算资源创建经过时间
++ Cache-Control 控制http缓存 no-cache, no-store, must-revalidate max-age=2592000
++ Connection 浏览器和服务器之间的链接类型
++ Content-Encoding 适用的编码方式
++ Content-Type表示后面的文档属于什么MIME类型
++ Date 表示消息发送的时间
++ ETage 资源的匹配信息
++ Expires 提供一个日期时间, 响应在该日期时间后被认为失效 该时间是GMT 时间(格林威治)
++ Last-Modified 资源的最后日期修改时间
++ Server 服务器名字
+
+
+## http缓存策略
+
++ Expires 告诉浏览器在该时间之前, 可以直接从缓存中获取, 而无需向服务器获取 注意是 GMT时间(格林威治)
++ Cache-Control 优先级高于Expires, 如果同时设置了Expires和Cache-Control, Expires会被忽略
+  - no-cache 有缓存 但是不直接使用缓存, 需要经过校验
+  - no-store 完全没有缓存 所有的请求都需要发送校验
++

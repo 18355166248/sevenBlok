@@ -42,3 +42,58 @@ const cat = new Cat()
 cat.__proto__ = Cat.prototype
 
 可以通过Object.getPrototypeOf(cat) === Cat.prototype // true
+
+## undefined和null的区别
+
+undefined表示一个无的原始值(基础类型), 转为数值为NaN, null表示一个无的对象, 转为数值为0
+
+
+## 代码错误监控
+
+首先我们可以关注一下Performance,下面就先讲一下其中的两个API
+
+#### performance timing
+
+具体可以查看w3.org/TR/navigation-timing、Navigation Timing API。
+
+在chrome浏览器控制台输入Performance.timing，会得到记录了一个浏览器访问各阶段的时间的对象。
+
+进行错误收集的时候，可以对比这些时间，看错误发生在什么阶段
+
+- DNS 查询耗时 ：domainLookupEnd - domainLookupStart
+- TCP 链接耗时 ：connectEnd - connectStart
+- request 请求耗时 ：responseEnd - responseStart
+- 解析 dom 树耗时 ： domComplete - domInteractive
+- 白屏时间 ：responseStart - navigationStart
+- domready 时间 ：domContentLoadedEventEnd - navigationStart
+- onload 时间 ：loadEventEnd – navigationStart
+
+#### 脚本错误信息收集
+
+- window.onerror
+
+window.onerror可以捕捉运行时错误，可以拿到出错的信息，堆栈，出错的文件、行号、列号
+
+- promise的错误处理
+
+promise除了使用catch方法来捕获错误, 还可以使用window的unhandledrejection时间来捕获异常
+所以假如说你有用catch去捕获错误, 那么不会触发unhandledrejection, 只有在不用catch去捕获错的情况下会触发unhandledrejection
+
+- try catch
+
+无法捕捉到语法错误, 只能捕捉运行时错误
+对回调 setTimeout promise 无能为力
+
+#### 上报错误的方式
+
+- 后端提供接口, ajax提交
+- 创建一个图片, url参数带上错误信息
+
+```js
+function report(error) {
+  var reportUrl = 'http://xxxx/report';
+  new Image().src = reportUrl + 'error=' + error;
+}
+```
+
+优点就是不需要解决跨域问题, 防止重复请求, 缺点就是上传大小有限制, 可携带数据有限
