@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+  <title>SetTimeout 不准时原因及 弥补办法</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="text/javascript">
+    (function () {
+      var timeouts = [];
+      var messageName = "zero-timeout-message";
+
+      function setZeroTimeout(fn) {
+        timeouts.push(fn);
+        window.postMessage(messageName, "*");
+      }
+
+      function handleMessage(event) {
+        if (event.source == window && event.data == messageName) {
+          event.stopPropagation();
+          if (timeouts.length > 0) {
+            var fn = timeouts.shift();
+            fn();
+          }
+        }
+      }
+
+      window.addEventListener("message", handleMessage, true);
+
+      window.setZeroTimeout = setZeroTimeout;
+    })();
+
+    function runtest() {
+      var output = document.getElementById("output");
+      var outputText = document.createTextNode("");
+      output.appendChild(outputText);
+      function printOutput(line) {
+        outputText.data += line + "\n";
+      }
+
+      var i = 0;
+      var startTime = Date.now();
+      function test1() {
+        if (++i == 100) {
+          var endTime = Date.now();
+          printOutput("100 iterations of setZeroTimeout took " +
+            (endTime - startTime) + " milliseconds.");
+          i = 0;
+          startTime = Date.now();
+          setTimeout(test2, 0);
+        } else {
+          setZeroTimeout(test1);
+        }
+      }
+
+      setZeroTimeout(test1);
+
+      function test2() {
+        if (++i == 100) {
+          var endTime = Date.now();
+          printOutput("100 iterations of setTimeout(0) took " +
+            (endTime - startTime) + " milliseconds.");
+        } else {
+          setTimeout(test2, 0);
+        }
+      }
+    }
+  </script>
+</head>
+
+<body onload="runtest()">
+
+  <h1>Demo: Using postMessage to do setTimeout with a real zero timeout</h1>
+
+  <pre id="output"></pre>
+</body>
+
+</html>

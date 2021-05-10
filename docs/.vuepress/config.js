@@ -7,7 +7,7 @@ function resolve(pathname) {
 
 module.exports = {
   title: "柒世(SMegalo)",
-  description: "2020, 学习进步!",
+  description: "2021, 学习进步!",
   port: 8082,
   base: "/",
   dest: "docs/.vuepress/distBlok",
@@ -280,6 +280,14 @@ module.exports = {
         {
           title: "Http",
           children: ["/ForentEnd/CaseQuestions/Http"],
+        },
+        {
+          title: "HTML",
+          children: ["/ForentEnd/CaseQuestions/HTML"],
+        },
+        {
+          title: "CSS",
+          children: ["/ForentEnd/CaseQuestions/CSS"],
         },
       ],
       "/CodeManage/Git/": ["", "/CodeManage/Git/Git-Hooks"],

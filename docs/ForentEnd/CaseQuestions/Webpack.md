@@ -57,3 +57,9 @@ babel-runtime 也是为了做隔离, 将每个需要引入的遍历通过 requir
 ### 总结
 
 Babel 只是转换 syntax 层语法,所有需要 @babel/polyfill 来处理 API 兼容,又因为 polyfill 体积太大，所以通过 preset 的 useBuiltIns 来实现按需加载,再接着为了满足 npm 组件开发的需要 出现了 @babel/runtime 来做隔离
+
+
+## loader和plugin的区别
+
+- Loader直译为'加载器'. webpack将一切文件视为模块, 但是webpack原生只有解析js文件的能力, 如果想将其他文件也解析打包的话, 就要用到loader, 所以loader是为了让webpack能够解析打包非webpack文件的能力
+- Plugin直译为'插件'. Plugin可以扩展webpack的能力, 让webpack更加灵活, webpack本身在打包节点会暴露出不同的生命周期API, Plugin可以监听这些事件, 在合适的时机通过webpack提供的API多webpack的输出结果做出修改

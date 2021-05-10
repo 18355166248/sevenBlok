@@ -97,3 +97,12 @@ function report(error) {
 ```
 
 优点就是不需要解决跨域问题, 防止重复请求, 缺点就是上传大小有限制, 可携带数据有限
+
+
+
+## map, object的区别
+
+- map的key值可以是任何类型, object必须是字符串
+- map是按插入的顺序排序的, object是无序的
+- map和object获取值的方式不同
+- map, object对数据的操作不一样 增删改查
