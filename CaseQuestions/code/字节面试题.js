@@ -1,3 +1,4 @@
+// 1.
 var name = "window";
 var bar = { name: "bar" };
 
@@ -34,3 +35,56 @@ class Nww {
 
 const n = new Nww();
 console.log(n.a(), n.b());
+
+// 2.
+inner = "window";
+
+function say() {
+  console.log(inner);
+  console.log(this.inner);
+}
+
+var obj1 = (function() {
+  var inner = "1-1";
+  return {
+    inner: "1-2",
+    say: function() {
+      console.log(inner);
+      console.log(this.inner);
+    },
+  };
+})();
+
+var obj2 = (function() {
+  var inner = "2-1";
+  return {
+    inner: "2-2",
+    say: function() {
+      console.log(inner);
+      console.log(this.inner);
+    },
+  };
+})();
+
+say(); // window window
+obj1.say(); // 1-1 1-2
+obj2.say(); // 2-1 2-2
+obj1.say = say;
+obj1.say(); // window 1-2
+obj1.say = obj2.say;
+obj1.say(); // 2-1 1-2
+
+// person1.show1(); person1
+// person1.show1.call(person2); person2
+
+// person1.show2(); window
+// person1.show2.call(person2); window
+
+// person1.show3()(); window
+// person1.show3().call(person2); person2
+// person1.show3.call(person2)(); window
+
+// person1.show4()(); person1 person1
+
+// person1.show4().call(person2); person1 person1
+// person1.show4.call(person2)(); person2 person2

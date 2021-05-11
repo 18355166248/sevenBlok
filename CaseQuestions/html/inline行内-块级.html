@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>行内, 块级, 行内块元素区别</title>
+  <style>
+    b,
+    span,
+    a {
+      width: 100px;
+      height: 120px;
+      background-color: red;
+      margin: 10px 20px 30px 40px;
+      border: 4px solid blue;
+      padding: 10px 20px 30px 40px;
+    }
+
+    div {
+      /* width: 100px; */
+      background-color: aquamarine;
+    }
+
+    .inlineBlock {
+      display: inline-block;
+      background-color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <b>行内元素, 宽高无效, margin 左右有效, 上下无效 不会进行自动换行</b>
+    <span>行内元素, 宽高无效, margin 左右有效, 上下无效 不会进行自动换行</span>
+    <a href="JavaScript:;">a标签 不会进行自动换行</a>
+  </div>
+
+  <div>块级元素 识别宽高, margin, padding上下左右均有效 可以自动换行</div>
+
+  <div class="inlineBlock">行内块元素 不自动换行 能够识别宽高 默认排列方式从左到右</div>
+</body>
+
+</html>

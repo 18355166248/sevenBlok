@@ -85,3 +85,5 @@ const [state, setState] = useState(() => {
 ## 12.react hook、高阶组件、render Prop 适应场景？
 
 ## 13. setState 是异步还是同步？什么情况下是异步？什么情况下是同步？具体哪些场景?
+
+## 14. hook为什么不能写在判断语句里面

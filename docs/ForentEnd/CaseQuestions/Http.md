@@ -189,6 +189,70 @@ X-Cache: HIT
 
 + Expires 告诉浏览器在该时间之前, 可以直接从缓存中获取, 而无需向服务器获取 注意是 GMT时间(格林威治)
 + Cache-Control 优先级高于Expires, 如果同时设置了Expires和Cache-Control, Expires会被忽略
-  - no-cache 有缓存 但是不直接使用缓存, 需要经过校验
-  - no-store 完全没有缓存 所有的请求都需要发送校验
-+
+  + no-cache 有缓存 但是不直接使用缓存, 需要经过校验
+  + no-store 完全没有缓存 所有的请求都需要发送校验
+
+
+## http缓存详解
+
+### 缓存相关header
+
+#### 1. Expires
+
+> 响应头, 代表该资源的过期时间
+
+服务器告诉浏览器资源失效时间
+
+缺点: 缓存过期以后, 不管资源是否改变都会再次去获取资源返回给浏览器
+
+参数很多, 比如max-age
+
+<!-- 缺点: 如果同一秒多次请求的话, 会一直去获取新的资源 -->
+
+#### 2. Last-Modified && If-Modified-Since
+
+> Last-Modified 响应头, 资源最近修改时间, 服务器告诉浏览器
+> If-Modified-Since 请求头, 资源最近修改时间, 浏览器告诉服务器吗就是将Last-Modified传给服务器
+
+为了解决Expires的缺点, 服务器会在响应头带上Last-Modified给浏览器, 当缓存过期以后, 浏览器会将Last-Modified的值同归If-Modified-Since字段放在请求头带给服务器, 如果字段没有改变, 返回304告诉浏览器继续使用缓存, 如果字段改变了, 服务器会生成新的Expires和Last-Modified带给浏览器, 如此往复
+
+缺点:
+
+1. Expires过期不稳定, 服务器可以随意更改
+2. 过期时间只能精确到秒, 这里存在问题, 有个资源1.js, 当一秒内多次请求的话, 如果在这一秒内, 资源已经改变了很多次了, 那么缓存策略在第二次请求的时候发现最后修改时间没有变化, 就会认为文件没有改变, 这样的话, 浏览器就会收到304, 但是1.js已经修改了, 这样的话拿到的就不准确了
+3. 如果服务器上的1.js被修改了, 但是内容其实没有变化, 这个时候回因为Last-Modified变化而重新获取资源发送给浏览器
+
+#### 3. Etag && If-None-Match
+
+> Etag 响应头 服务器发送给浏览器 他是资源的唯一Id标识 告诉浏览器资源是否改变
+> If-None-Match 请求头 将ETag从浏览器发送给服务器, 服务器判断是否改变, 如果没有改变就返回304, 否则就获取新的资源返回给浏览器, 并附带新的Etag
+
+单独用Last-Modified(最后修改时间)判断有缺陷, 假如文件修改了, 但是文件内容没变, 对于这种请求, 我们可以使用Etag来处理.
+
+#### 2. Cache-Control
+
+> 请求/响应头 缓存控制字段 精确控制缓存字段
+
+属于新的缓存方案, 权重比Expires搞, 精细化也高很多
+详情可以看![MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control)
+
+指令:
+public 可以被任何对象缓存
+private 只能被单个用户缓存, 不能被代理服务器缓存
+no-cache 可以缓存, 但每次都要向服务器发送验证请求(协商缓存)
+no-store 不适用任何缓存
+
+
+### http缓存模拟场景
+
+1. 浏览器请求1.js
+2. 服务器返回1.js, 同时告诉浏览器Expires(绝对过期时间), 以及Cache-Control: publish max-age=10(相对过期时间), 以及1.js的最后修改时间Last-Modified和文件标识Etag
+3. 10s内再次请求1.js, 浏览器不发送请求, 直接使用本地缓存
+4. 11s时, 请求1.js, 带上最后修改时间If-Modified-Since(Last-Modified), 以及If-None-Match(Etag)
+5. 服务器收到浏览器的If-Modified-Since和If-None-Match, 则比较If-None-Match和服务端的Etag的值, 忽略掉If-Modified-Since
+6. 1.js没有变化, 则服务器返回304
+7. 如此往复
+
+### 最后
+
+给资源加载后缀或者使用webpack打包的时候使用hash值命名也可以起到缓存的作用

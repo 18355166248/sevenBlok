@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <button onclick="console.log(this)">显示自己</button>
+    <!-- 等同于函数直接调用的情况 -->
+    <button onclick="(function(){console.log(this)})()">非严格模式下, 匿名函数指向window</button>
+    <button onclick="(function(){'use strict';console.log(this)})()">严格模式下</button>
+  </div>
+
+
+  <script>
+    function Demo() {
+      this.age = 18
+
+      setTimeout(function () {
+        console.log(this)
+      }, 1000)
+    }
+
+    function Demo2() {
+      this.age = 18
+
+      setTimeout((function () {
+        console.log(this)
+      }).bind(this), 1000)
+    }
+
+    function Demo3() {
+      this.age = 18
+
+      setTimeout(() => {
+        console.log(this)
+      }, 1000)
+    }
+
+    new Demo() // window
+    new Demo2() // Demo2 {age: 18}
+    Demo2() // window
+    new Demo3() // Demo2 {age: 18}
+    Demo3() // window
+  </script>
+</body>
+
+</html>

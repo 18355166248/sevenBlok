@@ -1,0 +1,52 @@
+// 在中文页面解析、中文数据处理中，常常遇到用中文表示的数字，例如：五千三百万零五百零一。
+// 我们一般需要把它转化成int型整数，进行实际存储和使用。 请完成一亿（不含）以内的中文数字到int整数的转换
+const enumObj = {
+  一: 1,
+  二: 2,
+  三: 3,
+  四: 4,
+  五: 5,
+  六: 6,
+  七: 7,
+  八: 8,
+  九: 9,
+};
+
+function transform(numStr) {
+  // 五 千 三 百 万 零 五 百 零 一
+  const numStrArr = numStr.split("");
+
+  let num = 0;
+  let d = 1;
+  let isWan = false;
+
+  for (let i = numStrArr.length; i >= 0; i--) {
+    const key = numStrArr[i];
+    const val = enumObj[key];
+
+    if (val) {
+      num += val * d;
+    } else if (key === "零") {
+    } else if (key === "百") {
+      if (isWan) {
+        d = 1000000;
+      } else {
+        d = 100;
+      }
+    } else if (key === "万") {
+      isWan = true;
+    } else if (key === "千") {
+      if (isWan) {
+        d = 10000000;
+      } else {
+        d = 1000;
+      }
+    }
+  }
+
+  return num;
+}
+
+console.log(transform("五千三百万零五百零一"));
+console.log(transform("四千三百万三千五百零九"));
+console.log(transform("四百万一千零九"));
