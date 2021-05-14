@@ -87,3 +87,25 @@ const [state, setState] = useState(() => {
 ## 13. setState 是异步还是同步？什么情况下是异步？什么情况下是同步？具体哪些场景?
 
 ## 14. hook为什么不能写在判断语句里面
+
+因为hook组件渲染必须有一样的渲染顺序, 假如hook写在判断语句里面, 那么渲染顺序就不可控了
+
+hook组件的状态初始化是用链表的形式存储的, 假如说你有hook在判断语句里面, 那么在组件重新执行的时候有可能不能拿到这个hook并放入进链表中, 这个时候react在更新的时候就会出现错乱, 造成hook更新不准确的情况
+
+## 15. react-redux在react和redux之间做了什么处理
+
+> react-redux是将react和reudx有机关联的组件
+
+react-redux有2个方法: Provider Connect
+
+1. Provider用做redux数据store的初始化
+    1. 提供了store的getState, dispatch, subscrib三个方法
+    2. Provider使用了Context, 解决store数据在嵌套组件使用一套数据的问题
+    3. Provider要求内部有且只能有一个组件, 这个使用到了Children(this.props.children)
+
+2. Connect
+    1. 高阶函数, 通过context调用store里面暴露出来的方法,用于传递给组件, 同时订阅组件的渲染事件
+
+react-redux使用了Context上下文做数据的初始化, 这样所以子组件都可以通过this.context.store共享数据
+然后内部实现了一套Store方法, 用于数据的删改查和发布订阅更新子组件
+再用HOC(高阶组件)把store上面的store.gerState(), store.dispatch(), store.subscribe()封装起来, 这里就是connect组件干的事了

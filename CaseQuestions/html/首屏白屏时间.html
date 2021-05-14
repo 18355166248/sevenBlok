@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首屏白屏时间</title>
+  <style>
+    img {
+      display: inline-block;
+      width: 1000px;
+    }
+  </style>
+  <script type="text/javascript">
+    console.log(Date.now() - window.performance.timing.navigationStart)
+  </script>
+</head>
+
+<body>
+  <script>
+    window.onload = function () {
+      console.log(Date.now() - window.performance.timing.responseStart)
+    }
+  </script>
+  <img
+    src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F1%2F53b52a6a81dd4.jpg&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623553234&t=0866a84fb36deaf1a2b58a1aaf5f5fc2"
+    alt="">
+  <img
+    src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201802%2F07%2F183047amcnonx9or5umjdo.jpg&refer=http%3A%2F%2Fattach.bbs.miui.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623553234&t=d4645ae7d160c9a0353d2b1a3d0cb18b"
+    alt="">
+</body>
+
+</html>
