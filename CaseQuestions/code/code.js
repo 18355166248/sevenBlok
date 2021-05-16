@@ -1,38 +1,36 @@
-function isValid(s) {
-  if (s.length % 2 === 1) return false;
-  const map = new Map([
-    ["}", "{"],
-    ["]", "["],
-    [")", "("],
-  ]);
-
-  const res = [];
-
-  for (let i = 0; i < s.length; i++) {
-    if (map.has(s[i])) {
-      if (!res.length || res[res.length - 1] !== map.get(s[i])) {
-        res.length = 1;
-        break;
-      }
-
-      res.pop();
+/**
+ * @param {string} s
+ * @return {number}
+ */
+const enumObj = {
+  I: 1,
+  IV: 4,
+  V: 5,
+  IX: 9,
+  X: 10,
+  XL: 40,
+  L: 50,
+  XC: 90,
+  C: 100,
+  CD: 400,
+  D: 500,
+  CM: 900,
+  M: 1000,
+}
+var romanToInt = function(s) {
+  let num = 0
+  while (s.length > 0) {
+    const s2 = s.substring(0, 2)
+    if (enumObj[s2]) {
+      s = s.substr(2)
+      num += enumObj[s2]
     } else {
-      res.push(s[i]);
+      num += enumObj[s.charAt(0)]
+      s = s.substr(1)
     }
   }
 
-  return !res.length;
+  return num
 }
-const s0 = "()";
-const s = "{[]}";
-const s1 = "()[]{}";
-const s2 = "(([]){})";
-const s3 = "){";
-const s4 = "([}}])";
 
-// console.log(isValid(s0));
-// console.log(isValid(s));
-// console.log(isValid(s1));
-// console.log(isValid(s2));
-// console.log(isValid(s3));
-console.log(isValid(s4));
+console.log(romanToInt('LVIII'))
