@@ -1,0 +1,28 @@
+// 给你一个只包含 '(' 和 ')' 的字符串，找出最长有效（格式正确且连续）括号子串的长度\
+// 栈的方式
+var longestValidParentheses = function(s) {
+  const stack = [-1];
+  let maxLength = 0;
+
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === ")") {
+      stack.pop();
+      // 栈为空计算最大值
+      if (stack.length) {
+        // 清除栈后, 计算最大值
+        const max = i - stack[stack.length - 1];
+        maxLength = Math.max(max, maxLength);
+      } else {
+        // 栈空了, 入参充当参照
+        stack.push(i);
+      }
+    } else {
+      stack.push(i);
+    }
+  }
+  return maxLength;
+};
+
+console.log(longestValidParentheses("(()")); // 2
+console.log(longestValidParentheses(")()())")); // 4
+console.log(longestValidParentheses("()")); // 2
