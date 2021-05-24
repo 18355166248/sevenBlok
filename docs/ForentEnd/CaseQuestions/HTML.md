@@ -35,3 +35,18 @@ window.onload = () => {
     new Date() - performance.timing.responseStart
 }
 ```
+
+
+## Dom(documnet Object Modal 文档对象模型)和Cssom(css Object Modal)执行顺序
+
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91c2VyLWdvbGQtY2RuLnhpdHUuaW8vMjAyMC8zLzMxLzE3MTMwZTA5N2RlYzFkYzU?x-oss-process=image/format,png)
+
+在接收到HTML数据之后的预解析过程中，HTML预解析器识别出来了有CSS文件和JavaScript文件需要下载，然后就同时发起这两个文件的下载请求，需要注意的是，这两个文件的下载过程是重叠的，所以下载时间按照最久的那个文件来算。
+
+但实际上，不管css文件和js文件哪个先下载好，只有css文件下载好了，构建CSSOM树完成了，才能开始解析JavaScript
+
+### 优化
+
+- 将一些css代码, js代码卸载html文件内联标签里, 减少下载时间
+- 尽量减少文件大小, 可以通过webpack, 将代码压缩
+- 可以将一些不需要再html解析阶段就需要用到的javascript外部文件通过async或者defer, 使得文件可以异步加载, 不影响页面的构建

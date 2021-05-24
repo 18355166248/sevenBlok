@@ -1,8 +1,22 @@
+class ListNode {
+  constructor(key, value) {
+    this.key = key;
+    this.value = value;
+    this.next = null;
+    this.prev = null;
+  }
+}
 /*
  * @param {number} capacity
  */
 var LRUCache = function(capacity) {
-  this.line = { value: "head", next: { value: "foot", next: null } };
+  this.max = capacity; // 缓存最大数目
+  this.hash = {}; // 哈希表
+  this.count = 0; // 缓存数目
+  this.dummyHead = new ListNode(); // 虚拟头结点
+  this.dummyTail = new ListNode(); // 虚拟尾结点
+  this.dummyHead.next = this.dummyTail;
+  this.dummyTail.prev = this.dummyHead;
 };
 
 /**
@@ -10,18 +24,10 @@ var LRUCache = function(capacity) {
  * @return {number}
  */
 LRUCache.prototype.get = function(key) {
-  let line = this.line.next;
-  while (line) {
-    if (line.key === key) {
-      const ll = this.line.next;
-
-      return line.value;
-    }
-
-    line = line.next;
-  }
-
-  return -1;
+  let node = this.hash[key];
+  if (!node) return -1;
+  this.moveToHead(node);
+  return node.value;
 };
 
 /**
@@ -30,21 +36,54 @@ LRUCache.prototype.get = function(key) {
  * @return {void}
  */
 LRUCache.prototype.put = function(key, value) {
-  const line = { key, value, next: this.line.next };
+  let node = this.hash[key];
 
-  this.line.next = line;
-  console.log(JSON.stringify(this.line));
+  // 不存在
+  if (!node) {
+    if (this.count === this.max) {
+      // 存储满了, 删除最远一次使用的数据
+      this.removeLRUItem();
+    }
+    const newNode = new ListNode(key, value);
+    this.hash[key] = newNode;
+    this.addToHead(newNode);
+    this.count++;
+  } else {
+    node.value = value; // 存在 更新value
+    this.moveToHead(node); // 将数据更新到头部
+  }
 };
 
-var obj = new LRUCache(2);
-obj.put(1, 1);
-obj.put(2, 2);
-console.log(obj.get(2));
-console.log(obj.get(3));
-// obj.put(1, 1);
-// obj.put(4, 1);
-// console.log(obj.get(2));
+LRUCache.prototype.moveToHead = function(node) {
+  this.removeFromList(node);
+  this.addToHead(node);
+};
+LRUCache.prototype.removeFromList = function(node) {
+  const prev = node.prev;
+  const next = node.next;
+  prev.next = node.next;
+  next.prev = prev;
+};
+LRUCache.prototype.addToHead = function(node) {
+  node.prev = this.dummyHead;
+  node.next = this.dummyHead.next;
+  this.dummyHead.next.prev = node; // 原来真实头节点的prev指向node
+  this.dummyHead.next = node;
+};
+LRUCache.prototype.removeLRUItem = function() {
+  const tail = this.popTail();
+  delete this.hash[tail.key];
+  this.count--;
+};
+LRUCache.prototype.popTail = function() {
+  const tail = this.dummyTail.prev;
+  this.removeFromList(tail);
+  return tail;
+};
 
-// var obj2 = new LRUCache(1);
-// obj2.put(2, 1);
-// console.log(obj2.get(1));
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * var obj = new LRUCache(capacity)
+ * var param_1 = obj.get(key)
+ * obj.put(key,value)
+ */

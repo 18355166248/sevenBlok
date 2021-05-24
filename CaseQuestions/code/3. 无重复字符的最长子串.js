@@ -3,16 +3,20 @@ var lengthOfLongestSubstring = function(s) {
   // 滚动的方式处理, 用哈希集合的方式判断是否重复
   const set = new Set(),
     len = s.length;
-  let right = 0;
+  let right = 0,
+    max = 0;
 
   for (let i = 0; i < len; i++) {
     if (i !== 0) set.delete(s.charAt(i - 1));
-    console.log(right);
     while (right < len && !set.has(s.charAt(right))) {
       set.add(s.charAt(right));
       right++;
     }
+
+    max = Math.max(max, right - i);
   }
+
+  return max;
 };
 
 var s = "abcabcbb";
