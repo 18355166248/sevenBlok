@@ -106,3 +106,10 @@ function report(error) {
 - map是按插入的顺序排序的, object是无序的
 - map和object获取值的方式不同
 - map, object对数据的操作不一样 增删改查
+
+## 箭头函数和普通函数的区别
+
+1. 箭头函数语法上比普通函数更加简洁(ES6中每一种函数都可以使用形参赋默认值和剩余运算符)
+2. 箭头函数没有自己的THIS，它里面的THIS是继承函数所处上下文中的THIS（使用CALL/APPY等任何方式都无法改变THIS的指向）
+3.箭头函数中没有ARGUMENTS(类数组)，智能基于。。。ARG获取传递的参数集合（数组）
+4. 箭头函数不能被NEW执行（因为：箭头函数没有THIS也没有prototype）

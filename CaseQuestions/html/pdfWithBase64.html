@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.8.335/pdf.min.js"
+    integrity="sha512-SG4yH2eYtAR5eK4/VL0bhqOsIb6AZSWAJjHOCmfhcaqTkDviJFoar/VYdG96iY7ouGhKQpAg3CMJ22BrZvhOUA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./assets/pdf.js"></script>
+</head>
+
+<body>
+  <embed src="" type="" id="pdf1">
+  <script>
+    function convertBase64ToBlob(base64, fileType, slice) {
+      // base64 = base64.replace(/-/g, "+").replace(/_/g, "/");
+      const data = base64.replace(/[\n\r]/g, '');
+      console.log(data)
+      var raw = window.atob(data);
+      // return new Blob(base64
+      //   .match(new RegExp(`([\\s\\S]{${slice}})|([\\s\\S]{1,${slice}})`, 'g'))
+      //   .map(function (item) {
+      //     return new Uint8Array(item.split('').map(function (s, i) {
+      //       return item.charCodeAt(i)
+      //     }))
+      //   }), { type: fileType })
+    }
+
+    const blob = convertBase64ToBlob(pdfData, 'application/pdf', 1024)
+    // if (navigator.msSaveBlob) {
+    //   return navigator.msSaveBlob(blob, '1.pdf');
+    // }
+    // const urlFromBlob = window.URL.createObjectURL(blob);
+    // const pdf1 = document.getElementById('pdf1')
+    // console.log(urlFromBlob, pdf1)
+    // pdf1.setAttribute('src', pdf1)
+  </script>
+</body>
+
+</html>
