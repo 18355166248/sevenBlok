@@ -1,16 +1,26 @@
-var arr = [1, 2, 3, [1, 5, 6, [7, 9, [11, 32]]], 10, [4, [7, [8, [9, [10]]]]]];
+function clearStr(str) {
+  let res = "";
 
-function multiarr(arr) {
-  const sArr = Array(arr.length).fill(0);
+  function clear(string) {
+    let isOpen = false;
+    for (i = 0; i < string.length - 2; i++) {
+      let left = string.charAt([i + 1]);
+      let right = string.charAt([i + 2]);
 
-  for (let i = 0; i < arr.length; i++) {
-    const item = arr[i];
-    sArr[i]++;
-    if (Array.isArray(arr[i])) {
-      sArr[i] += item.length ? multiarr(item) : 1;
+      if (string[i] === left && string[i] === right) {
+        isOpen = true;
+        clear(string.substr(0, i) + string.substr(i + 3));
+        break;
+      }
     }
+    if (!isOpen) res = string;
   }
 
-  return Math.max(...sArr);
+  clear(str);
+
+  return res;
 }
-console.log(multiarr(arr));
+
+console.log(clearStr("aabbccdddcbae"));
+console.log(clearStr("aabbba"));
+console.log(clearStr("caabbbaccc"));
