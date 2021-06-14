@@ -244,6 +244,15 @@ module.exports = {
           title: '优化Antd动态主题',
           children: ['/ForentEnd/React/NewAntdTheme'],
         },
+        {
+          title: 'antd',
+          children: ['/ForentEnd/React/antd'],
+        },
+        {
+          title: 'Fiber',
+          children: ['/ForentEnd/React/Fibver'],
+        },
+
       ],
       '/ForentEnd/Regex/': ['', '/ForentEnd/Regex/use'],
       '/ForentEnd/Eslint/': ['', '/ForentEnd/Eslint/jiang-eslint-setting'],
