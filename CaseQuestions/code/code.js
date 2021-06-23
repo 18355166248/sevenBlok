@@ -1,26 +1,16 @@
-function clearStr(str) {
-  let res = "";
+const Bar = (function() {
+  let id = 0;
 
-  function clear(string) {
-    let isOpen = false;
-    for (i = 0; i < string.length - 2; i++) {
-      let left = string.charAt([i + 1]);
-      let right = string.charAt([i + 2]);
-
-      if (string[i] === left && string[i] === right) {
-        isOpen = true;
-        clear(string.substr(0, i) + string.substr(i + 3));
-        break;
-      }
+  return function() {
+    if (!new.target) {
+      throw new Error("plese use new");
     }
-    if (!isOpen) res = string;
-  }
 
-  clear(str);
+    this.id = ++id;
+  };
+})();
 
-  return res;
-}
-
-console.log(clearStr("aabbccdddcbae"));
-console.log(clearStr("aabbba"));
-console.log(clearStr("caabbbaccc"));
+console.log(new Bar(123));
+console.log(new Bar(123));
+console.log(new Bar(123));
+console.log(Bar(123));
