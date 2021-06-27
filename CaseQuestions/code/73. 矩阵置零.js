@@ -4,30 +4,23 @@
 // 一个简单的改进方案是使用 O(m + n) 的额外空间，但这仍然不是最好的解决方案。
 // 你能想出一个仅使用常量空间的解决方案吗？
 var setZeroes = function(matrix) {
-  const obj = {};
-  for (let i = 0; i < matrix.length; i++) {
-    for (let j = 0; j < matrix[0].length; j++) {
-      if (matrix[i][j] === 0 && !obj["" + i + j]) {
-        let left = 0,
-          top = 0;
-        // 行为0
-        while (left < matrix[0].length) {
-          if (matrix[i][left++]) {
-            matrix[i][left - 1] = 0;
-            obj["" + i + left] = 1;
-          }
-        }
-        // 列为0
-        while (top < matrix.length) {
-          if (matrix[top++][j]) {
-            matrix[top - 1][j] = 0;
-            obj["" + top + j] = 1;
-          }
-        }
-      }
+  const m = matrix.length,
+    n = matrix[0].length;
+  const row = Array(m).fill(false);
+  const column = Array(n).fill(false);
+
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (matrix[i][j] === 0) row[i] = column[j] = true;
     }
   }
-  return matrix;
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (row[i] || column[j]) matrix[i][j] = 0;
+    }
+  }
+
+  console.log(matrix)
 };
 console.log(
   setZeroes([
