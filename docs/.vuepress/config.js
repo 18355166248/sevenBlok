@@ -49,6 +49,10 @@ module.exports = {
             link: "/ForentEnd/JavaScript/",
           },
           {
+            text: "TypeScript",
+            link: "/ForentEnd/TypeScript/",
+          },
+          {
             text: "HTML",
             link: "/ForentEnd/HTML/",
           },
@@ -174,6 +178,14 @@ module.exports = {
           title: "接口缓存",
           children: ["/ForentEnd/JavaScript/oneHandler"],
         },
+      ],
+      "/ForentEnd/TypeScript/": [
+        "",
+        "./dataTypes",
+        "./declare",
+        "./function",
+        "./interface",
+        "./top",
       ],
       "/ForentEnd/HTML/": ["", "/ForentEnd/HTML/HTMLTransformPDF"],
       "/ForentEnd/CSS/": ["", "/ForentEnd/CSS/Less", "/ForentEnd/CSS/Style.md"],
