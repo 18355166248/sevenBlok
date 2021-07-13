@@ -96,6 +96,10 @@ module.exports = {
             text: "面试题",
             link: "/ForentEnd/CaseQuestions/",
           },
+          {
+            text: "单元测试",
+            link: "/ForentEnd/Test/",
+          },
         ],
       },
       {
@@ -318,6 +322,7 @@ module.exports = {
           children: ["/ForentEnd/CaseQuestions/CSS"],
         },
       ],
+      "/ForentEnd/Test/": ["", "/ForentEnd/Test/Jest"],
       "/CodeManage/Git/": ["", "/CodeManage/Git/Git-Hooks"],
       "/Tools/Jenkins/": ["", "/Tools/Jenkins/WithGitHub"],
       "/Algorithm/LeetCode/": leecodeSidebar,
