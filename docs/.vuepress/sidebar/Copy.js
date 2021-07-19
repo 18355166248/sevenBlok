@@ -1,4 +1,5 @@
 var fs = require("fs");
+const { write } = require("stdout-stream");
 var stat = fs.stat;
 
 var copy = function(src, dst) {
@@ -19,7 +20,6 @@ var copy = function(src, dst) {
         }
 
         if (st.isFile()) {
-          console.log(_dst, dst);
           readable = fs.createReadStream(_src); //创建读取流
           writable = fs.createWriteStream(_dst, { encodint: "utf8", start: 0 }); //创建写入流
           writable.write("# " + name + "\n\n");

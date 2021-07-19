@@ -1,7 +1,6 @@
 # Events模块
 
-```js
- ```const fn1 = (... args)=>console.log('I want sleep1', ... args)
+const fn1 = (... args)=>console.log('I want sleep1', ... args)
 const fn2 = (... args)=>console.log('I want sleep2', ... args)
 
 function Events () {

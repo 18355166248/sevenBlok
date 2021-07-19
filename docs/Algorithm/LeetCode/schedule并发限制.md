@@ -1,7 +1,6 @@
 # schedule并发限制
 
-```js
- ```class Scheduler {
+class Scheduler {
   constructor() {
     this.max = 2;
     this.taskNum = 0;

@@ -1,7 +1,6 @@
 # currentCode
 
-```js
- ```// function countPrimes(num) {
+// function countPrimes(num) {
 //   if (num === 0 || num === 1 || num === 2) return true;
 //   const isPrimes = Array(num).fill(true);
 //   const total = [];

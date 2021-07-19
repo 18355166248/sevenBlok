@@ -1,7 +1,6 @@
 # code
 
-```js
- ```const Bar = (function() {
+const Bar = (function() {
   let id = 0;
 
   return function() {

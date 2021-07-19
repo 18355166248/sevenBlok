@@ -1,7 +1,6 @@
 # LRU缓存机制
 
-```js
- ```class ListNode {
+class ListNode {
   constructor(key, value) {
     this.key = key;
     this.value = value;

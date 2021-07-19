@@ -1,7 +1,6 @@
 # bind.call.apply
 
-```js
- ```Function.prototype.bind2 = function(context) {
+Function.prototype.bind2 = function(context) {
   const self = this;
   const args = Array.prototype.slice.call(arguments, 1);
 

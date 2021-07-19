@@ -1,7 +1,6 @@
 # forEach
 
-```js
- ```function forEach (arr, fn) {
+function forEach (arr, fn) {
   return new Promise(resolve => {
     next(arr)
     function next (arr, i = 0) {

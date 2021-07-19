@@ -1,7 +1,6 @@
 # newObj
 
-```js
- ```function objectFactory() {
+function objectFactory() {
   const obj = new Object(),
     Constructor = Array.prototype.shift.call(arguments);
 

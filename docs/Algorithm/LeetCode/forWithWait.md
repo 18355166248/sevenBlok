@@ -1,7 +1,6 @@
 # forWithWait
 
-```js
- ```const iterator = {
+const iterator = {
   [Symbol.iterator]() {
     return {
       i: 0,

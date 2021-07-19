@@ -1,7 +1,6 @@
 # Promise
 
-```js
- ```function Promise(fn) {
+function Promise(fn) {
   let state = "pending";
   let value;
   const callbacks = [];

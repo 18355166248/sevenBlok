@@ -1,7 +1,6 @@
 # deepClone深拷贝
 
-```js
- ```const obj = {
+const obj = {
   a: [1, 2, null],
   b: {
     c: 2,

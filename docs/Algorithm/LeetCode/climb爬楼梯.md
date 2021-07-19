@@ -1,7 +1,6 @@
 # climb爬楼梯
 
-```js
- ```const obj = {};
+const obj = {};
 var climbStairs = function(n) {
   if (n <= 2) return n;
 

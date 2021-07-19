@@ -1,7 +1,6 @@
 # throttle
 
-```js
- ```function throttle(fn, wait) {
+function throttle(fn, wait) {
   var time;
 
   return function() {

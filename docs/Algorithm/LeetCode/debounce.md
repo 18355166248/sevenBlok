@@ -1,7 +1,6 @@
 # debounce
 
-```js
- ```function debounce(fn, wait) {
+function debounce(fn, wait) {
   var time;
 
   return function() {

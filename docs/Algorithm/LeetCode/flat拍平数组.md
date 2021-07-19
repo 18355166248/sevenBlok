@@ -1,7 +1,6 @@
 # flat拍平数组
 
-```js
- ```const arr = [
+const arr = [
   1,
   2,
   3,

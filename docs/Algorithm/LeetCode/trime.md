@@ -1,7 +1,6 @@
 # trime
 
-```js
- ```String.prototype.trim2 = function() {
+String.prototype.trim2 = function() {
   var str = this;
   str = str.replace(/^\s\s*/, "");
   var ws = /\s/;

@@ -1,7 +1,6 @@
 # curry柯里化
 
-```js
- ```function curry(fn, args) {
+function curry(fn, args) {
   var length = fn.length;
 
   args = args || [];

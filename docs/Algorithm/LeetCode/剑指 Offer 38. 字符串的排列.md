@@ -1,7 +1,6 @@
 # 剑指 Offer 38. 字符串的排列
 
-```js
- ```var permutation = function(s) {
+var permutation = function(s) {
   // 这里用set的原因是因为假如说字符串 aab 前两个字符是相等的, 我们是通过索引去拼接字符串的
   // 所以会出现2个aab(012) aab(102)这种情况, 所以用Set格式做数组的去重
   const arr = new Set();

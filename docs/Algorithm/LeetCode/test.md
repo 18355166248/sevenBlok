@@ -1,7 +1,6 @@
 # test
 
-```js
- ```Function.prototype.call2 = function(context) {
+Function.prototype.call2 = function(context) {
   context = context || window;
 
   context.fn = this;

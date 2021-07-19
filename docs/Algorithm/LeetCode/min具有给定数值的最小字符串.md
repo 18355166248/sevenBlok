@@ -1,7 +1,6 @@
 # min具有给定数值的最小字符串
 
-```js
- ```function getSmallestString(n, k) {
+function getSmallestString(n, k) {
   let ans = "";
   const charArr = [
     " ",
