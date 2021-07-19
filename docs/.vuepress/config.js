@@ -49,6 +49,10 @@ module.exports = {
             link: "/ForentEnd/JavaScript/",
           },
           {
+            text: "Node",
+            link: "/ForentEnd/Node/",
+          },
+          {
             text: "TypeScript",
             link: "/ForentEnd/TypeScript/",
           },
@@ -183,6 +187,7 @@ module.exports = {
           children: ["/ForentEnd/JavaScript/oneHandler"],
         },
       ],
+      "/ForentEnd/Node/": [""],
       "/ForentEnd/TypeScript/": [
         "",
         "./dataTypes",
