@@ -221,5 +221,5 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "description": "测试下 git config user.email lang.jiang@ximalaya.com"
+  "description": "测试下删除.git/config下的[user]"
 }
