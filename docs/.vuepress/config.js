@@ -134,6 +134,15 @@ module.exports = {
         ],
       },
       {
+        text: "数据库",
+        items: [
+          {
+            text: "MySql",
+            link: "/Databases/MySql/",
+          },
+        ],
+      },
+      {
         text: "GitHub",
         link: "https://github.com/18355166248",
       },
