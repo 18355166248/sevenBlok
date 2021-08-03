@@ -221,5 +221,5 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "description": ""
+  "description": "测试下一"
 }
