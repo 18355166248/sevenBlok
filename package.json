@@ -221,5 +221,5 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "description": "测试下 git config user.name"
+  "description": "测试下 git config user.email 17621399871@163.com"
 }
