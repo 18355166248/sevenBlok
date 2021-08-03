@@ -221,5 +221,5 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "description": "测试下一"
+  "description": "测试下 git config user.name"
 }
