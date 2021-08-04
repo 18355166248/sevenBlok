@@ -1,3 +1,8 @@
+function TreeNode(val, left, right) {
+  this.val = val === undefined ? 0 : val;
+  this.left = left === undefined ? null : left;
+  this.right = right === undefined ? null : right;
+}
 var sortedListToBST = function(head) {
   const arr = [];
   while (head) {
@@ -6,12 +11,18 @@ var sortedListToBST = function(head) {
   }
 
   function dfs(treeArr, left, right) {
-    if (left > right) return;
+    if (left > right) return null;
 
-    const mid = left + right + 1
+    const mid = Math.floor((left + right + 1) / 2);
+    const node = new TreeNode(treeArr[mid]);
+
+    node.left = dfs(treeArr, left, mid - 1);
+    node.right = dfs(treeArr, mid + 1, right);
+
+    return node;
   }
 
-  dfs(arr, 0, arr.length - 1);
+  return dfs(arr, 0, arr.length - 1);
 };
 console.log(
   sortedListToBST({

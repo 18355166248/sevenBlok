@@ -1,5 +1,4 @@
 var fs = require("fs");
-const { write } = require("stdout-stream");
 var stat = fs.stat;
 
 var copy = function(src, dst) {

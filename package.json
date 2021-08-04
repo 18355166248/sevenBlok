@@ -7,8 +7,8 @@
     "start": "npm run dev",
     "build": "vuepress build docs",
     "push": "bash deploy.sh",
-    "leecodeSidebar": "cd ./docs/.vuepress/sidebar && node index.js",
-    "leecodeCopy": "node ./docs/.vuepress/sidebar/copyFileFromCaseQuestions.js",
+    "leecodeSidebar": "node ./utils/index.js",
+    "leecodeCopy": "node ./utils/copyFileFromCaseQuestions.js",
     "createLeecode": "npm run leecodeCopy && npm run leecodeSidebar"
   },
   "keywords": [],
