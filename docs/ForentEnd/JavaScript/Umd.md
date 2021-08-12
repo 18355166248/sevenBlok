@@ -43,7 +43,7 @@
 
 我们通常在做项目时可能会把第三方库打包到 bundle 中，比如下面这张图
 
-![](@/public/javascript/UMD/webpack_require.png)
+![](~@public/javascript/UMD/webpack_require.png)
 
 如果不想把第三方库打包到 bundle 中，这就有了 externals。官方的使用 externals 比较简单，只需三步——
 
@@ -78,6 +78,6 @@ import { useBoolean } from 'jiang-hooks'
 
 ### 剖析代码
 
-![]('@/public/javascript/UMD/webpack_externals.jpg')
+![]('~@public/javascript/UMD/webpack_externals.jpg')
 
 图中 395 的函数就是将已经绑定在 window 上的 UMD 的引用通过 module.exports 的方式提供给其他组件使用
