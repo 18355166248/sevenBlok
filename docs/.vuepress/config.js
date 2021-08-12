@@ -113,6 +113,14 @@ module.exports = {
             text: "Git",
             link: "/CodeManage/Git/",
           },
+          {
+            text: "NPM",
+            link: "/CodeManage/NPM/",
+          },
+          {
+            text: "Lerna",
+            link: "/CodeManage/Lerna/",
+          },
         ],
       },
       {
@@ -346,6 +354,8 @@ module.exports = {
       ],
       "/ForentEnd/Test/": ["", "/ForentEnd/Test/Jest"],
       "/CodeManage/Git/": ["", "/CodeManage/Git/Git-Hooks"],
+      "/CodeManage/NPM/": [""],
+      "/CodeManage/Lerna/": [""],
       "/Tools/Jenkins/": ["", "/Tools/Jenkins/WithGitHub"],
       "/Algorithm/LeetCode/": leecodeSidebar,
     },
