@@ -57,10 +57,9 @@ Jenkins 支持各种运行方式，可通过系统包、Docker 或者通过一�
 - 重启 Jenkins：brew services restart jenkins
 - 更新：切换到目录 cd ~/.jenkins，然后用最新下载的 war 包替换文件夹中的 war
 
-3. 修改 jenkins wrokSpace 目录<text-line txt="注意：在 Jenkins 运行时是不能更改的. 请先将 Jenkins 停止运行。" />
+3. 修改 jenkins wrokSpace 目录<text-line>注意：在 Jenkins 运行时是不能更改的. 请先将 Jenkins 停止运行。<text-line/>
 
-- /Library/LaunchDaemons  
-  #编缉里面的 jenkinshome 和 username  
+- /Library/LaunchDaemons #编缉里面的 jenkinshome 和 username
   sudo vim org.jenkins-ci.plist
 - 修改环境变量 (变量名: JENKINS_HOME)
 

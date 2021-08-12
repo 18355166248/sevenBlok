@@ -195,6 +195,10 @@ module.exports = {
           title: "接口缓存",
           children: ["/ForentEnd/JavaScript/oneHandler"],
         },
+        {
+          title: "UMD",
+          children: ["/ForentEnd/JavaScript/Umd"],
+        },
       ],
       "/ForentEnd/Node/": [""],
       "/ForentEnd/TypeScript/": [
