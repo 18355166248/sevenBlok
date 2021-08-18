@@ -1,0 +1,14 @@
+var getRow = function(rowIndex) {
+  const resArr = []
+
+  for (let i = 0; i <= rowIndex; i++) {
+    const res = Array(i + 1).fill(1)
+    for (let j = 1; j < res.length - 1; j++) {
+      res[j] = resArr[i - 1][j - 1] + resArr[i - 1][j]
+    }
+    resArr.push(res)
+  }
+
+  return resArr[rowIndex]
+}
+console.log(getRow(3))
