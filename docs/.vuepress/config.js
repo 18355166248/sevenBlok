@@ -207,6 +207,10 @@ module.exports = {
           title: "UMD",
           children: ["/ForentEnd/JavaScript/Umd"],
         },
+        {
+          title: "Cookie",
+          children: ["/ForentEnd/JavaScript/Cookie"],
+        },
       ],
       "/ForentEnd/Node/": [""],
       "/ForentEnd/TypeScript/": [
