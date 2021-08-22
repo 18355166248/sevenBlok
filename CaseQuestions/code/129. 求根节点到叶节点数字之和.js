@@ -1,0 +1,64 @@
+var sumNumbers = function(root) {
+  if (!root) return 0
+
+  return dfs(root, 0)
+
+  function dfs(node, prevNUm) {
+    if (node === null) return 0
+    const sum = prevNUm * 10 + node.val
+    if (node.left === null && node.right === null) {
+      return sum
+    } else {
+      return dfs(node.left, sum) + dfs(node.right, sum)
+    }
+  }
+}
+console.log(
+  sumNumbers({
+    val: 1,
+    left: {
+      val: 2,
+      left: null,
+      right: null,
+    },
+    right: {
+      val: 3,
+      left: null,
+      right: null,
+    },
+  })
+)
+console.log(
+  sumNumbers({
+    val: 0,
+    left: {
+      val: 1,
+      left: null,
+      right: null,
+    },
+    right: null,
+  })
+)
+console.log(
+  sumNumbers({
+    val: 4,
+    left: {
+      val: 9,
+      left: {
+        val: 5,
+        left: null,
+        right: null,
+      },
+      right: {
+        val: 1,
+        left: null,
+        right: null,
+      },
+    },
+    right: {
+      val: 0,
+      left: null,
+      right: null,
+    },
+  })
+)
