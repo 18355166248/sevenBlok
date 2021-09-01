@@ -10,11 +10,11 @@
    这里我使用 ngrok 内网穿透, 做了一个外网可以访问的 url http://sevenblok.free.idcfengye.com/
    具体怎么实现内网穿透, 可以看这里 [ngrok](https://www.ngrok.cc/)
 
-   ![](../../.vuepress/public/location.jpg)
+   ![](@public/location.jpg)
 
 4. 有时候环境变量需要配置一下, 比如 ndoe, npm, yarn 可以在系统设置里面配置,例如
 
-![](../../.vuepress/public/environment.jpg)
+![](@public/environment.jpg)
 
 5. 点击新建 Item, 输入名称, 选择 Freestyle project
 
@@ -24,31 +24,31 @@
 
 8. 构建触发器, 这里需要选中 GitHub hook trigger for GITScm polling
 
-![githook](../../.vuepress/public/gitHook.jpg)
+![githook](@public/gitHook.jpg)
 这里是为了跟 github 进行通讯, 触发 push 的钩子, 所以在设置这里的时候也需要去 github 项目中设置下 webhook
 
 9. github 项目中, 点击 setting -> Webhooks, 点击添加 这里面需要输入一个 url
    这个 url 需要在 jenkins 里面的系统设置里面进行配置, 位置在系统设置下面的(如果找不到, 需要点击右边的高级,就看到了)
 
-   ![](../../.vuepress/public/githookUrl.jpg)
+   ![](@public/githookUrl.jpg)
 
    这里的 url 可以添加你的服务器的地址 例如: http://sevenblok.free.idcfengye.com/github-webhook/
 
-   ![](../../.vuepress/public/gitHubWebHooks.jpg)
+   ![](@public/gitHubWebHooks.jpg)
 
 参考配置教程可以看这里[Jenkins 与 Github 集成 webhook 配置](https://blog.csdn.net/qq_21768483/article/details/80177920)
 
 10. 如果需要 node, 要去插件里面安装好, 然后在 Global Tool Configuration 里面就可以安装 node, 名字随便取
 
-![](../../.vuepress/public/node.jpg)
+![](@public/node.jpg)
 
 然后这里就可以选择你安装好的 node
 
-![](../../.vuepress/public/nodeUse.jpg)
+![](@public/nodeUse.jpg)
 
 11. 重点来了, 我这里需要用到自己写的一个脚本 deploy.sh, 当时配置的时候一直报错, 就是因为环境变量没有配置好, 所以这里需要在最开始执行下 <text-line txt="source /etc/profile" />, 不然会一直报错
 
-![](../../.vuepress/public/shell.jpg)
+![](@public/shell.jpg)
 
 12. 然后这里就配置成功了, 可以点击 Build Now 测试下 应该是可以跑通的
 

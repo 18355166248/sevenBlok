@@ -21,7 +21,7 @@ function toSidebarOption(tree = []) {
       // 所以相对路径就是'docs'后面的部分
       // 最后把扩展名去掉, 就是路由的路径
       const path = v.path.split("docs")[1];
-      if (path.indexOf("README") > -1) return "";
+      if (path.indexOf("README") > -1 || path.indexOf("index") > -1) return "";
       return path.replace(/\.md$/, "");
     }
   });
