@@ -1,0 +1,2112 @@
+{
+  "path": "/Users/xmly/Block/sevenBlok/docs/notes",
+  "name": "notes",
+  "children": [
+    {
+      "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm",
+      "name": "Algorithm",
+      "children": [
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode",
+          "name": "LeetCode",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/1. 两数之和.md",
+              "name": "1. 两数之和.md",
+              "size": 669,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/100. 相同的树.md",
+              "name": "100. 相同的树.md",
+              "size": 944,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/103. 二叉树的锯齿形层序遍历.md",
+              "name": "103. 二叉树的锯齿形层序遍历.md",
+              "size": 887,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/106. 从中序与后序遍历序列构造二叉树.md",
+              "name": "106. 从中序与后序遍历序列构造二叉树.md",
+              "size": 2264,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/107. 二叉树的层序遍历 II.md",
+              "name": "107. 二叉树的层序遍历 II.md",
+              "size": 781,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/108. 将有序数组转换为二叉搜索树.md",
+              "name": "108. 将有序数组转换为二叉搜索树.md",
+              "size": 622,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/109. 有序链表转换二叉搜索树.md",
+              "name": "109. 有序链表转换二叉搜索树.md",
+              "size": 901,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/11. 盛最多水的容器.md",
+              "name": "11. 盛最多水的容器.md",
+              "size": 636,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/110. 平衡二叉树.md",
+              "name": "110. 平衡二叉树.md",
+              "size": 881,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/111. 二叉树的最小深度.md",
+              "name": "111. 二叉树的最小深度.md",
+              "size": 742,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/111.最长单词.md",
+              "name": "111.最长单词.md",
+              "size": 619,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/112. 路径总和.md",
+              "name": "112. 路径总和.md",
+              "size": 944,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/113. 路径总和 II.md",
+              "name": "113. 路径总和 II.md",
+              "size": 1682,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/114. 二叉树展开为链表.md",
+              "name": "114. 二叉树展开为链表.md",
+              "size": 770,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/116. 填充每个节点的下一个右侧节点指针.md",
+              "name": "116. 填充每个节点的下一个右侧节点指针.md",
+              "size": 814,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/117. 填充每个节点的下一个右侧节点指针 II.md",
+              "name": "117. 填充每个节点的下一个右侧节点指针 II.md",
+              "size": 777,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/118. 杨辉三角.md",
+              "name": "118. 杨辉三角.md",
+              "size": 406,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/12. 整数转罗马数字.md",
+              "name": "12. 整数转罗马数字.md",
+              "size": 2514,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/1277统计全为1的正方形子矩阵.md",
+              "name": "1277统计全为1的正方形子矩阵.md",
+              "size": 1461,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/128. 最长连续序列.md",
+              "name": "128. 最长连续序列.md",
+              "size": 703,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/13. 罗马数字转整数.md",
+              "name": "13. 罗马数字转整数.md",
+              "size": 683,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/136. 只出现一次的数字.md",
+              "name": "136. 只出现一次的数字.md",
+              "size": 228,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/137. 只出现一次的数字 II.md",
+              "name": "137. 只出现一次的数字 II.md",
+              "size": 440,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/1424. 对角线遍历 II.md",
+              "name": "1424. 对角线遍历 II.md",
+              "size": 685,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/1442. 形成两个异或相等数组的三元组数目.md",
+              "name": "1442. 形成两个异或相等数组的三元组数目.md",
+              "size": 829,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/146.LRU缓存.md",
+              "name": "146.LRU缓存.md",
+              "size": 1752,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/15. 三数之和.md",
+              "name": "15. 三数之和.md",
+              "size": 1729,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/16. 最接近的三数之和.md",
+              "name": "16. 最接近的三数之和.md",
+              "size": 2013,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/17. 电话号码的字母组合.md",
+              "name": "17. 电话号码的字母组合.md",
+              "size": 990,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/18. 四数之和.md",
+              "name": "18. 四数之和.md",
+              "size": 1941,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/2. 两数相加.md",
+              "name": "2. 两数相加.md",
+              "size": 1152,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/20. 有效的括号.md",
+              "name": "20. 有效的括号.md",
+              "size": 970,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/22. 括号生成.md",
+              "name": "22. 括号生成.md",
+              "size": 979,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/221最大正方形.md",
+              "name": "221最大正方形.md",
+              "size": 4006,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/226. 翻转二叉树.md",
+              "name": "226. 翻转二叉树.md",
+              "size": 233,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/23. 合并K个升序链表.md",
+              "name": "23. 合并K个升序链表.md",
+              "size": 932,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/24. 两两交换链表中的节点.md",
+              "name": "24. 两两交换链表中的节点.md",
+              "size": 950,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/27. 移除元素.md",
+              "name": "27. 移除元素.md",
+              "size": 636,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/28. strStr.md",
+              "name": "28. strStr.md",
+              "size": 267,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/29. 两数相除.md",
+              "name": "29. 两数相除.md",
+              "size": 1384,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/3. 无重复字符的最长子串.md",
+              "name": "3. 无重复字符的最长子串.md",
+              "size": 836,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/30. 串联所有单词的子串.md",
+              "name": "30. 串联所有单词的子串.md",
+              "size": 1709,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/31. 下一个排列.md",
+              "name": "31. 下一个排列.md",
+              "size": 1488,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/32. 最长有效括号.md",
+              "name": "32. 最长有效括号.md",
+              "size": 835,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/33. 搜索旋转排序数组.md",
+              "name": "33. 搜索旋转排序数组.md",
+              "size": 1319,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/34. 在排序数组中查找元素的第一个和最后一个位置.md",
+              "name": "34. 在排序数组中查找元素的第一个和最后一个位置.md",
+              "size": 1106,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/35. 搜索插入位置.md",
+              "name": "35. 搜索插入位置.md",
+              "size": 624,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/38. 外观数列.md",
+              "name": "38. 外观数列.md",
+              "size": 1514,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/39. 组合总和.md",
+              "name": "39. 组合总和.md",
+              "size": 1045,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/40. 组合总和 II.md",
+              "name": "40. 组合总和 II.md",
+              "size": 1085,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/40.剑指offer. 最小的k个数.md",
+              "name": "40.剑指offer. 最小的k个数.md",
+              "size": 395,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/421. 数组中两个数的最大异或值.md",
+              "name": "421. 数组中两个数的最大异或值.md",
+              "size": 160,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/43. 字符串相乘.md",
+              "name": "43. 字符串相乘.md",
+              "size": 774,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/45. 跳跃游戏 II.md",
+              "name": "45. 跳跃游戏 II.md",
+              "size": 850,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/46. 全排列.md",
+              "name": "46. 全排列.md",
+              "size": 737,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/461. 汉明距离.md",
+              "name": "461. 汉明距离.md",
+              "size": 533,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/47. 全排列 II.md",
+              "name": "47. 全排列 II.md",
+              "size": 752,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/49. 字母异位词分组.md",
+              "name": "49. 字母异位词分组.md",
+              "size": 713,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/5. 最长回文子串.md",
+              "name": "5. 最长回文子串.md",
+              "size": 977,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/50. Pow(x, n).md",
+              "name": "50. Pow(x, n).md",
+              "size": 770,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/54. 螺旋矩阵.md",
+              "name": "54. 螺旋矩阵.md",
+              "size": 903,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/55. 跳跃游戏.md",
+              "name": "55. 跳跃游戏.md",
+              "size": 647,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/56. 合并区间.md",
+              "name": "56. 合并区间.md",
+              "size": 1660,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/57. 插入区间.md",
+              "name": "57. 插入区间.md",
+              "size": 1303,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/58. 最后一个单词的长度.md",
+              "name": "58. 最后一个单词的长度.md",
+              "size": 545,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/59. 螺旋矩阵 II.md",
+              "name": "59. 螺旋矩阵 II.md",
+              "size": 980,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/6.Z字形变换.md",
+              "name": "6.Z字形变换.md",
+              "size": 913,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/61. 旋转链表.md",
+              "name": "61. 旋转链表.md",
+              "size": 1030,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/62. 不同路径.md",
+              "name": "62. 不同路径.md",
+              "size": 955,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/63. 不同路径 II.md",
+              "name": "63. 不同路径 II.md",
+              "size": 1531,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/64. 最小路径和.md",
+              "name": "64. 最小路径和.md",
+              "size": 927,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/67. 二进制求和.md",
+              "name": "67. 二进制求和.md",
+              "size": 571,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/71. 简化路径.md",
+              "name": "71. 简化路径.md",
+              "size": 1380,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/73. 矩阵置零.md",
+              "name": "73. 矩阵置零.md",
+              "size": 1143,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/74. 搜索二维矩阵.md",
+              "name": "74. 搜索二维矩阵.md",
+              "size": 1872,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/75. 颜色分类.md",
+              "name": "75. 颜色分类.md",
+              "size": 802,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/77. 组合.md",
+              "name": "77. 组合.md",
+              "size": 443,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/78. 子集.md",
+              "name": "78. 子集.md",
+              "size": 817,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/781. 森林中的兔子.md",
+              "name": "781. 森林中的兔子.md",
+              "size": 445,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/79. 单词搜索.md",
+              "name": "79. 单词搜索.md",
+              "size": 1520,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/8. 字符串转换整数 (atoi).md",
+              "name": "8. 字符串转换整数 (atoi).md",
+              "size": 517,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/80. 删除有序数组中的重复项 II.md",
+              "name": "80. 删除有序数组中的重复项 II.md",
+              "size": 793,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/81. 搜索旋转排序数组 II.md",
+              "name": "81. 搜索旋转排序数组 II.md",
+              "size": 1096,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/82. 删除排序链表中的重复元素 II.md",
+              "name": "82. 删除排序链表中的重复元素 II.md",
+              "size": 1870,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/821. 字符的最短距离.md",
+              "name": "821. 字符的最短距离.md",
+              "size": 1043,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/86. 分隔链表.md",
+              "name": "86. 分隔链表.md",
+              "size": 1160,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/872. 叶子相似的树.md",
+              "name": "872. 叶子相似的树.md",
+              "size": 970,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/9. 回文数.md",
+              "name": "9. 回文数.md",
+              "size": 399,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/90. 子集2.md",
+              "name": "90. 子集2.md",
+              "size": 1375,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/91. 解码方法.md",
+              "name": "91. 解码方法.md",
+              "size": 486,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/92. 反转链表 II.md",
+              "name": "92. 反转链表 II.md",
+              "size": 708,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/93. 复原 IP 地址.md",
+              "name": "93. 复原 IP 地址.md",
+              "size": 1178,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/94. 二叉树的中序遍历.md",
+              "name": "94. 二叉树的中序遍历.md",
+              "size": 714,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/96. 不同的二叉搜索树.md",
+              "name": "96. 不同的二叉搜索树.md",
+              "size": 272,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/97. 交错字符串.md",
+              "name": "97. 交错字符串.md",
+              "size": 1230,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/993. 二叉树的堂兄弟节点.md",
+              "name": "993. 二叉树的堂兄弟节点.md",
+              "size": 2082,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/Events模块.md",
+              "name": "Events模块.md",
+              "size": 1509,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/LRU缓存机制.md",
+              "name": "LRU缓存机制.md",
+              "size": 2173,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/Promise 并发控制 .md",
+              "name": "Promise 并发控制 .md",
+              "size": 1097,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/Promise.md",
+              "name": "Promise.md",
+              "size": 2096,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/README.md",
+              "name": "README.md",
+              "size": 86,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/add(1)(2)(3).md",
+              "name": "add(1)(2)(3).md",
+              "size": 426,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/bind.call.apply.md",
+              "name": "bind.call.apply.md",
+              "size": 1691,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/climb爬楼梯.md",
+              "name": "climb爬楼梯.md",
+              "size": 325,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/code.md",
+              "name": "code.md",
+              "size": 277,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/currentCode.md",
+              "name": "currentCode.md",
+              "size": 72,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/curry柯里化.md",
+              "name": "curry柯里化.md",
+              "size": 453,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/debounce.md",
+              "name": "debounce.md",
+              "size": 357,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/deepClone深拷贝.md",
+              "name": "deepClone深拷贝.md",
+              "size": 1013,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/flat拍平数组.md",
+              "name": "flat拍平数组.md",
+              "size": 310,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/forEach.md",
+              "name": "forEach.md",
+              "size": 841,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/forWithWait.md",
+              "name": "forWithWait.md",
+              "size": 840,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/min具有给定数值的最小字符串.md",
+              "name": "min具有给定数值的最小字符串.md",
+              "size": 613,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/newObj.md",
+              "name": "newObj.md",
+              "size": 388,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/numAdd.md",
+              "name": "numAdd.md",
+              "size": 483,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/reverseCode翻转字符串.md",
+              "name": "reverseCode翻转字符串.md",
+              "size": 282,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/schedule并发限制.md",
+              "name": "schedule并发限制.md",
+              "size": 1510,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/test.md",
+              "name": "test.md",
+              "size": 696,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/throttle.md",
+              "name": "throttle.md",
+              "size": 411,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/trime.md",
+              "name": "trime.md",
+              "size": 263,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/x的平方根.md",
+              "name": "x的平方根.md",
+              "size": 500,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/不可修改对象.md",
+              "name": "不可修改对象.md",
+              "size": 978,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/两个数组的交集 II.md",
+              "name": "两个数组的交集 II.md",
+              "size": 2025,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/两数之和.md",
+              "name": "两数之和.md",
+              "size": 950,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/中文转数字.md",
+              "name": "中文转数字.md",
+              "size": 1231,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/买卖股票的最佳时机 II.md",
+              "name": "买卖股票的最佳时机 II.md",
+              "size": 1500,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/买卖股票的最佳时机.md",
+              "name": "买卖股票的最佳时机.md",
+              "size": 1716,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/二分查找.md",
+              "name": "二分查找.md",
+              "size": 1881,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/二叉树的层序遍历.md",
+              "name": "二叉树的层序遍历.md",
+              "size": 1903,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/二叉树的最大深度.md",
+              "name": "二叉树的最大深度.md",
+              "size": 822,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/分割回文串.md",
+              "name": "分割回文串.md",
+              "size": 2585,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/删除排序数组中的重复项.md",
+              "name": "删除排序数组中的重复项.md",
+              "size": 1876,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/剑指 Offer 38. 字符串的排列.md",
+              "name": "剑指 Offer 38. 字符串的排列.md",
+              "size": 1200,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/加一.md",
+              "name": "加一.md",
+              "size": 1778,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/千分位.md",
+              "name": "千分位.md",
+              "size": 388,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/单词拆分.md",
+              "name": "单词拆分.md",
+              "size": 258,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/反转字符串.md",
+              "name": "反转字符串.md",
+              "size": 855,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/发布订阅.md",
+              "name": "发布订阅.md",
+              "size": 1078,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/合并两个有序数组.md",
+              "name": "合并两个有序数组.md",
+              "size": 1068,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/合并数组.md",
+              "name": "合并数组.md",
+              "size": 385,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/回文字符串.md",
+              "name": "回文字符串.md",
+              "size": 773,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/回文数.md",
+              "name": "回文数.md",
+              "size": 246,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/字符串中的第一个唯一字符.md",
+              "name": "字符串中的第一个唯一字符.md",
+              "size": 417,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/字节面试题.md",
+              "name": "字节面试题.md",
+              "size": 1606,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/存在重复元素.md",
+              "name": "存在重复元素.md",
+              "size": 769,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/实现 strStr().md",
+              "name": "实现 strStr().md",
+              "size": 1076,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/实现LazyMan.md",
+              "name": "实现LazyMan.md",
+              "size": 3209,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/对称二叉树.md",
+              "name": "对称二叉树.md",
+              "size": 957,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/对象合并.md",
+              "name": "对象合并.md",
+              "size": 713,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/打家劫舍.md",
+              "name": "打家劫舍.md",
+              "size": 871,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/打平的数组转成树形数组.md",
+              "name": "打平的数组转成树形数组.md",
+              "size": 1136,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/排序.md",
+              "name": "排序.md",
+              "size": 2525,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/数组中的第K个最大元素.md",
+              "name": "数组中的第K个最大元素.md",
+              "size": 1240,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/数组深度.md",
+              "name": "数组深度.md",
+              "size": 385,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/旋转图像.md",
+              "name": "旋转图像.md",
+              "size": 1128,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/旋转数组.md",
+              "name": "旋转数组.md",
+              "size": 966,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/最大子序和.md",
+              "name": "最大子序和.md",
+              "size": 1482,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/最长公共前缀.md",
+              "name": "最长公共前缀.md",
+              "size": 749,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/最长单词.md",
+              "name": "最长单词.md",
+              "size": 1552,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/有效的字母异位词.md",
+              "name": "有效的字母异位词.md",
+              "size": 908,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/有效的数独.md",
+              "name": "有效的数独.md",
+              "size": 2797,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/模板引擎.md",
+              "name": "模板引擎.md",
+              "size": 714,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/爬楼梯.md",
+              "name": "爬楼梯.md",
+              "size": 2049,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/移动零.md",
+              "name": "移动零.md",
+              "size": 595,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/美团面试题.md",
+              "name": "美团面试题.md",
+              "size": 617,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/翻转链表.md",
+              "name": "翻转链表.md",
+              "size": 1458,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/翻转链表组2.md",
+              "name": "翻转链表组2.md",
+              "size": 1371,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/计数质数.md",
+              "name": "计数质数.md",
+              "size": 1836,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/阿里面试题.md",
+              "name": "阿里面试题.md",
+              "size": 960,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/非递归快排.md",
+              "name": "非递归快排.md",
+              "size": 1998,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/面试题 17.15. 最长单词.md",
+              "name": "面试题 17.15. 最长单词.md",
+              "size": 632,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Algorithm/LeetCode/验证二叉搜索树.md",
+              "name": "验证二叉搜索树.md",
+              "size": 1191,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 179433,
+          "type": "directory"
+        }
+      ],
+      "size": 179433,
+      "type": "directory"
+    },
+    {
+      "path": "/Users/xmly/Block/sevenBlok/docs/notes/Business",
+      "name": "Business",
+      "children": [
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/Business/README.md",
+          "name": "README.md",
+          "size": 157,
+          "extension": ".md",
+          "type": "file"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/Business/XIXIMA",
+          "name": "XIXIMA",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Business/XIXIMA/README.md",
+              "name": "README.md",
+              "size": 46,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Business/XIXIMA/add-credit-h5.md",
+              "name": "add-credit-h5.md",
+              "size": 24,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 70,
+          "type": "directory"
+        }
+      ],
+      "size": 227,
+      "type": "directory"
+    },
+    {
+      "path": "/Users/xmly/Block/sevenBlok/docs/notes/CodeManage",
+      "name": "CodeManage",
+      "children": [
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/CodeManage/Git",
+          "name": "Git",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/CodeManage/Git/Git-Hooks.md",
+              "name": "Git-Hooks.md",
+              "size": 3188,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/CodeManage/Git/README.md",
+              "name": "README.md",
+              "size": 3976,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 7164,
+          "type": "directory"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/CodeManage/Lerna",
+          "name": "Lerna",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/CodeManage/Lerna/README.md",
+              "name": "README.md",
+              "size": 3523,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 3523,
+          "type": "directory"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/CodeManage/NPM",
+          "name": "NPM",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/CodeManage/NPM/README.md",
+              "name": "README.md",
+              "size": 1120,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 1120,
+          "type": "directory"
+        }
+      ],
+      "size": 11807,
+      "type": "directory"
+    },
+    {
+      "path": "/Users/xmly/Block/sevenBlok/docs/notes/Databases",
+      "name": "Databases",
+      "children": [
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/Databases/MySql",
+          "name": "MySql",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Databases/MySql/README.md",
+              "name": "README.md",
+              "size": 1488,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 1488,
+          "type": "directory"
+        }
+      ],
+      "size": 1488,
+      "type": "directory"
+    },
+    {
+      "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd",
+      "name": "ForentEnd",
+      "children": [
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CSS",
+          "name": "CSS",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CSS/Less.md",
+              "name": "Less.md",
+              "size": 606,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CSS/README.md",
+              "name": "README.md",
+              "size": 38,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CSS/Scss通讯.md",
+              "name": "Scss通讯.md",
+              "size": 5078,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CSS/Style.md",
+              "name": "Style.md",
+              "size": 296,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 6018,
+          "type": "directory"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CaseQuestions",
+          "name": "CaseQuestions",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CaseQuestions/Babel.md",
+              "name": "Babel.md",
+              "size": 4438,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CaseQuestions/CSS.md",
+              "name": "CSS.md",
+              "size": 1053,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CaseQuestions/HTML.md",
+              "name": "HTML.md",
+              "size": 2157,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CaseQuestions/Http.md",
+              "name": "Http.md",
+              "size": 16123,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CaseQuestions/JavaScript.md",
+              "name": "JavaScript.md",
+              "size": 5732,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CaseQuestions/JavascriptCode.md",
+              "name": "JavascriptCode.md",
+              "size": 3167,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CaseQuestions/React.md",
+              "name": "React.md",
+              "size": 5709,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CaseQuestions/TypeScript.md",
+              "name": "TypeScript.md",
+              "size": 876,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CaseQuestions/Vue.md",
+              "name": "Vue.md",
+              "size": 8567,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CaseQuestions/Webpack.md",
+              "name": "Webpack.md",
+              "size": 2864,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CaseQuestions/index.md",
+              "name": "index.md",
+              "size": 162,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/CaseQuestions/project.md",
+              "name": "project.md",
+              "size": 217,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 51065,
+          "type": "directory"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Component",
+          "name": "Component",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Component/README.md",
+              "name": "README.md",
+              "size": 18,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Component/importNeed.md",
+              "name": "importNeed.md",
+              "size": 949,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Component/reactWithAntd.md",
+              "name": "reactWithAntd.md",
+              "size": 123700,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 124667,
+          "type": "directory"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Eslint",
+          "name": "Eslint",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Eslint/README.md",
+              "name": "README.md",
+              "size": 3194,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Eslint/jiang-eslint-setting.md",
+              "name": "jiang-eslint-setting.md",
+              "size": 6039,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 9233,
+          "type": "directory"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/HTML",
+          "name": "HTML",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/HTML/HTMLTransformPDF.md",
+              "name": "HTMLTransformPDF.md",
+              "size": 25992,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/HTML/README.md",
+              "name": "README.md",
+              "size": 12,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 26004,
+          "type": "directory"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/JavaScript",
+          "name": "JavaScript",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/JavaScript/Blocking",
+              "name": "Blocking",
+              "children": [
+                {
+                  "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/JavaScript/Blocking/BlockingTest.md",
+                  "name": "BlockingTest.md",
+                  "size": 3985,
+                  "extension": ".md",
+                  "type": "file"
+                },
+                {
+                  "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/JavaScript/Blocking/README.md",
+                  "name": "README.md",
+                  "size": 6883,
+                  "extension": ".md",
+                  "type": "file"
+                }
+              ],
+              "size": 10868,
+              "type": "directory"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/JavaScript/Cookie.md",
+              "name": "Cookie.md",
+              "size": 1297,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/JavaScript/Error.md",
+              "name": "Error.md",
+              "size": 4511,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/JavaScript/MultilingualTranslation",
+              "name": "MultilingualTranslation",
+              "children": [
+                {
+                  "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/JavaScript/MultilingualTranslation/README.md",
+                  "name": "README.md",
+                  "size": 5235,
+                  "extension": ".md",
+                  "type": "file"
+                }
+              ],
+              "size": 5235,
+              "type": "directory"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/JavaScript/README.md",
+              "name": "README.md",
+              "size": 312,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/JavaScript/SuperTinyCompiler.md",
+              "name": "SuperTinyCompiler.md",
+              "size": 34812,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/JavaScript/Umd.md",
+              "name": "Umd.md",
+              "size": 3011,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/JavaScript/WeiXin.md",
+              "name": "WeiXin.md",
+              "size": 2370,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/JavaScript/array1.md",
+              "name": "array1.md",
+              "size": 743,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/JavaScript/js28.md",
+              "name": "js28.md",
+              "size": 418,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/JavaScript/oneHandler.md",
+              "name": "oneHandler.md",
+              "size": 2394,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/JavaScript/promise.md",
+              "name": "promise.md",
+              "size": 6147,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 72118,
+          "type": "directory"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Node",
+          "name": "Node",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Node/README.md",
+              "name": "README.md",
+              "size": 446,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 446,
+          "type": "directory"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Performance",
+          "name": "Performance",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Performance/README.md",
+              "name": "README.md",
+              "size": 94,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Performance/sitespeed.md",
+              "name": "sitespeed.md",
+              "size": 3009,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 3103,
+          "type": "directory"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/React",
+          "name": "React",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/React/AntdTheme.md",
+              "name": "AntdTheme.md",
+              "size": 3414,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/React/Fiber.md",
+              "name": "Fiber.md",
+              "size": 8414,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/React/Hook.md",
+              "name": "Hook.md",
+              "size": 3994,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/React/NewAntdTheme.md",
+              "name": "NewAntdTheme.md",
+              "size": 1652,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/React/README.md",
+              "name": "README.md",
+              "size": 23,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/React/ReactNative.md",
+              "name": "ReactNative.md",
+              "size": 5932,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/React/antd.md",
+              "name": "antd.md",
+              "size": 702,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 24131,
+          "type": "directory"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Regex",
+          "name": "Regex",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Regex/README.md",
+              "name": "README.md",
+              "size": 5330,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Regex/use.md",
+              "name": "use.md",
+              "size": 1431,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 6761,
+          "type": "directory"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Rollup",
+          "name": "Rollup",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Rollup/Config.md",
+              "name": "Config.md",
+              "size": 6420,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Rollup/README.md",
+              "name": "README.md",
+              "size": 22,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 6442,
+          "type": "directory"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Test",
+          "name": "Test",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Test/Jest.md",
+              "name": "Jest.md",
+              "size": 3339,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Test/README.md",
+              "name": "README.md",
+              "size": 30,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 3369,
+          "type": "directory"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/TypeScript",
+          "name": "TypeScript",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/TypeScript/README.md",
+              "name": "README.md",
+              "size": 633,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/TypeScript/dataTypes.md",
+              "name": "dataTypes.md",
+              "size": 1331,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/TypeScript/declare.md",
+              "name": "declare.md",
+              "size": 4410,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/TypeScript/function.md",
+              "name": "function.md",
+              "size": 1605,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/TypeScript/interface.md",
+              "name": "interface.md",
+              "size": 759,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/TypeScript/top.md",
+              "name": "top.md",
+              "size": 1698,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 10436,
+          "type": "directory"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Utils",
+          "name": "Utils",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Utils/index.md",
+              "name": "index.md",
+              "size": 1246,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 1246,
+          "type": "directory"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Vue",
+          "name": "Vue",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Vue/Components",
+              "name": "Components",
+              "children": [
+                {
+                  "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Vue/Components/Communication.md",
+                  "name": "Communication.md",
+                  "size": 1688,
+                  "extension": ".md",
+                  "type": "file"
+                },
+                {
+                  "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Vue/Components/DeleteComponent.md",
+                  "name": "DeleteComponent.md",
+                  "size": 597,
+                  "extension": ".md",
+                  "type": "file"
+                },
+                {
+                  "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Vue/Components/README.md",
+                  "name": "README.md",
+                  "size": 153,
+                  "extension": ".md",
+                  "type": "file"
+                },
+                {
+                  "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Vue/Components/Tree.md",
+                  "name": "Tree.md",
+                  "size": 2311,
+                  "extension": ".md",
+                  "type": "file"
+                }
+              ],
+              "size": 4749,
+              "type": "directory"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Vue/CompressPictures.md",
+              "name": "CompressPictures.md",
+              "size": 7616,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Vue/README.md",
+              "name": "README.md",
+              "size": 22,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Vue/scatter.md",
+              "name": "scatter.md",
+              "size": 3251,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 15638,
+          "type": "directory"
+        },
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Webpack",
+          "name": "Webpack",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Webpack/HMR.md",
+              "name": "HMR.md",
+              "size": 1286,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Webpack/NODE_ENV.md",
+              "name": "NODE_ENV.md",
+              "size": 3199,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Webpack/README.md",
+              "name": "README.md",
+              "size": 480,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Webpack/cache.md",
+              "name": "cache.md",
+              "size": 3639,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Webpack/codeSplitting.md",
+              "name": "codeSplitting.md",
+              "size": 1824,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Webpack/development.md",
+              "name": "development.md",
+              "size": 1080,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Webpack/lazyLoading.md",
+              "name": "lazyLoading.md",
+              "size": 1253,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Webpack/manageOutput.md",
+              "name": "manageOutput.md",
+              "size": 1071,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Webpack/manageResource.md",
+              "name": "manageResource.md",
+              "size": 5301,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Webpack/moduleFederation.md",
+              "name": "moduleFederation.md",
+              "size": 2980,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Webpack/optimize.md",
+              "name": "optimize.md",
+              "size": 1330,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Webpack/plugins.md",
+              "name": "plugins.md",
+              "size": 2021,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Webpack/productionBuild.md",
+              "name": "productionBuild.md",
+              "size": 4042,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Webpack/shimming.md",
+              "name": "shimming.md",
+              "size": 2726,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/ForentEnd/Webpack/treeShaking.md",
+              "name": "treeShaking.md",
+              "size": 2377,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 34609,
+          "type": "directory"
+        }
+      ],
+      "size": 395286,
+      "type": "directory"
+    },
+    {
+      "path": "/Users/xmly/Block/sevenBlok/docs/notes/README.md",
+      "name": "README.md",
+      "size": 338,
+      "extension": ".md",
+      "type": "file"
+    },
+    {
+      "path": "/Users/xmly/Block/sevenBlok/docs/notes/Tools",
+      "name": "Tools",
+      "children": [
+        {
+          "path": "/Users/xmly/Block/sevenBlok/docs/notes/Tools/Jenkins",
+          "name": "Jenkins",
+          "children": [
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Tools/Jenkins/README.md",
+              "name": "README.md",
+              "size": 2864,
+              "extension": ".md",
+              "type": "file"
+            },
+            {
+              "path": "/Users/xmly/Block/sevenBlok/docs/notes/Tools/Jenkins/WithGitHub.md",
+              "name": "WithGitHub.md",
+              "size": 3768,
+              "extension": ".md",
+              "type": "file"
+            }
+          ],
+          "size": 6632,
+          "type": "directory"
+        }
+      ],
+      "size": 6632,
+      "type": "directory"
+    }
+  ],
+  "size": 595211,
+  "type": "directory"
+}
