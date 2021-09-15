@@ -6,10 +6,10 @@ function ListNode(val, next) {
 var insertionSortList = function(head) {
   if (head === null) return head;
 
-  const dummyHead = new ListNode(0);
+  const dummyHead = new ListNode(0); // 为了便于在 head 节点之前插入节点
   dummyHead.next = head;
-  let last = head,
-    curr = head.next;
+  let last = head, // 为链表的已排序部分的最后一个节点
+    curr = head.next; //  为待插入的元素
 
   while (curr !== null) {
     if (last.val <= curr.val) {
@@ -17,14 +17,14 @@ var insertionSortList = function(head) {
     } else {
       let prev = dummyHead;
       while (prev.next.val <= curr.val) {
-        prev = prev.next;
+        prev = prev.next; // 为插入 curr 的位置的前一个节点
       }
-      last.next = curr.next;
-      curr.next = prev.next;
-      prev.next = curr;
+      last.next = curr.next; // 缓存已排序部分后的待插入元素
+      curr.next = prev.next; // 缓存插入的节点
+      prev.next = curr; // 插入节点
     }
 
-    curr = last.next;
+    curr = last.next; // 更新待插入节点
   }
 
   return dummyHead.next;
