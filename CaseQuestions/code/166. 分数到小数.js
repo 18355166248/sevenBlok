@@ -1,0 +1,46 @@
+var fractionToDecimal = function(numerator, denominator) {
+  if (numerator % denominator === 0) return "" + numerator / denominator;
+
+  const res = [];
+  if ((numerator < 0) ^ (denominator < 0)) {
+    res.push("-");
+  }
+
+  // 整数部分
+  numerator = Math.abs(numerator);
+  denominator = Math.abs(denominator);
+  res.push(Math.floor(numerator / denominator));
+  res.push(".");
+
+  // 小数部分
+  const decimal = [];
+
+  const map = new Map();
+  let surPlus = parseInt(numerator % denominator);
+  let index = 0;
+  while (surPlus !== 0 && !map.has(surPlus)) {
+    map.set(surPlus, index);
+    surPlus *= 10;
+    decimal.push(Math.floor(surPlus / denominator));
+    surPlus %= denominator;
+    index++;
+  }
+
+  // 存在循环
+  if (surPlus !== 0) {
+    const index = map.get(surPlus);
+    decimal.splice(index, 0, "(");
+    decimal.push(")");
+  }
+
+  res.push(decimal.join(""));
+
+  return res.join("");
+};
+// console.log(fractionToDecimal(1, 2));
+// console.log(fractionToDecimal(2, 1));
+// console.log(fractionToDecimal(2, 3));
+// console.log(fractionToDecimal(4, 333));
+// console.log(fractionToDecimal(1, 5));
+console.log(fractionToDecimal(1, 214748364));
+console.log(fractionToDecimal(-1, -2147483648));
