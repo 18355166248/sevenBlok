@@ -6,24 +6,24 @@
 
 ```javascript
 //webpack.config.js
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 module.exports = {
   //...
   plugins: [
     new CopyWebpackPlugin(
       [
         {
-          from: 'public/js/*.js',
-          to: path.resolve(__dirname, 'dist', 'js'),
-          flatten: true
-        }
+          from: "public/js/*.js",
+          to: path.resolve(__dirname, "dist", "js"),
+          flatten: true,
+        },
       ],
       {
-        ignore: ['other.js']
+        ignore: ["other.js"],
       }
-    )
-  ]
-}
+    ),
+  ],
+};
 ```
 
 ##### 2. ProvidePlugin (配置全局变量)
@@ -31,19 +31,19 @@ module.exports = {
 `React` 大家都知道的，使用的时候，要在每个文件中引入 `React`，不然立刻抛错给你看。还有就是 `jquery`, `lodash` 这样的库，可能在多个文件中使用，但是懒得每次都引入，好嘛，一起来偷个懒，修改下 `webpack` 的配置:
 
 ```javascript
-const webpack = require('webpack')
+const webpack = require("webpack");
 module.exports = {
   //...
   plugins: [
     new webpack.ProvidePlugin({
-      React: 'react',
-      Component: ['react', 'Component'],
-      Vue: ['vue/dist/vue.esm.js', 'default'],
-      $: 'jquery',
-      _map: ['lodash', 'map']
-    })
-  ]
-}
+      React: "react",
+      Component: ["react", "Component"],
+      Vue: ["vue/dist/vue.esm.js", "default"],
+      $: "jquery",
+      _map: ["lodash", "map"],
+    }),
+  ],
+};
 ```
 
 这样配置之后，你就可以在项目中随心所欲的使用 `$`、`_map`了，并且写 `React` 组件时，也不需要 `import` `React` 和 `Component` 了，如果你想的话，你还可以把 `React` 的 `Hooks` 都配置在这里。
@@ -61,3 +61,22 @@ module.exports = {
     }
 }
 ```
+
+##### 3. CSS 文件压缩 optimize-css-assets-webpack-plugin (webpack4 使用)
+
+##### 4. extract-text-webpack-plugin
+
+主要是为了抽离 css 样式,防止将样式打包在 js 中引起页面样式加载错乱的现象。
+
+##### 4. clean-webpack-plugin
+
+自动清理构建目录
+
+还可以用命令方式
+
+```shell
+rm -rf  路径
+rimraf 路径
+```
+
+##### 5. css3前缀兼容 postcss插件 autoprefixer
