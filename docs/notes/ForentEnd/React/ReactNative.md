@@ -153,3 +153,49 @@ import BigButton from "./BigButton";
 ```
 
 React Native 会根据运行平台的不同自动引入正确对应的组件
+
+## shaodw 升级问题
+
+[react-native-shadow](https://github.com/879479119/react-native-shadow) 升级 [react-native-shadow-2](https://github.com/SrBrahma/react-native-shadow-2)变化很大参考
+
+react-native-shadow:
+
+```javascript
+const shadowOpt = {
+  height: disabledReason ? couponHeight + 20 : couponHeight,
+  width: Dimensions.get("window").width - 30,
+  color: "#535459",
+  border: 6,
+  radius: 4,
+  opacity: 0.05,
+  x: 0,
+  y: 0,
+  style: {
+    marginHorizontal: 15,
+    marginVertical: 7,
+    // marginBottom: 0,
+    position: "relative",
+  },
+};
+```
+
+react-native-shadow-2:
+
+```javascript
+const shadowOpt = {
+  size: [
+    Dimensions.get("window").width - 30,
+    disabledReason ? couponHeight + 20 : couponHeight,
+  ], // width, height合并进size
+  startColor: "#e9e9e9", // opacity和color合并成startColor
+  distance: 6, // border换成border
+  radius: 4,
+  offset: [0, 0], // x, y合并进offset
+  containerViewStyle: {
+    marginHorizontal: 15,
+    marginVertical: 7,
+    // marginBottom: 0,
+    position: "relative",
+  }, // style换成containerViewStyle
+};
+```
