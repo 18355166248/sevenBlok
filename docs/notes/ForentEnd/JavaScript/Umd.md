@@ -81,3 +81,63 @@ import { useBoolean } from 'jiang-hooks'
 ![]('~@public/javascript/UMD/webpack_externals.jpg')
 
 图中 395 的函数就是将已经绑定在 window 上的 UMD 的引用通过 module.exports 的方式提供给其他组件使用
+
+## 动态使用 UMD 包方案
+
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+import styled from "styled-components";
+import Toast from "light-toast";
+import axios from "axios";
+
+const load = async () => {
+  try {
+    // 请求组件js资源
+    let { data } = await axios.get(
+      "https://pcsdata.baidu.com/rest/2.0/docview/text?object=7b8cb85bfm0b8758c97de03eed161cd5&expires=24h&dp_logid=387718267315671031&rt=pr&sign=FOTRE-DCb740ccc5511e5e8fedcff06b081203-3z%252FRgdEamUYWk2m57ePBDQ3mCOY%253D&file_size=377529&timestamp=1646705730&method=info&fid=373039462-250528-417266335324728&client_type=web&file_type=js&channel=chunlei&web=1&app_id=250528&bdstoken=263676acc60bdabd2a53c52adb5b652a&logid=QjVEM0Q3QUMyQTRGMjdCMUY1QUNFREUwMzM4NTI0QjA6Rkc9MQ==&clienttype=0"
+    );
+
+    // 执行组件js
+    let run = new Function(
+      "exports",
+      "require",
+      "globalThis",
+      `return ${data}`
+    );
+    // 手动提供exports对象和require函数
+    const exports = { a: 1 };
+    const require = (key: string) => {
+      switch (key) {
+        case "react":
+          return React;
+
+        default:
+          break;
+      }
+    };
+    const global: any = {
+      popupCheckstand: null,
+      React,
+      ReactDOM,
+      styled,
+      Toast,
+      axios,
+      require$$0: {
+        inspect: {
+          custom: "",
+        },
+      },
+    };
+    // 执行函数
+    run(exports, require, global);
+
+    return global.popupCheckstand.default;
+    // 获取组件选项对象，扔给动态组件进行渲染
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const loadResult = load();
+```
