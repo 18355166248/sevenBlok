@@ -79,4 +79,35 @@ rm -rf  路径
 rimraf 路径
 ```
 
-##### 5. css3前缀兼容 postcss插件 autoprefixer
+##### 5. css3 前缀兼容 postcss 插件 autoprefixer
+
+##### 6. 动态 import @balbel/plugin-syntax-dynamic-import
+
+##### 7. webpack 与 eslint 集成 eslint-webpack-plugin
+
+还有过时的 eslint-loader
+
+##### 8. webpack 构建日志展示 friendly-error-webpack-plugin
+
+##### 9. webpack 主动捕获并处理构建的错误
+
+```javascript
+{
+  plugins: [
+    function() {
+      this.hooks.done.tap("done", (stats) => {
+        if (
+          stats.compilation.errors &&
+          stats.compilation.errors.length &&
+          process.argv.indexOf("--watch") == -1
+        ) {
+          console.log("build error===>");
+          process.exit(1);
+        }
+      });
+    },
+  ];
+}
+```
+
+##### 10. 删除无用的 css purifyCSS [purgecss-webpack-plugin](https://github.com/FullHuman/purgecss/tree/master/packages/purgecss-webpack-plugin)

@@ -10,3 +10,7 @@ webpack 打包的时候有时候服务器分配给 node 的内存可能会不够
 ```shell
 node ./bin/config uat && node --max-old-space-size=5000 ./node_modules/.bin/webpack --config webpack/webpack.uat.config.js --mode production
 ```
+
+#### 1. 打包时控制日志信息的展示
+
+![stats](@public/webpack/stats.png)
