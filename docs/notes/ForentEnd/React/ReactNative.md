@@ -186,16 +186,16 @@ const shadowOpt = {
   size: [
     Dimensions.get("window").width - 30,
     disabledReason ? couponHeight + 20 : couponHeight,
-  ], // width, height合并进size
-  startColor: "#e9e9e9", // opacity和color合并成startColor
-  distance: 6, // border换成border
+  ], // width, height合并进 size
+  startColor: "#e9e9e9", // opacity和color合并成 startColor
+  distance: 6, // border换成 distance
   radius: 4,
-  offset: [0, 0], // x, y合并进offset
+  offset: [0, 0], // x, y合并进 offset
   containerViewStyle: {
     marginHorizontal: 15,
     marginVertical: 7,
     // marginBottom: 0,
     position: "relative",
-  }, // style换成containerViewStyle
+  }, // style 换成 containerViewStyle
 };
 ```
