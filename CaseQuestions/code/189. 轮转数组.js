@@ -8,10 +8,18 @@
 var rotate = function(nums, k) {
   if (k === 0) return nums;
 
-  k = k % nums.length;
+  const n = nums.length;
+  const newArr = new Array(n);
+  for (let i = 0; i < n; ++i) {
+    newArr[(i + k) % n] = nums[i];
+  }
 
-  
+  for (let i = 0; i < n; ++i) {
+    nums[i] = newArr[i];
+  }
+
+  console.log(nums);
 };
 
-rotate([1, 2, 3, 4, 5, 6, 7], 3); // [5,6,7,1,2,3,4]
-rotate([1, 2], 3); // [5,6,7,1,2,3,4]
+rotate([1, 2, 3, 4, 5, 6, 7], 3); // [5,6,7,1,2,3,4]  7   4 0  5 1 6 2
+// rotate([1, 2], 3); // [5,6,7,1,2,3,4]
