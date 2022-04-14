@@ -1,20 +1,33 @@
-var searchInsert = function(nums, target) {
-  if (target < nums[0]) return 0;
-  let left = 0;
-  while (left <= nums.length - 1) {
-    if (nums[left] === target) {
-      return left;
-    } else if (nums[left] > target) {
-      return left;
-    }
+var lengthOfLongestSubstring = function(s) {
+  const length = s.length;
+  if (length <= 1) return length;
 
-    left++;
+  let max = 0;
+
+  let curLen = 0;
+  while (curLen < length) {
+    max = Math.max(getlength(s, curLen), max);
+    curLen++;
   }
-  return left;
+
+  return max;
 };
 
-console.log(searchInsert([1, 3, 5, 6], 5)); // 2
-console.log(searchInsert([1, 3, 5, 6], 2)); // 1
-console.log(searchInsert([1, 3, 5, 6], 7)); // 4
-console.log(searchInsert([1, 3, 5, 6], 0)); // 0
-console.log(searchInsert([1], 1)); // 0
+function getlength(s, start) {
+  const map = new Map();
+  let end = start;
+  while (end < s.length) {
+    if (map.get(s[end])) {
+      return end - start;
+    } else {
+      map.set(s[end], 1);
+      end++;
+    }
+  }
+
+  return end - start;
+}
+
+console.log(lengthOfLongestSubstring("abcabcbb")); // 3
+console.log(lengthOfLongestSubstring("bbbbb")); // 1
+console.log(lengthOfLongestSubstring("pwwkew")); // 3
