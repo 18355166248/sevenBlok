@@ -14,3 +14,37 @@ node ./bin/config uat && node --max-old-space-size=5000 ./node_modules/.bin/webp
 #### 1. 打包时控制日志信息的展示
 
 ![stats](@public/webpack/stats.png)
+
+#### 控制版本号方法
+
+```javascript
+"scripts": {
+  "start": "PORT=4000 node ./webpack/start.js",
+}
+```
+
+```javascript
+const a = {
+  devServer: {
+    client: {
+      webSocketURL: websocketPath,
+    },
+    static: {
+      directory: assetPublicPath,
+      watch: {
+        ignored: (f: string) => {
+          // 生成的类型定义不要监听，否则会引发全局的 reload 使 HMR 失去意义
+          return f.endsWith(".d.ts");
+        },
+      },
+    },
+    allowedHosts: "all",
+    hot: true,
+    port: port,
+    historyApiFallback: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
+  },
+};
+```
