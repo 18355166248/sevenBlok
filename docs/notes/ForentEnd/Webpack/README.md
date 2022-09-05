@@ -14,3 +14,27 @@ node ./bin/config uat && node --max-old-space-size=5000 ./node_modules/.bin/webp
 #### 1. 打包时控制日志信息的展示
 
 ![stats](@public/webpack/stats.png)
+
+#### 2. 扩展依赖的方式
+
+```javascript
+const { ModuleFederationPlugin } = require("webpack").container;
+
+const webpackConfigPath = "react-scripts/config/webpack.config";
+const webpackConfig = require(webpackConfigPath);
+
+const override = (config) => {
+  config.plugins.push(
+    new ModuleFederationPlugin(require("../../modulefederation.config.js"))
+  );
+
+  config.output.publicPath = "auto";
+
+  return config;
+};
+
+require.cache[require.resolve(webpackConfigPath)].exports = (env) =>
+  override(webpackConfig(env));
+
+module.exports = require(webpackConfigPath);
+```
