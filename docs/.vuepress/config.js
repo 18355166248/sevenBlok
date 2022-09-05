@@ -8,7 +8,7 @@ function resolve(pathname) {
 const sidebar = autoGetSidebarOptionBySrcDir(
   path.resolve(__dirname, "../notes")
 );
-console.log('sidebar', sidebar)
+console.log("sidebar", sidebar);
 module.exports = {
   title: "柒世(SMegalo)",
   description: "2021, 学习进步!",
@@ -108,6 +108,10 @@ module.exports = {
             text: "单元测试",
             link: "/notes/ForentEnd/Test/",
           },
+          {
+            text: "前端监控",
+            link: "/notes/ForentEnd/Monitor/",
+          },
         ],
       },
       {
@@ -142,6 +146,10 @@ module.exports = {
           {
             text: "Jenkins",
             link: "/notes/Tools/Jenkins/",
+          },
+          {
+            text: "VsCode",
+            link: "/notes/Tools/Vscode/",
           },
         ],
       },
