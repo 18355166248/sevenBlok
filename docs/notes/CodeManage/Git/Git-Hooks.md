@@ -2,9 +2,9 @@
 
 Git 能在特定的重要动作发生时触发自定义脚本。 有两组这样的钩子：客户端的和服务器端的。 客户端钩子由诸如提交和合并这样的操作所调用，而服务器端钩子作用于诸如接收被推送的提交这样的联网操作。 你可以随心所欲地运用这些钩子。
 
-我们通常用 husky 来处理 Git Hook
+我们通常用 husky(v4 to v7) 来处理 Git Hook
 
-## 安装
+## 安装(老版本)
 
 1. husky，lint-staged，@commitlint/cli，@commitlint/config-conventional
    lint-staged: 用于实现每次提交只检查本次提交所修改的文件。
@@ -51,9 +51,9 @@ feat: 图片查看器新增滚动预览
 BREAKING CHAGNE: `url` 字段已经被 `source` 字段代替
 ```
 
-## 使用
+## 使用(老版本)
 
-### 创建 .huskyrc 或者 package.json 配置
+#### 创建 .huskyrc 或者 package.json 配置
 
 ```json
 "husky": {
@@ -64,7 +64,7 @@ BREAKING CHAGNE: `url` 字段已经被 `source` 字段代替
 }
 ```
 
-### 创建.lintstagedrc 或者 package.json 配置
+#### 创建.lintstagedrc 或者 package.json 配置
 
 ```json
 "lint-staged": {
@@ -75,7 +75,7 @@ BREAKING CHAGNE: `url` 字段已经被 `source` 字段代替
 }
 ```
 
-### 创建 commitlint.config.js
+#### 创建 commitlint.config.js
 
 ```json
 (module.exports = {
@@ -103,3 +103,5 @@ BREAKING CHAGNE: `url` 字段已经被 `source` 字段代替
   }
 })
 ```
+
+
