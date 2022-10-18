@@ -138,6 +138,10 @@ module.exports = {
             text: "Lerna",
             link: "/notes/CodeManage/Lerna/",
           },
+          {
+            text: "GitHub",
+            link: "/notes/CodeManage/GitHub/",
+          },
         ],
       },
       {
