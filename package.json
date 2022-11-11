@@ -134,7 +134,7 @@
     "meow": "^3.7.0",
     "mime-db": "^1.40.0",
     "mime-types": "^2.1.24",
-    "minimatch": "^3.0.4",
+    "minimatch": "^3.0.5",
     "minimist": "^1.2.0",
     "mixin-object": "^2.0.1",
     "mkdirp": "^0.5.1",
