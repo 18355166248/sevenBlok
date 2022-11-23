@@ -125,7 +125,7 @@
     "kind-of": "^6.0.2",
     "lcid": "^1.0.0",
     "load-json-file": "^1.1.0",
-    "loader-utils": "^1.2.3",
+    "loader-utils": "^1.4.2",
     "lodash": "^4.17.11",
     "lodash.tail": "^4.1.1",
     "loud-rejection": "^1.6.0",
