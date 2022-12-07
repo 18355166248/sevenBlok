@@ -13,7 +13,7 @@ const { getPrefixCls } = React.useContext(ConfigContext);
 const prefixCls = getPrefixCls("cascade");
 ```
 
-## props 定义
+## 设计&实现
 
 我们简单定义几个 props, 实现简单功能
 
