@@ -50,6 +50,17 @@ Dialog 主要负责的功能是弹窗的样式处理, 包含蒙层, 类名初始
 
 useDom 主要是处理节点渲染和销毁的功能, 内部还实现了一个队列的概念, 具体是做啥的我还没仔细研究
 
+#### destroyOnClose
+
+destroyOnClose 的实现其实很简单, 就是在组件入口的地方判断一下
+
+```ts
+// 关闭是否销毁子元素
+if (destroyOnClose && !open) {
+  return null;
+}
+```
+
 ### 结尾
 
 文章比较简单, 具体实现细节可以查看 [jiang-design](https://github.com/18355166248/jiang-design/tree/main/src/components/Modal)
