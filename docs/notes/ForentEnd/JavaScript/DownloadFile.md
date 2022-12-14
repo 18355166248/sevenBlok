@@ -6,14 +6,27 @@
 // 通过指定url获取资源 ( 跨域情况下使用, 非跨域情况使用a标签  download自定义属性即可 )
 const downloadFileUtil = {
   getBlob(url: string) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
 
       xhr.open("GET", url, true);
       xhr.responseType = "blob";
       xhr.onload = () => {
         if (xhr.status === 200) {
-          resolve(xhr.response);
+          if (xhr.response.type === "application/json") {
+            const fileReader: any = new FileReader();
+            // 说明返回的是普通对象, 读取信息
+            fileReader.onloadend = () => {
+              const jsonData = JSON.parse(fileReader.result);
+              console.log(jsonData);
+
+              jsonData.msg && message.error(jsonData.msg);
+              reject(jsonData.msg);
+            };
+            fileReader.readAsText(xhr.response);
+          } else {
+            resolve(xhr.response);
+          }
         }
       };
 
