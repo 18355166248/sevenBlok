@@ -77,6 +77,10 @@ module.exports = {
             link: "/notes/ForentEnd/React/",
           },
           {
+            text: "React源码",
+            link: "/notes/ForentEnd/ReactSourceCode/",
+          },
+          {
             text: "Webpack",
             link: "/notes/ForentEnd/Webpack/",
           },
