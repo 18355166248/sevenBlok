@@ -38,7 +38,7 @@ module.exports = {
   postcss: {},
   themeConfig: {
     lastUpdated: "Last Updated",
-    sidebarDepth: 2,
+    sidebarDepth: 0,
     displayAllHeaders: true,
     nav: [
       {
