@@ -185,5 +185,7 @@ module.exports = {
       },
     ],
     sidebar,
+    search: true, // 内置搜索
+    searchMaxSuggestions: 20, // 默认搜索框显示的搜索结果数量
   },
 };

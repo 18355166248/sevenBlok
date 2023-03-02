@@ -1,6 +1,14 @@
+---
+sidebarDepth: 1
+---
+
 # 面试题
 
-### 1. setState 是同步还是异步 (react18)
+- [面试题](#面试题)
+  - [1. setState 是同步还是异步 (react18)](#1-setstate-是同步还是异步-react18)
+    - [同步原理](#同步原理)
+
+## 1. setState 是同步还是异步 (react18)
 
 所谓同步还是异步指的是调用 setState 之后是否马上能得到最新的 state
 在 react18 中, 正常操作执行 setState 全部都是异步的了

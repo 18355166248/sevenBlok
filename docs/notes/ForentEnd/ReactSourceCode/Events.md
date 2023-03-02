@@ -1,7 +1,3 @@
----
-sidebarDepth: 1
----
-
 # 事件机制
 
 参考文章: [react 事件系统（新版本）](https://blog.csdn.net/lin_fightin/article/details/127997561)
