@@ -117,7 +117,7 @@ Mounting阶段叫挂载阶段，伴随整个虚拟DOM的声明。它里面有三
 
 1. UNSAFE_componentWillMount() 在组件即将被挂载到页面的时候执行
 2. render：页面state或props发生变化时执行
-3. componentDidMount`：组件挂载完成之后执行
+3. componentDidMount：组件挂载完成之后执行
 
 ### Updation：更新阶段
 
