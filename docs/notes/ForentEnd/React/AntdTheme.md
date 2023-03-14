@@ -1,4 +1,4 @@
-# 前言
+# 改变 antd 主题色(旧)
 
 如果只是想简单定制主题 参考[官网 AntdV4](https://ant.design/docs/react/customize-theme-cn)即可
 
