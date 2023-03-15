@@ -11,12 +11,12 @@ npm install --save-dev webpack-bundle-analyzer
 yarn add -D webpack-bundle-analyzer
 ```
 
-<card-primary>
+<Card>
  <div>首先供应链项目第一次打包的体积是 187.3 MB 共 282 个项目
   js 的体积是 171.7 MB，共 164 个项目
   css 的体积是 15.5 MB，共 111 个项目
   打包时间6m</div>
-</card-primary>
+</Card>
 
 1.  @xmly/xm-all-address 地址数据库优化
 
@@ -45,24 +45,24 @@ webpackConfig.optimization.splitChunks = {
 };
 ```
 
-<card-primary>
+<Card>
 <div>首先供应链项目第一次打包的体积是 189.2 MB 共 284 个项目
 js 的体积是 173.8 MB，共 166 个项目
 css 的体积是 15.5 MB，共 111 个项目</div>
-</card-primary>
+</Card>
 
 2. @xmly/xm-uploader 优化后
 
-<card-primary>
+<Card>
 <div>201 MB 共 284 个项目</div>
-</card-primary>
+</Card>
 
 3. react react-dom 优化后
 
-<card-primary>
+<Card>
 <div>203.6 MB 共 289 个项目
 Done in 265.39s.</div>
-</card-primary>
+</Card>
 
 ```js
 {
@@ -74,9 +74,9 @@ Done in 265.39s.</div>
 }
 ```
 
-<card-primary>
+<Card>
 <div>149.7 MB，共266个项目</div>
-</card-primary>
+</Card>
 
 ```js
 {
@@ -93,9 +93,9 @@ Done in 265.39s.</div>
 }
 ```
 
-<card-primary>
+<Card>
 <div>121.7 MB），共 269 个项目</div>
-</card-primary>
+</Card>
 
 ```js
 {
@@ -112,9 +112,9 @@ Done in 265.39s.</div>
 }
 ```
 
-<card-primary>
+<Card>
 <div>66.9 MB，共256个项目</div>
-</card-primary>
+</Card>
 
 ```js
 {
@@ -151,14 +151,14 @@ config.resolve.alias
 
 CommonJs 和 ES6 Module 的区别
 
-<card-primary type="warning">
+<Card type="warning">
 <div>
   CommonJs导出的是变量的一份拷贝，ES6 Module导出的是变量的绑定（export default 是特殊的）
   CommonJs是单个值导出，ES6 Module可以导出多个
   CommonJs是动态语法可以写在判断里，ES6 Module静态语法只能写在顶层
   CommonJs的 this 是当前模块，ES6 Module的 this 是 undefined
 </div>
-</card-primary>
+</Card>
 
 所以可以发现 CommonJs 导出的是变量的一份拷贝。这就知道为什么我们配置了路径别名还是会重复打包了，哪里有引入他就会拷贝一份。所以哪里用到了就会打包多少份。
 
@@ -263,6 +263,6 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 }
 ```
 
-<card-primary>
+<Card>
 <div>49.4 MB），共263个项目</div>
-</card-primary>
+</Card>

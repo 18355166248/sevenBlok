@@ -112,11 +112,11 @@ export async function axiosWithCancel(config: any) {
 }
 ```
 
-<card-primary  type="warning">
+<Card  type="warning">
 <div>需要注意的是
 如果你需要在 promise 的 catch 方法中捕获是否是取消请求的报错
 可以使用 axios.Cancel 去判断</div>
-</card-primary>
+</Card>
 
 ```ts
 import axios from 'axios';

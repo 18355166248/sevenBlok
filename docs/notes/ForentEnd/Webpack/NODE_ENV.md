@@ -6,13 +6,13 @@ webpack 命令行环境配置中，通过设置 --env 可以使你根据需要�
 
 你可以使用 --env 配置很多的环境变量
 
-<card-primary theme="#2B3A42" color="#a5cee1">
+<Card theme="#2B3A42" color="#a5cee1">
 webpack --env.NODE_ENV=local --env.production --progress
-</card-primary>
+</Card>
 
-<card-primary theme="#DCF2FD" color="#618ca0">
+<Card theme="#DCF2FD" color="#618ca0">
 如果设置 env 变量，却没有赋值，--env.production 默认将 --env.production 设置为 true。还有其他可以使用的语法。有关详细信息，请查看 [webpack CLI](https://www.webpackjs.com/api/cli/#environment-options) 文档。
-</card-primary>
+</Card>
 
 #### webpack.config.js
 
@@ -36,10 +36,10 @@ module.exports = env => {
 
 当 webpack 配置对象导出为一个函数时，可以向起传入一个"环境对象(environment)"。
 
-<card-primary theme="#2B3A42" color="#a5cee1">
+<Card theme="#2B3A42" color="#a5cee1">
 webpack --env.production    # 设置 env.production == true
 webpack --env.platform=web  # 设置 env.platform == "web"
-</card-primary>
+</Card>
 
 | 调用                                  |            结果            |
 | ------------------------------------- | :------------------------: |

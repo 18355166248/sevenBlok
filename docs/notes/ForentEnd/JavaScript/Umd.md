@@ -62,9 +62,9 @@ externals: {
 import { useBoolean } from 'jiang-hooks'
 ```
 
-<card-primary type="danger">
+<Card type="danger">
 这里有个坑, 就是我在给自己组件打包umd的时候, 用的是 jiang-hooks 这种方式命名, 这种命名会直接报错, 因为在从 window找的时候 会只取 符号 - 前面的字符串 也就是 module.exports jiang , 这样肯定是找不到的, 所以建议使用驼峰命名 也就是 jiangHooks
-</card-primary>
+</Card>
 
 #### 配置
 

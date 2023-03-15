@@ -13,9 +13,9 @@
 - 如果入口 chunks 之间包含重复的模块，那些重复模块都会被引入到各个 bundle 中。
 - 这种方法不够灵活，并且不能将核心应用程序逻辑进行动态拆分代码。
 
-<card-primary theme="#DCF2FD" font-size="16px" color="#618ca0">
+<Card theme="#DCF2FD" font-size="16px" color="#618ca0">
 以上两点中，第一点对我们的示例来说无疑是个问题，因为之前我们在 ./src/index.js 中也引入过 lodash，这样就在两个 bundle 中造成重复引用。接着，我们通过使用 CommonsChunkPlugin 来移除重复的模块。
-</card-primary>
+</Card>
 
 ## 2. 防止重复
 

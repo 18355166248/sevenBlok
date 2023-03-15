@@ -61,7 +61,7 @@ export function listenToAllSupportedEvents(rootContainerElement: EventTarget) {
 }
 ```
 
-<card-primary  type="warning">
+<Card  type="warning">
 <div>
   <div>这里需要注意几个点</div>
   <ul>
@@ -72,7 +72,7 @@ export function listenToAllSupportedEvents(rootContainerElement: EventTarget) {
     其实这里就可以看出区别了，，第二个参数就是控制是否注册冒泡的，true表示注册俘获事件，false表示注册冒泡事件。</li>
   </ul>
 </div>
-</card-primary>
+</Card>
 
 我们继续往下看 监听事件的注册方法 listenToNativeEvent 其实是执行了 addTrappedEventListener
 
@@ -155,13 +155,13 @@ function addTrappedEventListener(
 }
 ```
 
-<card-primary type="info">
+<Card type="info">
 <div>
   createEventListenerWrapperWithPriority 怎么获取 listener 事件监听器的
   监听器最后主要是用于执行 addEventListener 事件
   我们接着看
 </div>
-</card-primary>
+</Card>
 
 ```js
 export function createEventListenerWrapperWithPriority(
@@ -194,11 +194,11 @@ export function createEventListenerWrapperWithPriority(
 }
 ```
 
-<card-primary type="info">
+<Card type="info">
 <div>
   根据不同的优先级获取不同的 dispatchEvent 函数，最后都会通过 bind 绑定当前事件的名称。也就是说当我们触发事件的时候，最终执行的都是 dispatchEvent 或者 dispatchDiscreteEvent …函数. 而 dispatchDiscreteEvent 里面其实也是执行的 dispatchEvent
 </div>
-</card-primary>
+</Card>
 
 #### 自此，在 createRoot 初始化的时候，所有事件注册完毕。此时如果触发一次 click 事件, 就会先触发捕获事件, 从根节点开始执行事件, 依次往内执行, 直到执行到鼠标点击的节点事件再冒泡回根节点，那么会执行两次 dispatchEvent 了，一次是俘获阶段，一次是冒泡阶段，这也是跟 16 版本不同的地方。
 
@@ -282,11 +282,11 @@ function dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEve
 }
 ```
 
-<card-primary type="info">
+<Card type="info">
 <div>
   dispatchEventForPluginEventSystem 主要做的就是批量执行事件
 </div>
-</card-primary>
+</Card>
 
 ```js
 export function dispatchEventForPluginEventSystem(
@@ -319,11 +319,11 @@ export function dispatchEventForPluginEventSystem(
 }
 ```
 
-<card-primary type="info">
+<Card type="info">
 <div>
   batchedUpdates是批量更新的逻辑。主要看看 dispatchEventsForPlugins 函数。
 </div>
-</card-primary>
+</Card>
 
 ```js
 function dispatchEventsForPlugins(
@@ -358,7 +358,7 @@ function dispatchEventsForPlugins(
 }
 ```
 
-<card-primary type="success">
+<Card type="success">
 <div>
   <h1>主要是4个逻辑</h1>
   <ul>
@@ -368,7 +368,7 @@ function dispatchEventsForPlugins(
     <li>4. 执行 processDispatchQueue 执行这些收集到的事件</li>
   </ul>
 </div>
-</card-primary>
+</Card>
 
 我们先看看 extractEvents 怎么做收集的
 其实就是执行了 SimpleEventPlugin.extractEvents
@@ -590,11 +590,11 @@ export function accumulateSinglePhaseListeners(
 }
 ```
 
-<card-primary type="info">
+<Card type="info">
 <div>
   最后看如何消费 dispatchQueue 队列 也就是执行 processDispatchQueue
 </div>
-</card-primary>
+</Card>
 
 ```js
 export function processDispatchQueue(

@@ -59,12 +59,12 @@ export function updateContainer(
 }
 ```
 
-<card-primary  type="warning">
+<Card  type="warning">
 <div>
   scheduleUpdateOnFiber 里面主要执行了 ensureRootIsScheduled
   我们接下来重点看下 ensureRootIsScheduled (注册调度任务, 经过`Scheduler`包的调度, 间接进行`fiber构造`) 做了什么
 </div>
-</card-primary>
+</Card>
 
 ```ts
 // src/react/packages/react-reconciler/src/ReactFiberWorkLoop.old.js
@@ -941,12 +941,12 @@ function completeUnitOfWork(unitOfWork: Fiber): void {
 
 如果说“递”阶段的 beginWork 方法主要是创建子节点，那么“归”阶段的 completeWork 方法则主要是创建当前节点的 DOM 节点
 
-<card-primary  type="warning">
+<Card  type="warning">
 <div>
   上面的 performConcurrentWorkOnRoot 在最后执行了 finishConcurrentRender 也就是要开始渲染 fiber 树了
   finishConcurrentRender 中主要执行了  commitRoot -> commitRootImpl
 </div>
-</card-primary>
+</Card>
 
 ```ts
 function commitRootImpl(

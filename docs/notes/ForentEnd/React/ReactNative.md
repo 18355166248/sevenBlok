@@ -34,7 +34,7 @@ brew install cocoapods # CocoaPods是用 Ruby 编写的包管理器（可以理�
 npx react-native init AwesomeTSProject --template react-native-template-typescript
 ```
 
-<card-primary type="warning">
+<Card type="warning">
 pod install 速度慢的终极解决方案
 
 git config --global http.https://github.com.proxy socks5://127.0.0.1:1081
@@ -43,17 +43,17 @@ git config --global http.https://github.com.proxy socks5://127.0.0.1:1081
 
 git config --global --unset http.proxy
 git config --global --unset http.https://github.com.proxy
-</card-primary>
+</Card>
 
-<card-primary>重点: 安装成功后进入项目执行 yarn ios | npm run ios 可能会报错 建议重装系统或者重新安装依赖重试</card-primary>
+<Card>重点: 安装成功后进入项目执行 yarn ios | npm run ios 可能会报错 建议重装系统或者重新安装依赖重试</Card>
 
-<card-primary type="success">重点: 安装成功后进入项目执行 yarn ios | npm run ios 可能会报错 建议重装系统或者重新安装依赖重试</card-primary>
+<Card type="success">重点: 安装成功后进入项目执行 yarn ios | npm run ios 可能会报错 建议重装系统或者重新安装依赖重试</Card>
 
-<card-primary type="warning">重点: 安装成功后进入项目执行 yarn ios | npm run ios 可能会报错 建议重装系统或者重新安装依赖重试</card-primary>
+<Card type="warning">重点: 安装成功后进入项目执行 yarn ios | npm run ios 可能会报错 建议重装系统或者重新安装依赖重试</Card>
 
-<card-primary type="danger">重点: 安装成功后进入项目执行 yarn ios | npm run ios 可能会报错 建议重装系统或者重新安装依赖重试</card-primary>
+<Card type="danger">重点: 安装成功后进入项目执行 yarn ios | npm run ios 可能会报错 建议重装系统或者重新安装依赖重试</Card>
 
-<card-primary type="info">重点: 安装成功后进入项目执行 yarn ios | npm run ios 可能会报错 建议重装系统或者重新安装依赖重试</card-primary>
+<Card type="info">重点: 安装成功后进入项目执行 yarn ios | npm run ios 可能会报错 建议重装系统或者重新安装依赖重试</Card>
 
 ### 3. 在真机上运行
 

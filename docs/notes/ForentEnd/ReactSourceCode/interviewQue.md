@@ -27,9 +27,9 @@ sidebarDepth: 1
 所谓同步还是异步指的是调用 setState 之后是否马上能得到最新的 state
 在 react18 中, 正常操作执行 setState 全部都是异步的了
 
-<card-primary>
+<Card>
 <div>为什么呢？</div>
-</card-primary>
+</Card>
 
 1. setState 设计为异步，可以显著提升性能
 
@@ -39,9 +39,9 @@ sidebarDepth: 1
 
 在 React18 之前：setState 在原生事件和定时器是同步，在合成事件和生命周期函数里面是异步的，原理:合成事件和生命周期函数调用顺序在批处理和更新之前，导致在合成事件和生命周期函数里没法立刻拿到更新后的值，导致形成所谓的异步
 
-<card-primary>
+<Card>
 <div>如何执行同步 (flushSync)</div>
-</card-primary>
+</Card>
 
 ```ts
 constructor(props) {
@@ -234,11 +234,11 @@ function ensureRootIsScheduled (root: FiberRoot, currentTime: number) {
 }
 ```
 
-<card-primary>
+<Card>
 <div>
 我们具体看下 flushSyncCallbacks 下面做了什么事情
 </div>
-</card-primary>
+</Card>
 
 ```js
 // 自下而上

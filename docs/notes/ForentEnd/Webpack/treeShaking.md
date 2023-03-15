@@ -27,9 +27,9 @@ tree shaking 是一个术语，通常用于描述移除 javascript 上下文中�
 }
 ```
 
-<card-primary theme="#DCF2FD" font-size="16px" color="#618ca0">
+<Card theme="#DCF2FD" font-size="16px" color="#618ca0">
 注意，任何导入的文件都会受到 tree shaking 的影响。这意味着，如果在项目中使用类似 css-loader 并导入 CSS 文件，则需要将其添加到 side effect 列表中，以免在生产模式中无意中将它删除：
-</card-primary>
+</Card>
 
 ```json
 {
@@ -65,10 +65,10 @@ module.exports = {
 };
 ```
 
-<card-primary theme="#DCF2FD" font-size="16px" color="#618ca0">
+<Card theme="#DCF2FD" font-size="16px" color="#618ca0">
 注意，也可以在命令行接口中使用 --optimize-minimize 标记，来使用 UglifyJSPlugin。
 也就是在package.json 中的 script中使用 --optimize-minimize 可以使用 UglifyJSPlugin。
 也就是没有被使用的代码会被移除
 
 以上描述也可以通过命令行实现。例如，--optimize-minimize 标记将在后台引用 UglifyJSPlugin。和以上描述的 DefinePlugin 实例相同，--define process.env.NODE_ENV="'production'" 也会做同样的事情。并且，webpack -p 将自动地调用上述这些标记，从而调用需要引入的插件。
-</card-primary>
+</Card>

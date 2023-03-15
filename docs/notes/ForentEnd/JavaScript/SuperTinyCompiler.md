@@ -206,7 +206,7 @@ function traverser(ast, visitor) {
 
 <!-- theme="#DCF2FD" font-size="16px" color="#618ca0" -->
 
-<card-primary>
+<Card>
   <p>
       traverser 里面的 visitor，
     面放着我们「拜访」每个节点时要执行的方法，
@@ -215,7 +215,7 @@ function traverser(ast, visitor) {
     首先我们根据子节点的 type 呼叫对应执行的 method，
     找到的话执行它，待会一再对子节点要执行的就是这一部份：
   </p>
-</card-primary>
+</Card>
 
 ```js
 function traverser(ast, visitor) {
@@ -335,15 +335,15 @@ NumberLiteral  这个 method，做的事情并不难，
 
 假如今天我们的程式什么都没有，只有一个单纯的数字：
 
-<card-primary>2</card-primary>
+<Card>2</Card>
 那 transfomer 会造出来的 nextAst 就是这样
 
-<card-primary>
+<Card>
 <p>"{
 type: 'Program'
 body: [{type: 'NumberLiteral' , value: '2' }]
 }"</p>
-</card-primary>
+</Card>
 
 跟前面的 ast 几乎是没有差的。
 

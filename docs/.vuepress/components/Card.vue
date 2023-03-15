@@ -1,5 +1,6 @@
 <template>
   <div class="card" :style="themeList[type]">
+    {{ text }}
     <slot></slot>
   </div>
 </template>
@@ -11,6 +12,7 @@ export default {
       type: String,
       default: "primary",
     },
+    text: String,
   },
   data() {
     return {
@@ -49,9 +51,11 @@ export default {
 
 <style scoped lang="scss">
 .card {
-  margin: 10px 0;
   font-style: italic;
   border-radius: 6px;
   padding: 10px 18px;
+  p {
+    margin: 0;
+  }
 }
 </style>

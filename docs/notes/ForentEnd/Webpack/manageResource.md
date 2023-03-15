@@ -33,7 +33,7 @@
 
 ## 2. css 分离
 
-<card-primary theme="#DCF2FD" font-size="16px" color="#618ca0">请注意，在多数情况下，你也可以进行 CSS 分离，以便在生产环境中节省加载时间。最重要的是，现有的 loader 可以支持任何你可以想到的 CSS 处理器风格 - postcss, sass 和 less 等。</card-primary>
+<Card theme="#DCF2FD" font-size="16px" color="#618ca0">请注意，在多数情况下，你也可以进行 CSS 分离，以便在生产环境中节省加载时间。最重要的是，现有的 loader 可以支持任何你可以想到的 CSS 处理器风格 - postcss, sass 和 less 等。</Card>
 
 - #### 安装
 
@@ -177,7 +177,7 @@ const path = require('path')
   }
 ```
 
-<card-primary theme="#DCF2FD" font-size="16px" color="#618ca0">压缩和优化你的图像。查看 [image-webpack-loader](https://github.com/tcoopman/image-webpack-loader) 和 [url-loader](https://www.webpackjs.com/loaders/url-loader/)，以了解更多关于如果增强加载处理图片功能。</card-primary>
+<Card theme="#DCF2FD" font-size="16px" color="#618ca0">压缩和优化你的图像。查看 [image-webpack-loader](https://github.com/tcoopman/image-webpack-loader) 和 [url-loader](https://www.webpackjs.com/loaders/url-loader/)，以了解更多关于如果增强加载处理图片功能。</Card>
 
 ## 4. 加载字体, json 文件, CSV, TSV 和 XML
 
