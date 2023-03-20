@@ -116,6 +116,10 @@ module.exports = {
             text: "前端监控",
             link: "/notes/ForentEnd/Monitor/",
           },
+          {
+            text: "Babel",
+            link: "/notes/ForentEnd/Babel/",
+          },
         ],
       },
       {
