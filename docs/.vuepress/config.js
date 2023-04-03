@@ -120,6 +120,10 @@ module.exports = {
             text: "Babel",
             link: "/notes/ForentEnd/Babel/",
           },
+          {
+            text: "微前端",
+            link: "/notes/ForentEnd/MicroFrontEnd/",
+          },
         ],
       },
       {
