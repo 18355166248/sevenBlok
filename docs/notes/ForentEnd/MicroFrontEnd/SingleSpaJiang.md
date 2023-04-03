@@ -56,6 +56,20 @@
 
 同时注意, 在子应用销毁的时候, 这些方法都需要执行销毁, 回滚到原生方法
 
+需要注意的是, 子应用拿到的 js 都是字符串, 怎么让子应用的js上面的window全部指向代理Proxy, 需要用到 [with](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/with), 实现如下
+
+```JavaScript
+const code = `
+  ;(function(proxyWindow){
+    with(proxyWindow) {
+      (function(window){${code\n}}).call(proxyWindow, proxyWindow)
+    }
+  }(this))
+`
+
+new Function('window', code).call(app.sandbox.proxyWindow);
+```
+
 ## css 实现沙箱隔离
 
 css 实现的思路就是在获取到 style 标签(包括远程的和本地的), 动态修改添加 css 上层作用域, 效果如下
