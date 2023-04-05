@@ -90,8 +90,8 @@ promise 除了使用 catch 方法来捕获错误, 还可以使用 window 的 unh
 
 ```js
 function report(error) {
-  var reportUrl = 'http://xxxx/report'
-  new Image().src = reportUrl + 'error=' + error
+  var reportUrl = "http://xxxx/report";
+  new Image().src = reportUrl + "error=" + error;
 }
 ```
 
@@ -124,6 +124,8 @@ function report(error) {
 值类型之间传递的值
 引用类型之间的传递, 传递的是地址
 
-## web除了cookie和webStorage还有啥存储
+## web 除了 cookie 和 webStorage 还有啥存储
 
 web SQL 和 indexedDB 两种存储方式
+
+## Promise.all()实现原理
