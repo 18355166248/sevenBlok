@@ -21,6 +21,7 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
+    "@vuepress/plugin-search": "^1.9.9",
     "directory-tree": "^2.3.1",
     "husky": "^4.2.3",
     "node-sass": "^4.12.0",
