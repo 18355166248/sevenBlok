@@ -129,3 +129,52 @@ function report(error) {
 web SQL 和 indexedDB 两种存储方式
 
 ## Promise.all()实现原理
+
+- promise.all()的入参是一个数组，可以传基本类型，也可以传 promise 对象；
+- 返回结果是一个 Promise 对象；
+- 入参数组中每一个都返回成功，此函数才返回成功；
+- 只要有一个执行失败，则返回失败；
+
+```js {10}
+// 封装Promise.all方法
+// 判断是否为promise对象，或者使用 obj instanceof Promise方法判断
+function isPromise(obj) {
+  return (
+    !!obj &&
+    (typeof obj === "object" || typeof obj === "function") &&
+    typeof obj.then === "function"
+  );
+}
+Promise.all = function(values) {
+  return new Promise((resolve, reject) => {
+    let result = [];
+    let counter = 0;
+    function processData(key, value) {
+      result[key] = value;
+      // values中每个promise对象返回成功，计数器加1；
+      // 直到全部promise都返回成功，与values长度一致，
+      // 则认定都为成功，此时返回全部的promise回调结果；
+      if (++counter === values.length) {
+        resolve(result);
+      }
+    }
+    // 遍历values,先判断是否当前项为promise对象；
+    // 如果是，则执行回调函数；否，则直接返回该值；
+    for (let i = 0; i < values.length; i++) {
+      if (isPromise(values[i])) {
+        values[i]
+          .then((data) => {
+            processData(i, data);
+          })
+          .catch((err) => {
+            reject(err);
+            return;
+          }); // values[i]如果成功则返回回调数据，失败则reject
+      } else {
+        // 如果不是promise对象，则直接返回；
+        processData(i, values[i]);
+      }
+    }
+  });
+};
+```
