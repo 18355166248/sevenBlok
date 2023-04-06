@@ -8,7 +8,7 @@ function resolve(pathname) {
 const sidebar = autoGetSidebarOptionBySrcDir(
   path.resolve(__dirname, "../notes")
 );
-console.log("sidebar", sidebar);
+
 module.exports = {
   title: "柒世(SMegalo)",
   description: "2021, 学习进步!",
@@ -27,6 +27,7 @@ module.exports = {
   ],
   markdown: {
     lineNumbers: true,
+    toc: { includeLevel: [3, 4] },
   },
   configureWebpack: {
     resolve: {

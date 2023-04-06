@@ -3,11 +3,20 @@ const dirTree = require("directory-tree");
 const { array } = require("yargs");
 const SRC_PATH = path.resolve(__dirname, "./src");
 
+// 针对tree 排序, 将 README.md 排到第一位
+function moveREADMETop(list) {
+  const readmeIndex = list.findIndex((v) => v.name === "README.md");
+  if (readmeIndex > -1) {
+    list.unshift(list.splice(readmeIndex, 1)[0]);
+  }
+}
+
 // 按照 vuepress '分组侧边栏'的规范生成单个配置
 // https://vuepress.vuejs.org/zh/theme/default-theme-config.html#%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%88%86%E7%BB%84
 function toSidebarOption(tree = []) {
   if (!Array.isArray(tree)) return {};
-
+  // 针对tree 排序, 将 README.md 排到第一位
+  moveREADMETop(tree);
   return tree.map((v) => {
     if (v.type === "directory") {
       return {
