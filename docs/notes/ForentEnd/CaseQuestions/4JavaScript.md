@@ -15,9 +15,10 @@
 ### 首屏和白屏时间如何计算
 
 ::: details 点击查看实现代码
+
 - 当页面的元素数小于 x 时, 则认为是白屏. 可以获取页面的 DOM 节点数, 判断 DOM 节点数小于某个阈值 X, 则认为是白屏
 - 在判断初始化页面渲染出来的地方通过 Date.now() - performance.timing.navigationStart 去获取白屏时间
-:::
+  :::
 
 ### Virtual Dom 的优势在哪里？
 
@@ -27,7 +28,7 @@
 1. 虚拟 DOM 不会立马进行排版与重绘操作
 2. 虚拟 DOM 进行频繁修改，然后一次性比较并修改真实 DOM 中需要改的部分，最后在真实 DOM 中进行排版与重绘，减少过多 DOM 节点排版与重绘损耗
 3. 虚拟 DOM 有效降低大面积真实 DOM 的重绘与排版，因为最终与真实 DOM 比较差异，可以只渲染局部
-:::
+   :::
 
 ### 面向对象
 
@@ -81,11 +82,12 @@ undefined 表示一个无的原始值(基础类型), 转为数值为 NaN, null �
 - 白屏时间 ：responseStart - navigationStart
 - domready 时间 ：domContentLoadedEventEnd - navigationStart
 - onload 时间 ：loadEventEnd – navigationStart
-:::
+  :::
 
 ##### 脚本错误信息收集
 
 ::: details 点击查看实现代码
+
 - window.onerror
 
 window.onerror 可以捕捉运行时错误，可以拿到出错的信息，堆栈，出错的文件、行号、列号
@@ -104,6 +106,7 @@ promise 除了使用 catch 方法来捕获错误, 还可以使用 window 的 unh
 ##### 上报错误的方式
 
 ::: details 点击查看实现代码
+
 - 后端提供接口, ajax 提交
 - 创建一个图片, url 参数带上错误信息
 
@@ -127,10 +130,11 @@ function report(error) {
 ### 箭头函数和普通函数的区别
 
 ::: details 点击查看实现代码
+
 1. 箭头函数语法上比普通函数更加简洁(ES6 中每一种函数都可以使用形参赋默认值和剩余运算符)
 2. 箭头函数没有自己的 THIS，它里面的 THIS 是继承函数所处上下文中的 THIS（使用 CALL/APPY 等任何方式都无法改变 THIS 的指向） 3.箭头函数中没有 ARGUMENTS(类数组)，智能基于。。。ARG 获取传递的参数集合（数组）
 3. 箭头函数不能被 NEW 执行（因为：箭头函数没有 THIS 也没有 prototype）
-:::
+   :::
 
 ### 跨域的解决方案 并且解决前后端分离项目跨域，配置多个域名
 
@@ -155,6 +159,7 @@ web SQL 和 indexedDB 两种存储方式
 ### Promise.all()实现原理
 
 ::: details 点击查看实现代码
+
 - promise.all()的入参是一个数组，可以传基本类型，也可以传 promise 对象；
 - 返回结果是一个 Promise 对象；
 - 入参数组中每一个都返回成功，此函数才返回成功；
@@ -203,4 +208,12 @@ Promise.all = function(values) {
   });
 };
 ```
+
+:::
+
+### webpack 热更新原理，有没有配置过 webpack，自己实现一些插件之类
+
+::: details 点击查看
+![](@public/Casequestion/webpackHmr.png)
+
 :::

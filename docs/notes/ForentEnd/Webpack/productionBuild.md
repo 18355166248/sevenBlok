@@ -29,56 +29,56 @@
 #### + webpack.common.js
 
 ```js
-const path = require('path')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require("path");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: {
-    app: './src/index.js'
+    app: "./src/index.js",
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(["dist"]),
     new HtmlWebpackPlugin({
-      title: 'Production'
-    })
+      title: "Production",
+    }),
   ],
   output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
-  }
-}
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist"),
+  },
+};
 ```
 
 #### + webpack.dev.js
 
 ```js
-const merge = require('webpack-merge')
-const common = require('./webpack.common.js')
+const merge = require("webpack-merge");
+const common = require("./webpack.common.js");
 
 module.exports = merge(common, {
-  devtool: 'inline-source-map',
+  devtool: "inline-source-map",
   devServer: {
-    contentBase: './dist'
-  }
-})
+    contentBase: "./dist",
+  },
+});
 ```
 
 #### + webpack.prod.js
 
 ```js
-const merge = require('webpack-merge')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
-const common = require('./webpack.common.js')
+const merge = require("webpack-merge");
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
+const common = require("./webpack.common.js");
 
 module.exports = merge(common, {
   // 生产环境中使用source-map
-  devtool: 'source-map',
+  devtool: "source-map",
   plugins: [
     new UglifyJSPlugin({
-      sourceMap: true
-    })
-  ]
-})
+      sourceMap: true,
+    }),
+  ],
+});
 ```
 
 ## 2. NPM Scripts 配置
@@ -99,26 +99,26 @@ module.exports = merge(common, {
 #### webpack.prod.js
 
 ```js
-const webpack = require('webpack')
-const merge = require('webpack-merge')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
-const common = require('./webpack.common.js')
+const webpack = require("webpack");
+const merge = require("webpack-merge");
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
+const common = require("./webpack.common.js");
 
 module.exports = merge(common, {
-  devtool: 'source-map',
+  devtool: "source-map",
   plugins: [
     new UglifyJSPlugin({
-      sourceMap: true
+      sourceMap: true,
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    })
-  ]
-})
+      "process.env.NODE_ENV": JSON.stringify("production"),
+    }),
+  ],
+});
 ```
 
 <Card theme="#DCF2FD" font-size="16px" color="#618ca0">
-技术上讲，NODE_ENV 是一个由 Node.js 暴露给执行脚本的系统环境变量。通常用于决定在开发环境与生产环境(dev-vs-prod)下，服务器工具、构建脚本和客户端 library 的行为。然而，与预期不同的是，无法在构建脚本 webpack.config.js 中，将 process.env.NODE_ENV 设置为 "production"，请查看 #2537。因此，例如 process.env.NODE_ENV === 'production' ? '[name].[hash].bundle.js' : '[name].bundle.js' 这样的条件语句，在 webpack 配置文件中，无法按照预期运行。
+<p>技术上讲，NODE_ENV 是一个由 Node.js 暴露给执行脚本的系统环境变量。通常用于决定在开发环境与生产环境(dev-vs-prod)下，服务器工具、构建脚本和客户端 library 的行为。然而，与预期不同的是，无法在构建脚本 webpack.config.js 中，将 process.env.NODE_ENV 设置为 "production"，请查看 #2537。因此，例如 process.env.NODE_ENV === 'production' ? '[name].[hash].bundle.js' : '[name].bundle.js' 这样的条件语句，在 webpack 配置文件中，无法按照预期运行。</p>
 </Card>
 
 还要注意，任何位于 /src 的本地代码都可以关联到 process.env.NODE_ENV 环境变量

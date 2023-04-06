@@ -54,7 +54,7 @@ lerna publish --canary preminor
 # 1.0.0 => 1.1.0-alpha.0+${SHA}
 ```
 
-### --registry <url> 指定 registry
+### --registry \<url\> 指定 registry
 
 ### --npm-client 指定安装用的 npm client
 

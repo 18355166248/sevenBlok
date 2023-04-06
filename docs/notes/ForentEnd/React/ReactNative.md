@@ -35,14 +35,14 @@ npx react-native init AwesomeTSProject --template react-native-template-typescri
 ```
 
 <Card type="warning">
-pod install 速度慢的终极解决方案
+<p>pod install 速度慢的终极解决方案
 
 git config --global http.https://github.com.proxy socks5://127.0.0.1:1081
 
 ( ps：如果要恢复/移除上面设置的 git 代理，使用如下命令 )
 
 git config --global --unset http.proxy
-git config --global --unset http.https://github.com.proxy
+git config --global --unset http.https://github.com.proxy</p>
 </Card>
 
 <Card>重点: 安装成功后进入项目执行 yarn ios | npm run ios 可能会报错 建议重装系统或者重新安装依赖重试</Card>

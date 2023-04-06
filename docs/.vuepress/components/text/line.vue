@@ -6,7 +6,7 @@
       fontSize: fontSize + 'px',
       backgroundColor: backgroundColor,
     }"
-    ><slot
+    >{{ text }}<slot
   /></span>
 </template>
 
@@ -24,6 +24,9 @@ export default {
     backgroundColor: {
       type: String,
       default: "#F3F5F9",
+    },
+    text: {
+      type: String,
     },
   },
 };

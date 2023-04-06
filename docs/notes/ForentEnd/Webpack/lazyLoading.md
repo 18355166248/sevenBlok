@@ -17,12 +17,12 @@ webpack-demo
 
 ```js
 console.log(
-  'The print.js module has loaded! See the network tab in dev tools...'
-)
+  "The print.js module has loaded! See the network tab in dev tools..."
+);
 
 export default () => {
-  console.log('Button Clicked: Here\'s "some text"!')
-}
+  console.log('Button Clicked: Here\'s "some text"!');
+};
 ```
 
 #### - src/index.js
@@ -52,6 +52,4 @@ export default () => {
 + document.body.appendChild(component());
 ```
 
-<Card theme="##fbedb7" color="#8c8466">
-注意当调用 ES6 模块的 import() 方法（引入模块）时，必须指向模块的 .default 值，因为它才是 promise 被处理后返回的实际的 module 对象。
-</Card>
+<Card theme="##fbedb7" color="#8c8466">注意当调用 ES6 模块的 import() 方法（引入模块）时，必须指向模块的 .default 值，因为它才是 promise 被处理后返回的实际的 module 对象。</Card>
