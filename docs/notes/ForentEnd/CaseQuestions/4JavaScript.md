@@ -213,6 +213,12 @@ Promise.all = function(values) {
 
 ### webpack 热更新原理，有没有配置过 webpack，自己实现一些插件之类
 
+HMR（Hot Module Replace）热模块替换
+
+参考文档:
+- [webpack原理解析【万字长文】](https://blog.csdn.net/bigname22/article/details/125977476)
+- [webpack热更新原理](https://blog.csdn.net/bigname22/article/details/127362168)
+
 ::: details 点击查看
 ![](@public/Casequestion/webpackHmr.png)
 
