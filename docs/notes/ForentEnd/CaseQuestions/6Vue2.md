@@ -193,3 +193,9 @@ CDN 的使用
 使用 Chrome Performance 查找性能瓶颈
 
  ## vue双向数据绑定实现，用Object.defineProperty()实现的缺点，有什么场景是不能用它实现的。那么其他场景如何实现。不用Object.defineProperty()如何实现？
+
+::: details 点击查看
+1. object.defineproperty 无法监控到数组下标的变化，导致通过数组下标添加元素，无法实时响应
+2. object.defineProperty 只能劫持对象的属性，从而需要对每个对象，每个属性进行遍历，如果，属性值是对象，还需要深度遍历。Proxy 可以劫持整个对象，并返回一个新的对象
+3. proxy 不仅可以代理对象，还可以代理数组，还可以代理动态增加的属性
+:::
