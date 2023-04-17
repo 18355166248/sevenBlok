@@ -216,7 +216,7 @@ Promise.all = function(values) {
 ::: details 点击查看实现代码
 浏览器在对 % 执行 **decodeURI、decodeURIComponent、encodeURI、encodeURIComponent **的时候会报错。因为 % 在浏览器属于不安全字符
 
-#### 解决方案
+##### 解决方案
 1. 首先要对param中的不安全字符进行转译，转译完毕再进行编码和解码 ps(对于浏览器默认编码了的，如haorooms%E5%8D%9A%E5%AE%A2%E5%A5%BD%E8%AF%84%E7%8E%8790%，不能再进行字符替换了。)
 // 对查询关键字中的特殊字符进行编码
 
