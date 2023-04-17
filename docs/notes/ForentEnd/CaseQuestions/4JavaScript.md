@@ -208,18 +208,90 @@ Promise.all = function(values) {
   });
 };
 ```
-
 :::
 
-### webpack 热更新原理，有没有配置过 webpack，自己实现一些插件之类
 
-HMR（Hot Module Replace）热模块替换
+### decodeURIComponent 解析字符串带 % 报错 Uncaught URIError: URI malformed
 
-参考文档:
-- [webpack原理解析【万字长文】](https://blog.csdn.net/bigname22/article/details/125977476)
-- [webpack热更新原理](https://blog.csdn.net/bigname22/article/details/127362168)
+::: details 点击查看实现代码
+浏览器在对 % 执行 **decodeURI、decodeURIComponent、encodeURI、encodeURIComponent **的时候会报错。因为 % 在浏览器属于不安全字符
 
-::: details 点击查看
-![](@public/Casequestion/webpackHmr.png)
+### 解决方案
+1. 首先要对param中的不安全字符进行转译，转译完毕再进行编码和解码 ps(对于浏览器默认编码了的，如haorooms%E5%8D%9A%E5%AE%A2%E5%A5%BD%E8%AF%84%E7%8E%8790%，不能再进行字符替换了。)
+// 对查询关键字中的特殊字符进行编码
 
+```js
+function encodeSearchKey(key) {
+  const encodeArr = [
+    {
+      code: "%",
+      encode: "%25",
+    },
+    {
+      code: "?",
+      encode: "%3F",
+    },
+    {
+      code: "#",
+      encode: "%23",
+    },
+    {
+      code: "&",
+      encode: "%26",
+    },
+    {
+      code: "=",
+      encode: "%3D",
+    },
+  ];
+  return key.replace(/[%?#&=]/g, ($, index, str) => {
+    for (const k of encodeArr) {
+      if (k.code === $) {
+        return k.encode;
+      }
+    }
+  });
+}
+```
+
+
+2. 对于已经被浏览器编译了的，可以采用如下方式，避免报错
+
+方法1:
+```js
+function decodeURIComponentSafe(uri, mod) {
+  var out = new String(),
+    arr,
+    i = 0,
+    l,
+    x;
+  typeof mod === "undefined" ? (mod = 0) : 0;
+  // 分割 不保存匹配的值 也就是说不pieing %d0 %d1
+  arr = uri.split(/(%(?:d0|d1)%.{2})/);
+  for (l = arr.length; i < l; i++) {
+    try {
+      x = decodeURIComponent(arr[i]);
+    } catch (e) {
+      // 捕获不以数字结尾的 %
+      x = mod ? arr[i].replace(/%(?!\d+)/g, "%25") : arr[i];
+    }
+    out += x;
+  }
+  return out;
+}
+```
+
+方法2:
+```js
+function decodeURIComponentSafely(uri) {
+  try {
+      return decodeURIComponent(uri)
+  } catch(e) {
+      console.log('URI Component not decodable: ' + uri)
+      return uri
+  }
+}
+```
+
+浏览器url参数中 不建议使用不安全字符!!!
 :::

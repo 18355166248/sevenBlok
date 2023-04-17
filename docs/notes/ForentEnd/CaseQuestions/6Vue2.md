@@ -3,6 +3,7 @@
 ## vue-cli 脚手架做了啥
 
 他里面有一个操作 叫 check version 你知道咋实现的么
+用 update-check 库 传入 package.json 对比线上仓库 判断是否需要更新
 
 ## Vue Router 路由实现
 
@@ -190,3 +191,5 @@ Vue 项目的编译优化
 浏览器缓存
 CDN 的使用
 使用 Chrome Performance 查找性能瓶颈
+
+ ## vue双向数据绑定实现，用Object.defineProperty()实现的缺点，有什么场景是不能用它实现的。那么其他场景如何实现。不用Object.defineProperty()如何实现？

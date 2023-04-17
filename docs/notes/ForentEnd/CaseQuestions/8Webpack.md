@@ -58,7 +58,35 @@ babel-runtime 也是为了做隔离, 将每个需要引入的遍历通过 requir
 
 Babel 只是转换 syntax 层语法,所有需要 @babel/polyfill 来处理 API 兼容,又因为 polyfill 体积太大，所以通过 preset 的 useBuiltIns 来实现按需加载,再接着为了满足 npm 组件开发的需要 出现了 @babel/runtime 来做隔离
 
-## loader 和 plugin 的区别
+## 3. loader 和 plugin 的区别
 
 - Loader 直译为'加载器'. webpack 将一切文件视为模块, 但是 webpack 原生只有解析 js 文件的能力, 如果想将其他文件也解析打包的话, 就要用到 loader, 所以 loader 是为了让 webpack 能够解析打包非 webpack 文件的能力
 - Plugin 直译为'插件'. Plugin 可以扩展 webpack 的能力, 让 webpack 更加灵活, webpack 本身在打包节点会暴露出不同的生命周期 API, Plugin 可以监听这些事件, 在合适的时机通过 webpack 提供的 API 多 webpack 的输出结果做出修改
+
+
+## 4. webpack 热更新原理，有没有配置过 webpack，自己实现一些插件之类
+
+::: details 点击查看
+![](@public/Casequestion/webpackHmr.png)
+
+HMR（Hot Module Replace）热模块替换
+
+参考文档:
+- [webpack热更新原理](https://blog.csdn.net/bigname22/article/details/127362168)
+
+热更新的实现主要是依靠 webpack-dev-server
+
+1. 启动 webpack，生成 compiler 实例，compiler 实例的功能很多，比如用来启动 webpack 的编译工作，监听文件变化等。
+2. 使用 Express 启动一个本地服务，使得浏览器可以访问本地服务
+3. 启动 websocket 服务，用于浏览器和本地 node 服务进行通讯。
+
+监听文件变化
+
+webpack 监听文件变化主要是通过 webpack-dev-middleware 这个库来完成，它负责本地文件的编译、输出和监听 webpack-dev-middleware 中执行了 compiler.watch 方法，它主要做了两件事情
+
+对本地文件编译打包
+编译结束之后，开启监听，文件发生变化时重新编译，并持续进行监听
+监听 webpack 编译结束
+
+setupHooks 方法用来注册监听事件，当监听到 webpack 编译结束时，通过 websocket 给浏览器发通知，浏览器拿到 hash 只之后就可以做检查更新逻辑。
+:::
