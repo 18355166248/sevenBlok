@@ -208,8 +208,8 @@ Promise.all = function(values) {
   });
 };
 ```
-:::
 
+:::
 
 ### decodeURIComponent 解析字符串带 % 报错 Uncaught URIError: URI malformed
 
@@ -217,8 +217,9 @@ Promise.all = function(values) {
 浏览器在对 % 执行 **decodeURI、decodeURIComponent、encodeURI、encodeURIComponent **的时候会报错。因为 % 在浏览器属于不安全字符
 
 ##### 解决方案
-1. 首先要对param中的不安全字符进行转译，转译完毕再进行编码和解码 ps(对于浏览器默认编码了的，如haorooms%E5%8D%9A%E5%AE%A2%E5%A5%BD%E8%AF%84%E7%8E%8790%，不能再进行字符替换了。)
-// 对查询关键字中的特殊字符进行编码
+
+1. 首先要对 param 中的不安全字符进行转译，转译完毕再进行编码和解码 ps(对于浏览器默认编码了的，如 haorooms%E5%8D%9A%E5%AE%A2%E5%A5%BD%E8%AF%84%E7%8E%8790%，不能再进行字符替换了。)
+   // 对查询关键字中的特殊字符进行编码
 
 ```js
 function encodeSearchKey(key) {
@@ -254,10 +255,10 @@ function encodeSearchKey(key) {
 }
 ```
 
-
 2. 对于已经被浏览器编译了的，可以采用如下方式，避免报错
 
-方法1:
+方法 1:
+
 ```js
 function decodeURIComponentSafe(uri, mod) {
   var out = new String(),
@@ -281,25 +282,26 @@ function decodeURIComponentSafe(uri, mod) {
 }
 ```
 
-方法2:
+方法 2:
+
 ```js
 function decodeURIComponentSafely(uri) {
   try {
-      return decodeURIComponent(uri)
-  } catch(e) {
-      console.log('URI Component not decodable: ' + uri)
-      return uri
+    return decodeURIComponent(uri);
+  } catch (e) {
+    console.log("URI Component not decodable: " + uri);
+    return uri;
   }
 }
 ```
 
-浏览器url参数中 不建议使用不安全字符!!!
+浏览器 url 参数中 不建议使用不安全字符!!!
 :::
-
 
 ### 数组去重，数组里面有重复的函数对象
 
 ::: details 点击查看
+
 ```js
 function filterRepeat(list) {
   const set = new Set();
@@ -314,4 +316,5 @@ function filterRepeat(list) {
   return Array.from(res);
 }
 ```
+
 :::
