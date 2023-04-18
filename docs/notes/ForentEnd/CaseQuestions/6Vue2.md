@@ -14,6 +14,7 @@
 
 #### HTML5hisTory
 
+::: details 点击查看
 back(), forward(), go()等方法，我们可以读取浏览器历史记录栈的信息
 pushState(), replaceState() 这下不仅是读取了，还可以对浏览器历史记录栈进行修改
 在 HTML5History 的构造函数中监听 popState（window.onpopstate）
@@ -25,9 +26,11 @@ history 路由模式的实现主要基于存在下面几个特性：
 pushState 和 repalceState 两个 API 来操作实现 URL 的变化 ；
 我们可以使用 popstate 事件来监听 url 的变化，从而对页面进行跳转（渲染）；
 history.pushState() 或 history.replaceState() 不会触发 popstate 事件，这时我们需要手动触发页面跳转（渲染）。 路由记录的数据是响应式的, 数据的变化会触发重新渲染
+:::
 
 ## Vue 的父组件和子组件生命周期钩子函数执行顺序？
 
+::: details 点击查看
 Vue 的父组件和子组件生命周期钩子函数执行顺序可以归类为以下 4 部分：
 
 - 加载渲染过程
@@ -41,6 +44,7 @@ Vue 的父组件和子组件生命周期钩子函数执行顺序可以归类为�
 
 * 销毁过程
   父 beforeDestroy -> 子 beforeDestroy -> 子 destroyed -> 父 destroyed
+  :::
 
 ## 在哪个生命周期内调用异步请求？
 
@@ -51,6 +55,7 @@ ssr  不支持 beforeMount 、mounted 钩子函数，所以放在 created 中�
 
 ## 父组件可以监听到子组件的生命周期吗？
 
+::: details 点击查看
 比如有父组件 Parent 和子组件 Child，如果父组件监听到子组件挂载 mounted 就做一些逻辑处理，可以通过以下写法实现：
 
 ```js
@@ -82,6 +87,7 @@ mounted(){
 // 以上输出顺序为：
 // 子组件触发 mounted 钩子函数 ...
 // 父组件监听到 mounted 钩子函数 ...
+:::
 
 ## 谈谈你对 keep-alive 的了解？
 
@@ -93,6 +99,8 @@ keep-alive 是 Vue 内置的一个组件，可以使被包含的组件保留状�
 
 ## Vue 是如何实现数据双向绑定的？
 
+::: details 点击查看
+
 1. 实现一个监听器 Observer : 对数据对象进行遍历, 包括子属性对象的属性, 利用 Object.defineProperty() 对象属性都加上 getter 和 setter. 这样的话, 给这个对象的某个赋值, 就会被 setter 监听到
 
 2. 实现一个解析器 Compile : 解析 Vue 的模板指令, 将模板中的变量都替换成数据, 然后初始化渲染页面视图, 并将每个指令对应的节点绑定更新函数, 添加监听数据的订阅者 Watcher, 一旦数据有变动, 收到通知, 调用更新函数进行数据更新
@@ -103,7 +111,11 @@ keep-alive 是 Vue 内置的一个组件，可以使被包含的组件保留状�
 
 ![](~@public/Casequestion/vueDataStream.png)
 
+:::
+
 ## Vue 框架怎么实现对象和数组的监听？
+
+::: details 点击查看
 
 ```js
   /**
@@ -122,8 +134,11 @@ keep-alive 是 Vue 内置的一个组件，可以使被包含的组件保留状�
 ```
 
 通过以上 Vue 源码部分查看，我们就能知道 Vue 框架是通过遍历数组 和递归遍历对象，从而达到利用 Object.defineProperty() 也能对对象和数组（部分方法的操作）进行监听。
+:::
 
 ## Proxy 与 Object.defineProperty 优劣对比
+
+::: details 点击查看
 
 - Proxy 的优势如下:
 
@@ -136,6 +151,8 @@ keep-alive 是 Vue 内置的一个组件，可以使被包含的组件保留状�
 - Object.defineProperty 的优势如下:
 
   兼容性好，支持 IE9，而 Proxy 的存在浏览器兼容性问题,而且无法用 polyfill 磨平，因此 Vue 的作者才声明需要等到下个大版本( 3.0 )才能用 Proxy 重写。
+
+:::
 
 ## Vue 怎么用 vm.\$set() 解决对象新增属性不能响应的问题 ？
 
@@ -161,6 +178,7 @@ vue 中有一些节点是重复节点, 也就是通过 v-for 指令循环生成�
 
 ## 你有对 Vue 项目进行哪些优化？
 
+::: details 点击查看
 （1）代码层面的优化
 
 v-if 和 v-show 区分使用场景
@@ -191,11 +209,26 @@ Vue 项目的编译优化
 浏览器缓存
 CDN 的使用
 使用 Chrome Performance 查找性能瓶颈
+:::
 
- ## vue双向数据绑定实现，用Object.defineProperty()实现的缺点，有什么场景是不能用它实现的。那么其他场景如何实现。不用Object.defineProperty()如何实现？
+## vue 双向数据绑定实现，用 Object.defineProperty()实现的缺点，有什么场景是不能用它实现的。那么其他场景如何实现。不用 Object.defineProperty()如何实现？
 
 ::: details 点击查看
+
 1. object.defineproperty 无法监控到数组下标的变化，导致通过数组下标添加元素，无法实时响应
 2. object.defineProperty 只能劫持对象的属性，从而需要对每个对象，每个属性进行遍历，如果，属性值是对象，还需要深度遍历。Proxy 可以劫持整个对象，并返回一个新的对象
 3. proxy 不仅可以代理对象，还可以代理数组，还可以代理动态增加的属性
+   :::
+
+## Vuex 中为什么分为 mutations 和 actions 来执行同步和异步
+
+::: details 点击查看
+[作者解释](https://www.zhihu.com/question/48759748/answer/112823337)
+
+事实上在 vuex 里面 actions 只是一个架构性的概念，并不是必须的，说到底只是一个函数，你在里面想干嘛都可以，只要最后触发 mutation 就行。异步竞态怎么处理那是用户自己的事情。vuex 真正限制你的只有 mutation 必须是同步的这一点（在 redux 里面就好像 reducer 必须同步返回下一个状态一样）。同步的意义在于这样每一个 mutation 执行完成后都可以对应到一个新的状态（和 reducer 一样），这样 devtools 就可以打个 snapshot 存下来，然后就可以随便 time-travel 了。
+
+其实就是做了代码隔离
+不非受控的代码集中到 action
+mutation 只做纯函数的状态改变
+mvvm 一般强调的就是直接面对 view 的那层不要做复杂的逻辑
 :::

@@ -322,7 +322,7 @@ function filterRepeat(list) {
 ### class 实现继承如何使用 es5 实现
 
 ::: details 点击查看
-方法1:
+方法 1:
 
 ```JavaScript
 function inherit(Child, Parent) {
@@ -352,7 +352,8 @@ function inherit(Child, Parent) {
 
 ```
 
-方法2:
+方法 2:
+
 ```JavaScript
 function createObject(P) {
   var f = function f() {};
@@ -400,20 +401,98 @@ stu1.running();
 stu1.eating();
 stu1.call1();
 ```
+
 :::
 
 ### 判断数组的多种方式
 
-1. instanceof 运算符  arr instanceof Array
-2. constructor 构造函数   arr.constructor === Array
+1. instanceof 运算符 arr instanceof Array
+2. constructor 构造函数 arr.constructor === Array
 3. isArray
 4. Object.property.toString.call(arr) [object Array]
 5. Array.property.isPrototypeOf(arr)
 6. Object.getPrototypeOf(arr) === Array.prototype
 
-### 判断对象是否有某个key
+### 判断对象是否有某个 key
 
 1. in key in obj
 2. hasOwnProperty obj.hasOwnProperty(key)
-3. Reflect   Reflect.has(obj, key)
+3. Reflect Reflect.has(obj, key)
 4. propertyIsEnumerable object.propertyIsEnumerable(key)
+
+### 数组扁平化方法，除了用递归还有什么方法
+
+方法 1: 如果是数字嵌套数组
+
+```js
+function flatten(arr) {
+  return arr.toString().split(',').map((item) => Number(item));
+},
+```
+
+方法 2: while 判断子集是否存在数组 循环
+
+```js
+function flatten(arr) {
+  while (arr.findIndex((item) => Array.isArray(item)) > 0) {
+    arr = [].concat(...arr);
+  }
+  return arr;
+}
+```
+
+方法 3: Array 上的 flat 方法
+
+```js
+function flatten(arr) {
+  return arr.flat(Infinity);
+}
+```
+
+方法 4: 转字符串 正则替换 [ ]
+
+```js
+function flatten(list) {
+  let listStr = JSON.stringify(list).replace(/(\[|\])/g, "");
+  listStr = "[" + listStr + "]";
+
+  return JSON.parse(listStr);
+}
+```
+
+方法 4: 使用堆栈 stack
+
+```js
+function flatten(list) {
+  const stack = [...list];
+  const res = [];
+
+  while (stack.length) {
+    // 从后往前
+    const next = stack.pop();
+    if (Array.isArray(next)) {
+      stack.push(...next);
+    } else {
+      res.unshift(next);
+    }
+  }
+
+  return res;
+}
+```
+
+方法 5: 使用 Generator 与递归结合
+
+```js
+function* flatten(arr) {
+  for (const item of arr) {
+    if (Array.isArray(item)) {
+      yield* flatten(item);
+    } else {
+      yield item;
+    }
+  }
+}
+
+console.log([...flatten(arr)]);
+```
