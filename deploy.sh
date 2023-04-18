@@ -12,9 +12,9 @@ cd docs/.vuepress/distBlok
 # 如果是发布到自定义域名
 # echo 'www.example.com' > CNAME
 
-git init
+# git init
 git add -A
-git commit -m 'deploy'
+git commit -m 'feat: deploy'
 
 # 如果发布到 https://<18355166248>.github.io
 git push -f git@github.com:18355166248/18355166248.github.io.git master
