@@ -499,3 +499,4 @@ function* flatten(arr) {
 
 console.log([...flatten(arr)]);
 ```
+
