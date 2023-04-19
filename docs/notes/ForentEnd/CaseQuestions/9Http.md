@@ -372,14 +372,29 @@ Tips：preload 加载资源一般是当前页面需要的，prefetch 一般是�
 
 :::
 
-
-## 前端缓存机制，如果去掉etags\last-modefied\cache-control这些控制缓存的字段，浏览器会怎么处理缓存
+## 前端缓存机制，如果去掉 etags\last-modefied\cache-control 这些控制缓存的字段，浏览器会怎么处理缓存
 
 ::: details 点击
 TODO: 不准确
 Push Cache
-“推送缓存”是针对HTTP/2标准下的推送资源设定的。推送缓存是session级别的，当 session 终止时，缓存也随之释放。在以上三种缓存都没有的情况下，它才会被使用。
+“推送缓存”是针对 HTTP/2 标准下的推送资源设定的。推送缓存是 session 级别的，当 session 终止时，缓存也随之释放。在以上三种缓存都没有的情况下，它才会被使用。
 Push Cache 是缓存的最后一道防线。浏览器只有在 Memory Cache、HTTP Cache 和 Service Worker Cache 均未命中的情况下才会去询问 Push Cache。
 :::
 
+## 说一下 http1.1 的 keep-alive
 
+::: details 点击查看
+随着技术的发展，一个网页需要建立很多次短连接，这大大影响了消息的处理，所以 Http 就提出了持续连接的概念
+
+持久连接的主要好处是避免了短连接的每次连接的三次握手和四次挥手的网络交互。
+
+在 Http 协议的 Header 头，有两个 Tag 可以控制这个 keep-alive， Connection: Keep-Alive 和 Keep-Alive:timeout，它们表示的是保持持续连接状态的时间为 timeout 秒。
+
+:::
+
+## HTTP/1.x keep-alive 与 HTTP/2 多路复用区别：
+
+1. HTTP/1.x 是基于文本的，只能整体去传；HTTP/2 是基于二进制流的，可以分解为独立的帧，交错发送
+2. HTTP/1.x keep-alive 必须按照请求发送的顺序返回响应；HTTP/2 多路复用不按序响应
+3. HTTP/1.x keep-alive 为了解决队头阻塞，将同一个页面的资源分散到不同域名下，开启了多个 TCP 连接；HTTP/2 同域名下所有通信都在单个连接上完成
+4. HTTP/1.x keep-alive 单个 TCP 连接在同一时刻只能处理一个请求（两个请求的生命周期不能重叠）；HTTP/2 单个 TCP 同一时刻可以发送多个请求和响应
