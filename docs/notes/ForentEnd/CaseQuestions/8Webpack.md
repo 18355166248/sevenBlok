@@ -1,8 +1,6 @@
----
-sidebar: auto
----
-
 # webpack 面试题
+
+[[toc]]
 
 ## 1. tree shaking 原理
 

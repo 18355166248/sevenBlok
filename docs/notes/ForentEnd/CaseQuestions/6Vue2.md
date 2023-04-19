@@ -1,5 +1,7 @@
 # Vue 面试题
 
+[[toc]]
+
 ## vue-cli 脚手架做了啥
 
 他里面有一个操作 叫 check version 你知道咋实现的么
@@ -231,4 +233,19 @@ CDN 的使用
 不非受控的代码集中到 action
 mutation 只做纯函数的状态改变
 mvvm 一般强调的就是直接面对 view 的那层不要做复杂的逻辑
+:::
+
+## Vue怎么监听深度嵌套对象的属性变化
+
+::: details 点击
+```js
+watch: {
+  "obj.onj.work.ss":{
+    deep:true,
+    handler(){
+        console.log('监听到对象的属性改变了');
+    }
+  }
+}
+```
 :::

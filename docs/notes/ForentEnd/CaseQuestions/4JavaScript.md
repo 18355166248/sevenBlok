@@ -406,15 +406,18 @@ stu1.call1();
 
 ### 判断数组的多种方式
 
-1. instanceof 运算符 arr instanceof Array
-2. constructor 构造函数 arr.constructor === Array
+::: details 点击
+1. instanceof 运算符  arr instanceof Array
+2. constructor 构造函数   arr.constructor === Array
 3. isArray
 4. Object.property.toString.call(arr) [object Array]
 5. Array.property.isPrototypeOf(arr)
 6. Object.getPrototypeOf(arr) === Array.prototype
+:::
 
 ### 判断对象是否有某个 key
 
+::: details 点击
 1. in key in obj
 2. hasOwnProperty obj.hasOwnProperty(key)
 3. Reflect Reflect.has(obj, key)

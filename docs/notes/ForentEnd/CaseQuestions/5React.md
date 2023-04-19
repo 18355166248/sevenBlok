@@ -1,7 +1,10 @@
 # React 面试题
 
+[[toc]]
+
 ## 1. HTML 和 React 的事件处理有何区别？React 中可以使用 return false 取消默认行为吗？（项目中遇到的问题）
 
+::: details 点击
 主要区别如下：
 
 - 在 HTML 中，事件名称使用小写，而 React 中使用驼峰命名。
@@ -23,6 +26,7 @@ function handleClick(e) {
     e.preventDefault()
 }
 ```
+:::
 
 ## 2. useMemo 和 useCallback 的使用场景？
 
@@ -37,6 +41,7 @@ useCallback 计算结果是函数，用于缓存函数
 
 ## 3. 有没有使用过 react 的 useContext？如何避免 react context 导致的重复不必要的渲染问题？
 
+::: details 点击
 解决方案看 https://zhuanlan.zhihu.com/p/50336226
 
 思路就是再使用 context 的时候，独立声明高阶组件包裹下面的 children，这样组件内部改变 context 不会影响外面调用 context 的组件，避免不必要的渲染
@@ -44,6 +49,7 @@ useCallback 计算结果是函数，用于缓存函数
 #### 作用
 
 数据上下文初始化，用于所有子组件可以快速获取，使用
+:::
 
 ## 4. useLayoutEffect 与 useEffect 区别, useLayoutEffect 使用场景？以及这两个执行的先后顺序？
 
@@ -146,3 +152,27 @@ import 'react-app-polyfill/stable' 3.修改 package.json 的配置
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 不是使用create-react-app创建的项目
 无需配置react-app-polyfill和package.json，其他的同上
+
+## React 有哪些常用的 hooks
+
+::: details 点击
+我们参考 [React18](https://react.dev/reference/react)
+
+useCallback // 缓存函数
+useMemo // 缓存数据
+useContext // 读取和订阅 context 在组件中
+useEffect // 订阅更新
+useId // 生成唯一的 ID 可以传递给辅助功能属性
+useImperativeHandle // 配合 forwardRef 传递数据给父组件
+useLayoutEffect // 在浏览器重新绘制屏幕之前激发
+useEffect // 组件的一些异步操作
+useReducer // 添加一个 reducer 在你的组价内
+useRef // 生成一个改变不会触发组件更新的值
+useState // 生成一个状态变量在你的组件中
+useTransition // 在不影响浏览器渲染的情况下执行
+useDeferredValue // 允许您推迟更新UI的一部分
+
+useSyncExternalStore // 提供给第三方库比如 redux 可以同步拿到最新的数据
+useInsertionEffect // 在使用 css-in-js 会用到 插入样式在 DOM 渲染前
+useDebugValue // 配合 React DevTools 使用
+:::

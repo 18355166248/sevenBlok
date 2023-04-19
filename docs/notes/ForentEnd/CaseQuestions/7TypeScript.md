@@ -1,5 +1,7 @@
 # TypeScript面试
 
+[[toc]]
+
 ## type和interface的差别
 
 type: 类型别名  interface: 接口

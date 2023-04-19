@@ -1,5 +1,7 @@
 # Http 知识点
 
+[[toc]]
+
 ## 1. http1.x 和 http2 的区别
 
 ![Image from alias](~@public/Casequestion/httpHistory.png)
@@ -369,3 +371,15 @@ prefetch（预读取） 告诉浏览器这个 资源将来可能需要，但是 
 Tips：preload 加载资源一般是当前页面需要的，prefetch 一般是其它页面有可能用到的资源。
 
 :::
+
+
+## 前端缓存机制，如果去掉etags\last-modefied\cache-control这些控制缓存的字段，浏览器会怎么处理缓存
+
+::: details 点击
+TODO: 不准确
+Push Cache
+“推送缓存”是针对HTTP/2标准下的推送资源设定的。推送缓存是session级别的，当 session 终止时，缓存也随之释放。在以上三种缓存都没有的情况下，它才会被使用。
+Push Cache 是缓存的最后一道防线。浏览器只有在 Memory Cache、HTTP Cache 和 Service Worker Cache 均未命中的情况下才会去询问 Push Cache。
+:::
+
+
