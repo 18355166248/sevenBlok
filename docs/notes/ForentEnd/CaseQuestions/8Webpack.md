@@ -61,8 +61,10 @@ Babel 只是转换 syntax 层语法,所有需要 @babel/polyfill 来处理 API �
 
 ## 3. loader 和 plugin 的区别
 
+::: details 点击
 - Loader 直译为'加载器'. webpack 将一切文件视为模块, 但是 webpack 原生只有解析 js 文件的能力, 如果想将其他文件也解析打包的话, 就要用到 loader, 所以 loader 是为了让 webpack 能够解析打包非 webpack 文件的能力
 - Plugin 直译为'插件'. Plugin 可以扩展 webpack 的能力, 让 webpack 更加灵活, webpack 本身在打包节点会暴露出不同的生命周期 API, Plugin 可以监听这些事件, 在合适的时机通过 webpack 提供的 API 多 webpack 的输出结果做出修改
+:::
 
 ## 4. webpack 热更新原理，有没有配置过 webpack，自己实现一些插件之类
 
@@ -105,4 +107,92 @@ contenthash
 ### 总结
 
 hash 所有文件哈希值相同； chunkhash 根据不同的入口文件(Entry)进行依赖文件解析、构建对应的 chunk，生成对应的哈希值； contenthash 计算与文件内容本身相关，主要用在 css 抽取 css 文件时。
+:::
+
+## 写过 webpack 的 loader 和 plugin 么
+
+[自己写的demo](https://github.com/18355166248/webpack-custom-loader-plugin)
+
+::: details 点击
+### Loader
+
+执行顺序: 相同优先级的 loader 执行顺序为：从右到左，从下到上
+
+#### 开发loader
+
+可以使用官方的 [loader-runner](github.com/webpack/loader-runner) 调试自定义 loader
+
+我们看一个简单的 babel-loader
+
+```js
+const babel = require("@babel/core");
+const schemaJson = require("./scheme.json"); // 这个就是 loader 参数的格式规范 可以通过  schema-utils 做扩展校验 也可以使用 this.getOptions(scheme) 做校验
+
+module.exports = function (content, map, meta) {
+  const options = this.getOptions(schemaJson);
+  const callback = this.async(); // 异步loader
+
+  babel.transform(content, options, function (err, result) {
+    if (err) {
+      callback(err); // 报错
+      return;
+    }
+    callback(null, result.code, map, meta); // 传递给下一个 loader
+  });
+};
+
+```
+
+### Plugin
+写 plugin 可以看下官方提供的[钩子](https://www.webpackjs.com/api/compiler-hooks/)
+插件就像是一个插入到生产线中的一个功能，在特定的时机对生产线上的资源做处理。
+
+钩子的本质就是：事件 实现是通过 [tapable](https://github.com/webpack/tapable) 实现的
+
+Plugin 构建对象 需要知道两个概念 一个是 Compiler, 另一个是 Compilation
+
+我们看一个简单的自定义 Plugin
+
+```js
+class BannerWebpackPlugin {
+  constructor(options) {
+    this.options = options;
+  }
+
+  apply(compiler) {
+    // 在资源输出之前触发
+    compiler.hooks.emit.tap("BannerWebpackPlugin", (compilation) => {
+      const extensions = ["js", "css"];
+      // 1. 获取即将输出的资源文件: compilation.assets
+      // 2. 过滤只保留js和css资源
+      const assets = Object.keys(compilation.assets).filter((path) => {
+        const splitted = path.split(".");
+        const ext = splitted[splitted.length - 1];
+        return extensions.includes(ext);
+      });
+      const prefix = `/*
+      * Author: ${this.options.author}
+      */`;
+      // 3. 遍历资源在顶部添加注释
+      assets.forEach((asset) => {
+        // 获取代码
+        const source = compilation.assets[asset].source();
+        // 拼接上注释
+        const content = prefix + source;
+        // 修改资源
+        compilation.assets[asset] = {
+          source() {
+            return content;
+          },
+          size() {
+            return content.length;
+          },
+        };
+      });
+    });
+  }
+}
+
+module.exports = BannerWebpackPlugin;
+```
 :::
