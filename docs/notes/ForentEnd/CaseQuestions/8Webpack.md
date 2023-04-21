@@ -196,3 +196,18 @@ class BannerWebpackPlugin {
 module.exports = BannerWebpackPlugin;
 ```
 :::
+
+## webpack 处理 image 是用哪个 loader，限制生成 image 大小的是哪个？
+
+::: details 点击
++ file-loader 将文件上的 import / require（）解析为 url，并将该文件发射到输出目录中。
++ url-loader 可以识别图片的大小，然后把图片转换成base64，从而减少代码的体积，如果图片超过设定的现在，就还是用 file-loader来处理。
+
+提示：给图片配了 url-loader 在配置里面就不要再给图片配 file-loader 了
+:::
+
+## webpack 怎么将 多个css文件 合并成一个
+
+::: details 点击
+
+:::
