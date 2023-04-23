@@ -500,3 +500,9 @@ function* flatten(arr) {
 console.log([...flatten(arr)]);
 ```
 
+
+### 实现一下「模版字符串」功能
+
+::: details 点击
+
+:::

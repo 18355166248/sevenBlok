@@ -209,5 +209,83 @@ module.exports = BannerWebpackPlugin;
 ## webpack 怎么将 多个css文件 合并成一个
 
 ::: details 点击
+使用 [mini-css-extract-plugin](https://webpack.docschina.org/plugins/mini-css-extract-plugin#root)
+
+使用 optimization.splitChunks.cacheGroups 选项，所有的 CSS 可以被提取到一个 CSS 文件中。
+
+webpack.config.js
+
+```js
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+module.exports = {
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: "styles",
+          type: "css/mini-extract",
+          chunks: "all",
+          enforce: true,
+        },
+      },
+    },
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+    }),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+    ],
+  },
+};
+```
+
+:::
+
+## webpack 的摇树对 commonjs 和 es6 module 都生效么，原理是？
+
+::: details 点击
+webpack4 对 commonjs 不生效
+webpack5 对 commonjs 生效
+
+es的import引入是静态引入，commonjs的require引入是动态引入。
+
+原理:
+1. 收集模块导出的内容
+（1）ESM 导出语句会转换为 Dependency 对象，记录到 module 对象的 dependencies 集合。
+
+（2）webpack使用FlagDependencyExportsPlugin 插件从 entry 入口开始，遍历所有 module 对象，将其dependencies集合中的导出值，放入 ModuleGraph 中存储，完成模块导出内容的收集。
+
+2. 标记模块导出的内容
+模块导出信息收集完毕后，Webpack 需要标记出各个模块哪些导出值有被其它模块用到，哪些没有：
+webpack使用在 FlagDependencyUsagePlugin 插件中，逐步遍历 ModuleGraph 存储的所有moudle的导出值，每个导出值会被编译器方法（compilation.getDependencyReferencedExports 方法）所检验，确定其对应是否被其它模块使用，如果被其他模块所使用，将该导出值放入到webpack导出对象中（ __webpack_exports__），未被使用的值都不会定义在 __webpack_exports__ 对象中，形成一段不可能被执行的 Dead Code 效果。
+
+3. 删除无效代码
+由 Terser、UglifyJS 等 DCE 工具“摇”掉这部分无效代码，构成完整的 Tree Shaking 操作。
+
+#### webpack4和webpack5中tree shaking的区别
+##### webpack4：
+
+1. Tree Shaking只支持ES模块的使用，不支持require这种动态引入模块的方式。
+
+2. 只分析浅层的模块导出与引入关系，进行dead-code的去除。
+
+##### webpack5: (尝试过 确实生效了)
+
+1. Webpack 5 中增加了对一些 CommonJS 风格模块代码的静态分析功功能。
+支持 exports.xxx、this.exports.xxx、module.exports.xxx 语法的导出分析。
+支持 object.defineProperty(exports, "xxxx", ...) 语法的导出分析。
+支持 require('xxxx').xxx 语法的导入分析。
+
+2. 支持对嵌套引入模块的依赖分析优化，还增加了分析模块中导出项与导入项的依赖关系的功能。
+
+通过 optimization.innerGraph（生产环境下默认开启）选项，Webpack 5 可以分析特定类型导出项中对导入项的依赖关系，从而找到更多未被使用的导入模块并加以移除
 
 :::
