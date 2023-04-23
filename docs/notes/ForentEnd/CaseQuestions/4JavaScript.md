@@ -407,17 +407,19 @@ stu1.call1();
 ### 判断数组的多种方式
 
 ::: details 点击
-1. instanceof 运算符  arr instanceof Array
-2. constructor 构造函数   arr.constructor === Array
+
+1. instanceof 运算符 arr instanceof Array
+2. constructor 构造函数 arr.constructor === Array
 3. isArray
 4. Object.property.toString.call(arr) [object Array]
 5. Array.property.isPrototypeOf(arr)
 6. Object.getPrototypeOf(arr) === Array.prototype
-:::
+   :::
 
 ### 判断对象是否有某个 key
 
 ::: details 点击
+
 1. in key in obj
 2. hasOwnProperty obj.hasOwnProperty(key)
 3. Reflect Reflect.has(obj, key)
@@ -500,9 +502,42 @@ function* flatten(arr) {
 console.log([...flatten(arr)]);
 ```
 
-
 ### 实现一下「模版字符串」功能
 
 ::: details 点击
+
+```js
+const html = "{a  }开始了{  b}! 2023{ a  }";
+function getStr2(html, obj) {
+  return html.replace(/\{(.+?)\}/g, (_, key) => obj[key.trim()]);
+}
+console.log(getStr2(html, { a: "江浪", b: "泽丽" }));
+```
+
+:::
+
+### 手写实现一下 Promise.all (Promise 不用写)；
+
+::: details 点击查看
+
+```js
+function PromiseAll(list) {
+  return new Promise((resolve, reject) => {
+    const res = [];
+    for (let i = 0; i < list.length; i++) {
+      list[i]
+        .then((r) => {
+          res[i] = r;
+          if (res.filter((v) => v).length === list.length) {
+            resolve(res);
+          }
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    }
+  });
+}
+```
 
 :::
