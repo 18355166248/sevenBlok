@@ -27,7 +27,7 @@ module.exports = {
   ],
   markdown: {
     lineNumbers: true,
-    toc: { includeLevel: [3, 4] },
+    toc: { includeLevel: [2, 3, 4] },
   },
   configureWebpack: {
     resolve: {

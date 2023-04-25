@@ -176,3 +176,21 @@ useSyncExternalStore // 提供给第三方库比如 redux 可以同步拿到最�
 useInsertionEffect // 在使用 css-in-js 会用到 插入样式在 DOM 渲染前
 useDebugValue // 配合 React DevTools 使用
 :::
+
+## react16新增了哪些生命周期、有什么作用，为什么去掉某些15的生命周期
+
+
+
+::: details 点击
+react16 删除了 componentWillMount componentWillUpdate componentWillReceiveProps
+
+#### 为何删除
+
+<Card text='这里引用拉钩教育修言老师在深入浅出搞定React中的讲解，我觉得他这个讲解通俗易懂，实在无法超越
+
+说回 getDerivedStateFromProps 这个 API，它相对于早期的 componentWillReceiveProps 来说，正是做了“合理的减法”。而做这个减法的决心之强烈，从 getDerivedStateFromProps 直接被定义为 static 方法这件事上就可见一斑—— static 方法内部拿不到组件实例的 this，这就导致你无法在 getDerivedStateFromProps 里面做任何类似于 this.fetch()、不合理的 this.setState（会导致死循环的那种）这类可能会产生副作用的操作。
+
+因此，getDerivedStateFromProps 生命周期替代 componentWillReceiveProps 的背后，是 React 16 在强制推行“只用 getDerivedStateFromProps 来完成 props 到 state 的映射”这一最佳实践。意在确保生命周期函数的行为更加可控可预测，从根源上帮开发者避免不合理的编程方式，避免生命周期的滥用；同时，也是在为新的 Fiber 架构铺路。'></Card>
+
+react16 新增了 getDerivedStateFromProps getSnapshotBeforeUpdate
+:::

@@ -4,6 +4,7 @@
 
 ## 1. http1.x 和 http2 的区别
 
+::: details 点击
 ![Image from alias](~@public/Casequestion/httpHistory.png)
 
 1. http2 使用的是二进制传送, http1.X 用的是文本(字符串)传送
@@ -11,17 +12,19 @@
 3. http2 头部压缩 http2 通过 gzip 和 compress 压缩头部再发送, 同时客户端和服务端会同时维护一张表, 所有字典都会记录在表中, 这样后面每次传输只需要传送表里面的索引 id 就行, 通过 id 从表中查询
 4. http2 支持在未经客户端许可的情况下, 主动向客户端推送内容
 
+:::
 ## 2. http 和 https 的区别
 
+::: details 点击
 1. https 需要协议证书(需要钱)
 2. http 协议运行在 TCP 之上, 所有传输的内容都是明文, https 运行在 SSL/TLS 之上, SSL/TLS 运行在 TCP 之上, 所有传输的内容都是经过加密的
 3. http 是对称加密, https 是用了非对称加密+对称加密的方式
 4. https 用的 443 端口, http 用的是 80 端口
+:::
 
 ## http 里面的 code 码
 
-::: details 点击查看
-
+::: details 点击
 1. 2 开头 (请求成功)
 
 - 200 成功 服务器已经成功处理了请求
@@ -70,8 +73,11 @@
 - 503 (服务不可用) 通常只是暂时状态
 - 504 (网管超时)
 - 505 (http 版本不受支持) 服务器不支持请求中所用的 http 版本
+:::
 
 ## nginx 配置跨域的参数
+
+::: details 点击
 
 ```nginx
 location / {
@@ -100,7 +106,6 @@ location / {
 
 4. 给 OPTIONS 添加 204 的返回，是为了处理在发送 POST 请求时 Nginx 依然拒绝访问的错误
    发送"预检请求"时，需要用到方法 OPTIONS ,所以服务器需要允许该方法。
-
 :::
 
 ## HTTP 报文包含内容
@@ -193,10 +198,12 @@ X-Cache: HIT
 
 ## http 缓存策略
 
+::: details 点击
 - Expires 告诉浏览器在该时间之前, 可以直接从缓存中获取, 而无需向服务器获取 注意是 GMT 时间(格林威治)
 - Cache-Control 优先级高于 Expires, 如果同时设置了 Expires 和 Cache-Control, Expires 会被忽略
   - no-cache 有缓存 但是不直接使用缓存, 需要经过校验
   - no-store 完全没有缓存 所有的请求都需要发送校验
+:::
 
 ## http 缓存详解
 
@@ -311,7 +318,7 @@ TCP 还设有一个保活计时器，显然，客户端如果出现故障，服�
 4. 服务端缓存（CDN 缓存)
 5. Service Worker
 
-<META HTTP-EQUIV="Pragma" CONTENT="no-store">
+\<META HTTP-EQUIV="Pragma" CONTENT="no-store"\>
 含义是让浏览器不缓存当前页面。但是代理服务器不解析 HTML 内容，一般 应用广泛的是用 HTTP 头信息控制缓存。
 
 #### 浏览器缓存过程
@@ -363,7 +370,7 @@ Service Worker 可以直接操作缓存，储存在 Application 中的 Cache Sto
 
 Service Worker 没能命中缓存，则会用 fetch()方法继续获取资源
 
-##### <link rel= preload> 与 <link rel= prefetch> 的区别？
+##### \<link rel= preload\> 与 \<link rel= prefetch\> 的区别？
 
 preload（预加载） 是一个声明式 fetch，可以强制浏览器在不阻塞 document 的 onload 事件的情况下请求资源；
 prefetch（预读取） 告诉浏览器这个 资源将来可能需要，但是 什么时间 加载 这个资源是由浏览器来决定的；
@@ -394,11 +401,13 @@ Push Cache 是缓存的最后一道防线。浏览器只有在 Memory Cache、HT
 
 ## HTTP/1.x keep-alive 与 HTTP/2 多路复用区别：
 
+::: details 点击
 1. HTTP/1.x 是基于文本的，只能整体去传；HTTP/2 是基于二进制流的，可以分解为独立的帧，交错发送
 2. HTTP/1.x keep-alive 必须按照请求发送的顺序返回响应；HTTP/2 多路复用不按序响应
 3. HTTP/1.x keep-alive 为了解决队头阻塞，将同一个页面的资源分散到不同域名下，开启了多个 TCP 连接；HTTP/2 同域名下所有通信都在单个连接上完成
 4. HTTP/1.x keep-alive 单个 TCP 连接在同一时刻只能处理一个请求（两个请求的生命周期不能重叠）；HTTP/2 单个 TCP 同一时刻可以发送多个请求和响应
 
+:::
 ## tcp 与 udp 的区别
 
 ::: details 点击
