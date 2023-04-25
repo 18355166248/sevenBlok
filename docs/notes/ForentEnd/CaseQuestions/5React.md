@@ -26,6 +26,7 @@ function handleClick(e) {
     e.preventDefault()
 }
 ```
+
 :::
 
 ## 2. useMemo 和 useCallback 的使用场景？
@@ -77,9 +78,9 @@ initialState 参数只会在组件的初始渲染中起作用，后续渲染时�
 
 ```js
 const [state, setState] = useState(() => {
-  const initialState = someExpensiveComputation(props)
-  return initialState
-})
+  const initialState = someExpensiveComputation(props);
+  return initialState;
+});
 ```
 
 ## 9. 组件中定义的函数，在每次重新渲染中是否相同？
@@ -170,27 +171,80 @@ useReducer // 添加一个 reducer 在你的组价内
 useRef // 生成一个改变不会触发组件更新的值
 useState // 生成一个状态变量在你的组件中
 useTransition // 在不影响浏览器渲染的情况下执行
-useDeferredValue // 允许您推迟更新UI的一部分
+useDeferredValue // 允许您推迟更新 UI 的一部分
 
 useSyncExternalStore // 提供给第三方库比如 redux 可以同步拿到最新的数据
 useInsertionEffect // 在使用 css-in-js 会用到 插入样式在 DOM 渲染前
 useDebugValue // 配合 React DevTools 使用
 :::
 
-## react16新增了哪些生命周期、有什么作用，为什么去掉某些15的生命周期
-
-
+## react16 新增了哪些生命周期、有什么作用，为什么去掉某些 15 的生命周期
 
 ::: details 点击
 react16 删除了 componentWillMount componentWillUpdate componentWillReceiveProps
 
 #### 为何删除
 
-<Card text='这里引用拉钩教育修言老师在深入浅出搞定React中的讲解，我觉得他这个讲解通俗易懂，实在无法超越
+<Card text='这里引用拉钩教育修言老师在深入浅出搞定 React 中的讲解，我觉得他这个讲解通俗易懂，实在无法超越
 
 说回 getDerivedStateFromProps 这个 API，它相对于早期的 componentWillReceiveProps 来说，正是做了“合理的减法”。而做这个减法的决心之强烈，从 getDerivedStateFromProps 直接被定义为 static 方法这件事上就可见一斑—— static 方法内部拿不到组件实例的 this，这就导致你无法在 getDerivedStateFromProps 里面做任何类似于 this.fetch()、不合理的 this.setState（会导致死循环的那种）这类可能会产生副作用的操作。
 
 因此，getDerivedStateFromProps 生命周期替代 componentWillReceiveProps 的背后，是 React 16 在强制推行“只用 getDerivedStateFromProps 来完成 props 到 state 的映射”这一最佳实践。意在确保生命周期函数的行为更加可控可预测，从根源上帮开发者避免不合理的编程方式，避免生命周期的滥用；同时，也是在为新的 Fiber 架构铺路。'></Card>
 
 react16 新增了 getDerivedStateFromProps getSnapshotBeforeUpdate
+
+#### 总结
+
+相对于 React15，React16 的生命周期中去掉了 componentWillMout 和 componentWillUpdate 方法，并且使用 getDerivedStateFromProps 方法替代了之前的 componentWillReceiveprops，使得 React 的生命周期更纯粹，只用来做专门的事情，避免大量业务逻辑代码嵌入生命周期，同时也是在为 Fiber 架构铺路
+:::
+
+## fiber 怎样的，如何实现异步渲染
+
+::: details 点击
+fiberRoot fiber workInProgress
+
+[原理](https://18355166248.github.io/notes/ForentEnd/ReactSourceCode/Scheduler.html)
+scheduler 包中调度原理, 也就是 React 两大工作循环中的任务调度循环. 并介绍了时间切片和可中断渲染等特性在任务调度循环中的实现. scheduler 包是 React 运行时的心脏, 为了提升调度性能, 注册 task 之前, 在 react-reconciler 包中做了节流和防抖等措施.
+:::
+
+## redux 和 redux-saga 的区别和原理
+
+::: details 点击
+
+- redux: 状态管理的第三方实现
+- redux-saga: 同 redux 一起使用，增强了 redux 的功能。之前 actions 返回一个对象，异步的 action 可以返回一个函数
+
+  ```js
+  export const initList = (list) => ({
+    type: INIT_LIST,
+    list,
+  });
+
+  export const getInitList = () => {
+    return function(dispatch) {
+      axios.get("/api/initList.json").then((res) => {
+        //调用上面的initList，向store发送数据修改的请求
+        //然后reducers通过action的type的值进行处理，返回一个新的state
+        dispatch(initList(res.data));
+      });
+    };
+  };
+  ```
+
+* redux-saga: redux-saga 也是 redux 的一个中间件，可以处理异步 action 通过 generator 实现
+  :::
+
+## useEffect 实现原理
+
+::: details 点击
+
+##### useEffect 的 hook 在 render 阶段会把 effect 放到 fiber 的 updateQueue 中，这是一个 lastEffect.next 串联的环形链表，然后 commit 阶段会异步执行所有 fiber 节点的 updateQueue 中的 effect。
+
+useLayoutEffect 和 useEffect 差不多，区别只是它是在 commit 阶段的 layout 阶段同步执行所有 fiber 节点的 updateQueue 中的 effect。
+
+##### useState 同样分为 mountState 和 updateState 两个阶段：
+
+mountState 会返回 state 和 dispatch 函数，dispatch 函数里会记录更新到 hook.queue，然后标记当前 fiber 到根 fiber 的 lane 需要更新，之后调度下次渲染。
+
+再次渲染的时候会执行 updateState，会取出 hook.queue，根据优先级确定最终的 state 返回，这样渲染出的就是最新的结果。
 :::
