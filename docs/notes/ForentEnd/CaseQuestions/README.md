@@ -18,8 +18,10 @@
 
 - [Http](./9Http.md)
 
-- [Http](./10ES6%2B.md)
+- [ES6+](./10ES6%2B.md)
 
-- [Http](./11Git.md)
+- [Git](./11Git.md)
 
-- [Http](./12Babel.md)
+- [Babel](./12Babel.md)
+
+- [小程序](./13WXMiniProgram.md)
