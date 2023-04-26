@@ -1,7 +1,84 @@
 # 前端工程化-Babel
 
+[中文文档](https://www.babeljs.cn/)
+
+babel 基础知识
+
+## 预设
+
+### [@babel/preset-env](https://www.babeljs.cn/docs/babel-preset-env)
+
+它能让你使用最新的 JavaScript 语法而无需操心对目标环境所支持的语法设置相应的语法转换插件（以及可选的 polyfills）。这样能让你的工作更轻松，也能让打出来的 JavaScript 包更小！
+
+### [@babel/preset-react](https://www.babeljs.cn/docs/babel-preset-react)
+
+解析 jsx 语法成 createElement
+
+### [@babel/preset-typescript](https://www.babeljs.cn/docs/babel-preset-typescript)
+
+解析 typescript
+
+## 集成
+
+### [@babel/cli](https://www.babeljs.cn/docs/babel-cli)
+
+Babel 自带了一个内置的 CLI 命令行工具，可通过命令行编译文件。
+
+### [@babel/polyfill](https://www.babeljs.cn/docs/babel-polyfill)
+
+针对浏览器不识别的语法 做兼容处理 是需要安装在生产环境的
+
+Babel 7.4.0 之后已经废弃, 建议使用 core-js
+
+### [@babel/plugin-transform-runtime](https://www.babeljs.cn/docs/babel-plugin-transform-runtime)
+
+- 当你使用 generators/async 函数时，自动引入 @babel/runtime/regenerator 。
+- 如有必要，可以使用 core-js 作为帮助函数，如果需要被 polyfill
+- 移除内联的 Babel helper，并使用模块 @babel/runtime/helpers 代替。
+- 可以将 helper 和 polyfill 都改为从一个统一的地方引入，并且引入的对象和全局变量是完全隔离的
+
+### [@babel/standalone](https://www.babeljs.cn/docs/babel-standalone)
+
+@babel/standalone 提供了 babel 的独立构建，用于浏览器和其他非 Node.js 环境。
+
+## 工具
+
+### [@babel/parser](https://www.babeljs.cn/docs/babel-parser)
+
+将 js 转成 ast
+
+### [@babel/core](https://www.babeljs.cn/docs/babel-core)
+
+包括了整个 babel 工作流，也就是说在@babel/core 里面我们会使用到@babel/parser、transformer、以及@babel/generator
+
+### [@babel/runtime](https://www.babeljs.cn/docs/babel-runtime)
+
+在低版本浏览器适配高版本语法的兼容方法
+
+### [@babel/generator](https://www.babeljs.cn/docs/babel-generator)
+
+ast 转成 代码
+
+### [@babel/code-frame](https://www.babeljs.cn/docs/babel-code-frame)
+
+用于生成错误信息并且打印出错误原因和错误行数。（其实就是个 console 工具类）
+
+### [@babel/template](https://www.babeljs.cn/docs/babel-template)
+
+主要用途是为 parser 提供模板引擎，更加快速的转化成 AST
+
+### [@babel/traverse](https://www.babeljs.cn/docs/babel-traverse)
+
+用途是来便利 AST 树，也就是在@babel/generator 过程中生效。
+主要是针对 ast 树做一些字段的格式化或修改
+
+### [@babel/types](https://www.babeljs.cn/docs/babel-types)
+
+用途是在创建 AST 的过程中判断各种语法的类型
+
 ## core-js 是什么
 
+::: details 点击
 它是 JavaScript 标准库的 polyfill
 它尽可能的进行模块化，让你能选择你需要的功能
 它可以不污染全局空间
@@ -16,9 +93,11 @@ regenerator-runtime
 
 你可能听过'babel-polyfill'，babel-polyfill 融合了 core-js 和 regenerator-runtime,因此'babel-polyfill'
 本质就是'corejs'
+:::
 
 ## babel 的含义
 
+::: details 点击
 1.Babel 也是可以配置和其他工具具有类似的配置：ESLint（`.eslintrc`），Prettier（`.prettierrc`）。
 'babel'配置文件的优先级 'babel.config.json < .babelrc < programmatic options from @babel/cli' 2.看一个最简单配置，这里主要弄清楚'预设'和'插件'
 {
@@ -56,13 +135,53 @@ Babel 提供 loose 选项，帮助开发者在'尽量还原规范'和'更小的�
 3.'@babel/core'主要的作用就是编译
 
 ![](~@public/Casequestion/babel.png)
+:::
 
 ## 兼容低版本浏览器配置
 
-1.现在抛出一个问题，我随着低版本的浏览器逐步淘汰，一些新特性的语法在新浏览器已经支持，是否有必要
-全部转换成'es5',我们更希望他可以根据你所配置的浏览器的列表，自动的去加载当前浏览器所需要的插件，
-然后对 es 语法做转换 2.可以通过配置文件指定语法最低版本浏览器兼容这里其实配合的是'Browserslist',Browserslist 的数据都是来自
-'https://caniuse.com/',现在我们知道各个版本浏览器支持的语法接下就是配置文件，配置文件是下面的优先级使用：
-2.1.@babel/preset-env 里的 targets
-2.2.package.json 里的 browserslist 字段
-2.3.browserslistrc 配置文件
+::: details 点击
+
+1. 现在抛出一个问题，我随着低版本的浏览器逐步淘汰，一些新特性的语法在新浏览器已经支持，是否有必要
+   全部转换成'es5',我们更希望他可以根据你所配置的浏览器的列表，自动的去加载当前浏览器所需要的插件，
+   然后对 es 语法做转换
+2. 可以通过配置文件指定语法最低版本浏览器兼容这里其实配合的是'Browserslist',Browserslist 的数据都是来自
+   'https://caniuse.com/',现在我们知道各个版本浏览器支持的语法接下就是配置文件，配置文件是下面的优先级使用：
+   2.1 @babel/preset-env 里的 targets
+   2.2 package.json 里的 browserslist 字段
+   2.3 browserslistrc 配置文件
+   :::
+
+## babel presets 和 plugins
+
+::: details 点击
+
+代码转换的功能以插件的形式出现，插件是小型 javascript 程序，用于指导 Babel 如何对代码进行转换。
+preset 是一组预设的插件。如果不进行任何的配置，preset 包含的插件将支持所有最新的 javascript 特性。
+可以通过命令行或者配置文件的方式对插件和 preset 进行配置。
+
+Polyfill
+Polyfill 转换目标环境不支持的特性。Polyfill 包括 core-js 和一个自定义的 regenerator runtime 模块用于模拟完整的 ES2015+环境。
+
+polyfill 应该和@babel/preset-env 以及 useBuiltIns 选项一起使用，这样就不会自动导入没有被引入的 polyfill。
+
+为了使用 polyfill，需要在入口的前面使用 require/import 导入 polyfill
+
+```js
+require("@babel/polyfill");
+// 或者
+import "@babel/polyfill";
+```
+
+在 webpack 中使用 polyfill
+使用@babel/preset-env
+如果使用了 useBuiltIns: 'usage’选项，不需要再任何文件中引入@babel/polyfill，只需要使用 npm install 安装@babel/polyfill。
+如果 useBuiltIns: 'entry’选项使用，需要在入口文件的顶部通过 require 或者 import 导入 polyfill
+如果没有制定 useBuiltIns 或者 useBuiltIns:false，需要在 webpack.config.js 中通过如下使用：
+
+```js
+module.exports = {
+  entry: ["@babel/polyfill", "./app/js"],
+};
+```
+
+:::
