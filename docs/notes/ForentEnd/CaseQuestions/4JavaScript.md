@@ -622,3 +622,40 @@ sub.notify("I fired `SMS` event");
 ```
 
 :::
+
+## 说说 typeof 与 instanceof 的区别
+
+::: details 点击
+
+#### 区别
+
+typeof 与 instanceof 都是判断数据类型的方法，区别如下：
+
+typeof 会返回一个运算数的基本类型，instanceof 返回的是布尔值
+instanceof 可以准确判断引用数据类型，但是不能正确判断原始数据类型
+typeof 虽然可以判断原始数据类型（null 除外），但是无法判断引用数据类型（function 除外）
+:::
+
+## 说说 new 操作符
+
+::: details 点击
+
+- 创建一个新的对象 obj
+- 将对象与构建函数通过原型链连接起来
+- 将构建函数中的 this 绑定到新建的对象 obj 上
+- 根据构建函数返回类型作判断，如果是原始值则被忽略，如果是返回对象，需要正常处理
+
+```js
+function myNew(Func, ...args) {
+  // 1.创建一个新对象
+  const obj = {};
+  // 2.新对象原型指向构造函数原型对象
+  obj.__proto__ = Func.prototype;
+  // 3.将构建函数的this指向新对象
+  let result = Func.apply(obj, args);
+  // 4.根据返回值判断
+  return result instanceof Object ? result : obj;
+}
+```
+
+:::
