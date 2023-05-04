@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <style type="text/css">
+      #A,
+      #B,
+      #C,
+      #D {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+      }
+      .E,
+      .F {
+        will-change: transform;
+        background-color: bisque;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="A"
+      style="transform: translateZ(0);z-index: 1;background-color: red;"
+    >
+      A
+    </div>
+    <div
+      id="B"
+      style="z-index: 2;background-color: yellow;left:  40px;top: 40px"
+    >
+      B
+    </div>
+    <div
+      id="C"
+      style="transform: translateZ(0);z-index: 3;background-color: green;left:  70px;top: 70px"
+    >
+      C
+    </div>
+    <div
+      id="D"
+      style="transform: translateZ(0);z-index: 4;background-color: pink;left:  100px;top: 100px"
+    >
+      D
+    </div>
+
+    <div class="E" style="width: 200px;height:200px"></div>
+    <div class="F" style="width: 40px;height:40px;transform: scale(5)"></div>
+  </body>
+</html>

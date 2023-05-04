@@ -248,3 +248,44 @@ mountState 会返回 state 和 dispatch 函数，dispatch 函数里会记录更�
 
 再次渲染的时候会执行 updateState，会取出 hook.queue，根据优先级确定最终的 state 返回，这样渲染出的就是最新的结果。
 :::
+
+## react 组件如何做性能优化，说说 pureComponent
+
+::: details 点击
+
+react/packages/react-reconciler/src/ReactFiberClassComponent.old.js
+
+```js
+function checkShouldComponentUpdate(
+  workInProgress,
+  ctor,
+  oldProps,
+  newProps,
+  oldState,
+  newState,
+  nextContext
+) {
+  const instance = workInProgress.stateNode;
+  // 先优先判断是否存在 shouldComponentUpdate 存在的话直接使用 shouldComponentUpdate
+  if (typeof instance.shouldComponentUpdate === "function") {
+    let shouldUpdate = instance.shouldComponentUpdate(
+      newProps,
+      newState,
+      nextContext
+    );
+
+    return shouldUpdate;
+  }
+  // 判断是否是 pureComponent 类型
+  if (ctor.prototype && ctor.prototype.isPureReactComponent) {
+    // 如果 props 和 state 都没有变化就不执行更新
+    return (
+      !shallowEqual(oldProps, newProps) || !shallowEqual(oldState, newState)
+    );
+  }
+
+  return true;
+}
+```
+
+:::

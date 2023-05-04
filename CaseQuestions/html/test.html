@@ -1,12 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <style type="text/css">
+      #A,
+      #B,
+      #C,
+      #D {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+      }
+      #C {
+        left: 60px;
+        top: 60px;
+        z-index: 300;
+        will-change: left;
+        animation: move 1s linear;
+        background-color: red;
+      }
+      #A {
+        z-index: 100;
+        background-color: blue;
+      }
+      #B {
+        left: 40px;
+        top: 40px;
+        z-index: 200;
+        background-color: yellow;
+      }
+      #D {
+        left: 100px;
+        top: 100px;
+        /* z-index: 400; */
+        transform: translateZ(0);
+        background-color: green;
+      }
+      @keyframes move {
+        form {
+          left: 40px;
+        }
+        to {
+          left: 150px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <script src="../code/PromiseAllSettled.js"></script>
+    <div id="A">A</div>
+    <div id="B">B</div>
+    <div id="C">C</div>
+    <div id="D">D</div>
   </body>
 </html>
