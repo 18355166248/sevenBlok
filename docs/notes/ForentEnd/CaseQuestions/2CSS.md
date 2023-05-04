@@ -213,7 +213,7 @@ if (window.devicePixelRatio && devicePixelRatio >= 2) {
 比如说 如果有节点是合成层, 之后的节点 z-index 比合成层高, 会隐式提成成合成层
 我们在浏览器控制台打开 layers 里面选中这个节点可以看到下面的 Details 上面的说明
 
-![](@public/public/Casequestion/compositing-reasons.jpeg)
+![](@public/Casequestion/compositing-reasons.jpeg)
 
 所以引用 [CSS GPU Animation](https://www.smashingmagazine.com/2016/12/gpu-animation-doing-it-right/) 中关于隐式合成的描述那就是：
 
