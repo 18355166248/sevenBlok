@@ -1,55 +1,54 @@
-function a() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("a");
-    }, 200);
-  });
-}
-function b() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("b");
-    }, 100);
-  });
-}
-function c() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("c");
-    }, 150);
-  });
-}
+// 防抖
+function throttle(fn, delay) {
+  let time;
+  let datePur = Date.now();
 
-function PromiseAll(list) {
-  return new Promise((resolve, reject) => {
-    const res = [];
-    for (let i = 0; i < list.length; i++) {
-      list[i]
-        .then((r) => {
-          res[i] = r;
-          if (res.filter(v => v).length === list.length) {
-            resolve(res);
-          }
-        })
-        .catch((err) => {
-          reject(err);
-        });
+  return function() {
+    const that = this;
+    const args = arguments;
+    const now = Date.now();
+
+    if (now - datePur < delay && time) {
+      return;
     }
-  });
+
+    time = setTimeout(function() {
+      time = null;
+      datePur = Date.now();
+    }, delay);
+
+    fn.apply(that, args);
+  };
 }
 
-PromiseAll([a(), b()])
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+function log(name) {
+  console.log("name:", name);
+}
 
-PromiseAll([a(), c(), b()])
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+cb = throttle(log, 200);
+
+cb("李哥");
+
+setTimeout(function() {
+  cb("李哥1");
+}, 100);
+
+setTimeout(function() {
+  cb("李哥1.1");
+}, 150);
+
+setTimeout(() => {
+  cb("李哥2");
+}, 200);
+
+setTimeout(() => {
+  cb("李哥3");
+}, 300);
+
+setTimeout(function() {
+  cb("李哥3.1");
+}, 350);
+
+setTimeout(() => {
+  cb("李哥4");
+}, 500);
