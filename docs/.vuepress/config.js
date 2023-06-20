@@ -125,6 +125,10 @@ module.exports = {
             text: "微前端",
             link: "/notes/ForentEnd/MicroFrontEnd/",
           },
+          {
+            text: "低代码",
+            link: "/notes/ForentEnd/LowCode/",
+          },
         ],
       },
       {
