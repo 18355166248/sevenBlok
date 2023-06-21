@@ -132,6 +132,15 @@ module.exports = {
         ],
       },
       {
+        text: "转载文章",
+        items: [
+          {
+            text: "前端",
+            link: "/notes/Transshipment/FrontEnd/",
+          },
+        ],
+      },
+      {
         text: "业务",
         items: [
           {
