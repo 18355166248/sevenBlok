@@ -1,40 +1,36 @@
-Function.prototype.call2 = function(context) {
-  context = context || window;
-
-  context.fn = this;
-
-  var args = Array.prototype.slice.call(arguments, 1);
-
-  var result = eval("context.fn(" + args + ")");
-
-  delete context.fn;
-
-  return result;
-};
-
-Function.prototype.apply2 = function(context, args) {
-  context = context || window;
-
-  context.fn = this;
-
-  console.log(this);
-
-  var result = eval("context.fn(" + args + ")");
-
-  delete context.fn;
-
-  return result;
-};
-
-const obj = { name: "obj" };
-const obj2 = { name: "obj2" };
-
-function name1() {
-  this.age = 18;
-  console.log(this.name, arguments);
+function ListNode(val, next) {
+  this.val = val === undefined ? 0 : val;
+  this.next = next === undefined ? null : next;
 }
 
-name1.call(obj, 666);
-name1.call2(obj, 666);
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var deleteDuplicates = function(head) {
+  if (!head) return null;
 
-name1.apply2(obj2, [888, 999]);
+  let line = head;
+  while (line && line.next) {
+    if (line.val === line.next.val) {
+      line.next = line.next.next;
+    } else {
+      line = line.next;
+    }
+  }
+  return head;
+};
+
+const l1 = { val: 1, next: { val: 1, next: { val: 2, next: null } } };
+const l2 = {
+  val: 1,
+  next: {
+    val: 1,
+    next: { val: 2, next: { val: 3, next: { val: 3, next: null } } },
+  },
+};
+
+console.log(deleteDuplicates(l1));
+console.log(deleteDuplicates(l2));
+
+((([])))
