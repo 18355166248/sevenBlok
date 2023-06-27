@@ -1,5 +1,6 @@
 # bind.call.apply
 
+```js
 Function.prototype.bind2 = function(context) {
   const self = this;
   const args = Array.prototype.slice.call(arguments, 1);
@@ -77,3 +78,4 @@ bb.call(obj, 777777);
 
 bb.apply2(obj, [88888]);
 bb.apply(obj, [88888]);
+```

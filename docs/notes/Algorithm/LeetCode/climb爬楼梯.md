@@ -1,5 +1,6 @@
 # climb爬楼梯
 
+```js
 const obj = {};
 var climbStairs = function(n) {
   if (n <= 2) return n;
@@ -20,3 +21,4 @@ var climbStairs = function(n) {
 };
 
 console.log(climbStairs(45));
+```

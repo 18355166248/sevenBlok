@@ -1,6 +1,5 @@
 const path = require("path");
 const dirTree = require("directory-tree");
-const { array } = require("yargs");
 const SRC_PATH = path.resolve(__dirname, "./src");
 
 // 针对tree 排序, 将 README.md 排到第一位

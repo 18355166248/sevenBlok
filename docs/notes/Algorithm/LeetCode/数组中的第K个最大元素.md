@@ -1,5 +1,6 @@
 # 数组中的第K个最大元素
 
+```js
 // 快速排序的思路, 每次取中间值, targetIndex为数组排序后所在的索引
 // 每次不需要考虑排序, 只需要知道中间值排序后应该在的索引
 // 用这个索引去跟targetIndex比对 如果相等就返回对应的数字
@@ -37,3 +38,4 @@ var findKthLargest = function(nums, k) {
 
 // console.log(findKthLargest([3, 6, 5, 4, 10, 8, 7, 2, 1], 2));
 console.log(findKthLargest([3, 6, 4, 10], 2));
+```

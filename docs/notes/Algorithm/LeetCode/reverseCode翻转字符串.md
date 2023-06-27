@@ -1,5 +1,6 @@
 # reverseCode翻转字符串
 
+```js
 function reverseCode(s) {
   const sArr = s.split("");
   let start = 0;
@@ -13,3 +14,4 @@ function reverseCode(s) {
 }
 
 console.log(reverseCode("1234"));
+```

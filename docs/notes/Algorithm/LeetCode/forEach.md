@@ -1,5 +1,6 @@
 # forEach
 
+```js
 function forEach (arr, fn) {
   return new Promise(resolve => {
     next(arr)
@@ -46,3 +47,4 @@ forEach(arr, p).then(res => {
   console.log(res);
 })
 
+```

@@ -1,5 +1,6 @@
 # LRU缓存机制
 
+```js
 class ListNode {
   constructor(key, value) {
     this.key = key;
@@ -89,3 +90,4 @@ LRUCache.prototype.popTail = function() {
  * var param_1 = obj.get(key)
  * obj.put(key,value)
  */
+```

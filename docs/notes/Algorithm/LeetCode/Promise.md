@@ -1,5 +1,6 @@
 # Promise
 
+```js
 function Promise(fn) {
   let state = "pending";
   let value;
@@ -81,3 +82,4 @@ p.then((res) => {
 // 4. 执行resolve方法, 缓存val的值, 改变了state的值为fulfilled, 执行缓存回调函数内部的函数
 
 // 5. 在执行then回调函数的时候, 需要做边界处理, 如果then的回调函数不传的话, 那么默认执行resolve并将上一个value的缓存值传下去
+```

@@ -1,5 +1,6 @@
 # deepClone深拷贝
 
+```js
 const obj = {
   a: [1, 2, null],
   b: {
@@ -42,3 +43,4 @@ function deepClone(obj, map = new WeakMap()) {
 const cloneObj1 = deepClone(obj);
 // obj.f = 666;
 console.log(cloneObj1);
+```

@@ -1,5 +1,6 @@
 # numAdd
 
+```js
 let a = "9007199254740991";
 let b = "1234567899999999999";
 
@@ -27,3 +28,4 @@ function add(a, b) {
 }
 
 console.log(add(a, b));
+```

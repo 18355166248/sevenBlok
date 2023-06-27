@@ -1,5 +1,6 @@
 # throttle
 
+```js
 function throttle(fn, wait) {
   var time;
 
@@ -26,3 +27,4 @@ setTimeout(a, 400);
 setTimeout(a, 950);
 setTimeout(a, 1250);
 setTimeout(a, 1550);
+```

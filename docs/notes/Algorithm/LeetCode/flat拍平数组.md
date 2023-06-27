@@ -1,5 +1,6 @@
 # flat拍平数组
 
+```js
 const arr = [
   1,
   2,
@@ -20,3 +21,4 @@ function flat(arr) {
 }
 
 console.log(flat(arr));
+```

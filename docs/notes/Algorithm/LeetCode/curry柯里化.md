@@ -1,5 +1,6 @@
 # curry柯里化
 
+```js
 function curry(fn, args) {
   var length = fn.length;
 
@@ -25,3 +26,4 @@ const fn = curry(function(a, b, c, d) {
 });
 
 fn(1)(2)(4)(10);
+```

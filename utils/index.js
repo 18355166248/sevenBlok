@@ -12,11 +12,11 @@ const sidebar = [
 module.exports = sidebar;
 
 let components = [];
-const files = fs.readdirSync("./docs/Algorithm/LeetCode");
+const files = fs.readdirSync("./docs/notes/Algorithm/LeetCode");
 files.sort((a, b) => parseInt(a) - parseInt(b));
 files.forEach(function(item) {
   if (item.indexOf(".md") && item !== "README.md") {
-    const name = item.substr(0, item.length - 3);
+    const name = item.substring(0, item.length - 3);
     components.push("/Algorithm/LeetCode/" + name);
   }
 });

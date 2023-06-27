@@ -1,5 +1,6 @@
 # newObj
 
+```js
 function objectFactory() {
   const obj = new Object(),
     Constructor = Array.prototype.shift.call(arguments);
@@ -21,3 +22,4 @@ const nn = objectFactory(name);
 
 nn.age = 33333;
 console.log(nn);
+```

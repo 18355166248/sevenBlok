@@ -1,5 +1,6 @@
 # debounce
 
+```js
 function debounce(fn, wait) {
   var time;
 
@@ -23,3 +24,4 @@ const a = debounce(add, 200);
 a();
 a();
 setTimeout(add, 1000);
+```

@@ -1,5 +1,6 @@
 # Events模块
 
+```js
 const fn1 = (... args)=>console.log('I want sleep1', ... args)
 const fn2 = (... args)=>console.log('I want sleep2', ... args)
 
@@ -60,3 +61,4 @@ event.off('sleep', fn1);
 event.once('sleep', () => console.log('I want sleep'));
 event.fire('sleep');
 event.fire('sleep');
+```

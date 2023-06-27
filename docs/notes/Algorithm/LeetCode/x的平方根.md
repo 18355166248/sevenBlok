@@ -1,5 +1,6 @@
 # x的平方根
 
+```js
 var mySqrt = function(x) {
   if (x < 2) return x;
   let left = 1,
@@ -22,3 +23,4 @@ var mySqrt = function(x) {
 console.log(mySqrt(8));
 console.log(mySqrt(5));
 console.log(mySqrt(4));
+```

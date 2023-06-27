@@ -1,5 +1,6 @@
 # trime
 
+```js
 String.prototype.trim2 = function() {
   var str = this;
   str = str.replace(/^\s\s*/, "");
@@ -14,3 +15,4 @@ String.prototype.trim2 = function() {
 const a = "  23234   ";
 
 console.log(a.trim2(), 1);
+```

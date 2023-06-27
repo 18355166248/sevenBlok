@@ -1,5 +1,6 @@
 # forWithWait
 
+```js
 const iterator = {
   [Symbol.iterator]() {
     return {
@@ -40,3 +41,4 @@ const asyncIterator = {
     console.log(value);
   }
 })();
+```
