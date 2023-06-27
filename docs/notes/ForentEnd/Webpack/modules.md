@@ -106,10 +106,20 @@ webpackIgnore：设置为 true 时，禁用动态导入解析。
     );
   ```
 
-  上面的打包结果是 会生成一个单独的 js 但是名字不叫 post-name(生产环境), 会预加载, 且会导出 export default 和 export getName 数据 也会到处 exports 数据, 假如说
+  上面的打包结果是 会生成一个单独的 js 但是名字不叫 post-name(生产环境), 会预加载, 且会导出 export default 和 export getName 数据 也会导出 exports = named 数据, 假如说
 
   ```js
   webpackExports: ["default"];
   ```
 
   那么 getName 方法不会导出
+
+  如果是这么写
+
+  ```js
+  webpackExports: ["usedExports"];
+  ```
+
+  那么只会导出 exports = named, 当然 webpackExports 里面可以写任何变量名, 控制某个变量是否可以导出
+
+  具体使用方法请看官方源码测试用例 [webpack/test/cases/chunks/inline-options/index.js](https://github.com/webpack/webpack/blob/main/test/cases/chunks/inline-options/index.js)
