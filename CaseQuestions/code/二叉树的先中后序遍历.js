@@ -21,7 +21,7 @@ const tree = {
   },
 };
 
-// 1. 先序遍历
+// 先序遍历
 function before(tree) {
   function dfs(tree) {
     console.log(tree.val);
@@ -31,4 +31,26 @@ function before(tree) {
   dfs(tree);
 }
 
-console.log(before(tree));
+// 中序遍历
+function center(tree) {
+  function dfs(tree) {
+    tree.left && dfs(tree.left);
+    console.log(tree.val);
+    tree.right && dfs(tree.right);
+  }
+  dfs(tree);
+}
+
+// 后序遍历
+function after(tree) {
+  function dfs(tree) {
+    tree.left && dfs(tree.left);
+    tree.right && dfs(tree.right);
+    console.log(tree.val);
+  }
+  dfs(tree);
+}
+
+// console.log(before(tree));
+// console.log(center(tree));
+// console.log(after(tree));
