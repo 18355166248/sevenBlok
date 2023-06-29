@@ -1,0 +1,50 @@
+// 给你二叉树的根节点 root ，返回其节点值的 层序遍历 。 （即逐层地，从左到右访问所有节点）。
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+var levelOrder = function(root) {
+  if (!root) return [];
+  const res = [];
+  const stack = [root];
+  while (stack.length) {
+    let length = stack.length;
+
+    if (res.length === 0) res[0] = [];
+    else res[res.length] = [];
+
+    while (length--) {
+      const cur = stack.shift();
+      res[res.length - 1].push(cur.val);
+      cur.left && stack.push(cur.left);
+      cur.right && stack.push(cur.right);
+    }
+  }
+  return res;
+};
+
+const tree = {
+  val: 3,
+  left: {
+    val: 9,
+  },
+  right: {
+    val: 20,
+    left: {
+      val: 15,
+    },
+    right: {
+      val: 7,
+    },
+  },
+};
+
+console.log(levelOrder(tree)); // 2
