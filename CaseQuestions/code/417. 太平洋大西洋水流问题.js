@@ -1,5 +1,7 @@
 // 有一个 m × n 的矩形岛屿，与 太平洋 和 大西洋 相邻。 “太平洋” 处于大陆的左边界和上边界，而 “大西洋” 处于大陆的右边界和下边界。
 
+const { flow } = require("lodash");
+
 // 这个岛被分割成一个由若干方形单元格组成的网格。给定一个 m x n 的整数矩阵 heights ， heights[r][c] 表示坐标 (r, c) 上单元格 高于海平面的高度 。
 
 // 岛上雨水较多，如果相邻单元格的高度 小于或等于 当前单元格的高度，雨水可以直接向北、南、东、西流向相邻单元格。水可以从海洋附近的任何单元格流入海洋。
@@ -20,6 +22,7 @@ var pacificAtlantic = function(heights) {
 
   function dfs(r, c, flow) {
     flow[r][c] = true;
+
     [
       [r - 1, c],
       [r + 1, c],
@@ -27,16 +30,15 @@ var pacificAtlantic = function(heights) {
       [r, c + 1],
     ].forEach(([nr, nc]) => {
       if (
-        nr > 0 &&
-        nc > 0 &&
+        nr >= 0 &&
+        nc >= 0 &&
         nr < m &&
         nc < n &&
         // 防止死循环
-        flow[(nr, nc)] &&
+        !flow[nr][nc] &&
         // 保证逆流而上
         heights[nr][nc] >= heights[r][c]
       ) {
-        console.log(nr, nc);
         dfs(nr, nc, flow);
       }
     });
@@ -48,10 +50,20 @@ var pacificAtlantic = function(heights) {
     dfs(i, 0, flow1);
     dfs(i, n - 1, flow2);
   }
-  // for (let i = 0; i < n; i++) {
-  //   dfs(0, i, flow1);
-  //   dfs(m - 1, i, flow2);
-  // }
+  for (let i = 0; i < n; i++) {
+    dfs(0, i, flow1);
+    dfs(m - 1, i, flow2);
+  }
+  const res = [];
+  // 两层循环判断都可以流入的位置, 表示中间线
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (flow1[i][j] && flow2[i][j]) {
+        res.push([i, j]);
+      }
+    }
+  }
+  return res;
 };
 
 console.log(
