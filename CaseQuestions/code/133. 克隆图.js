@@ -28,7 +28,24 @@
  * @param {Node} node
  * @return {Node}
  */
-var cloneGraph = function(node) {};
+var cloneGraph = function(node) {
+  if (!node) return;
+  const visited = new Set();
+
+  function dfs(n) {
+    console.log(n.val);
+    visited.add(n.val);
+
+    (n.neighbors || []).forEach((ne) => {
+      if (!visited.has(ne)) {
+        dfs(ne);
+      }
+      nCopy.neighbors.push(visited.get(ne));
+    });
+  }
+
+  dfs(node);
+};
 
 console.log(
   cloneGraph([
