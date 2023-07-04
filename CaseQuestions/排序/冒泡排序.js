@@ -1,0 +1,20 @@
+// 规则
+// 两层循环 第二层循环的最大值为列表长度减去外层循环次数再减一
+// 每次循环对比第一个值是否比下一个值大 如果大就互换位置
+// 这样每次循环都能确定列表最后一个值为最大值
+function bubbleSort(list) {
+  for (let i = 0; i < list.length; i++) {
+    for (let j = 0; j < list.length - i - 1; j++) {
+      if (list[j] > list[j + 1]) {
+        const temp = list[j];
+        list[j] = list[j + 1];
+        list[j + 1] = temp;
+      }
+    }
+  }
+
+  return list;
+}
+
+console.log(bubbleSort([9, 2, 3]));
+console.log(bubbleSort([9, 2, 3, 8, 1, 5, 7, 4, 6]));
