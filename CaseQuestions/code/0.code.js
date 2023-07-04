@@ -1,32 +1,20 @@
-// 459. 重复的子字符串
-// 给定一个非空的字符串 s ，检查是否可以通过由它的一个子串重复多次构成。
-
 /**
- * @param {string} s
- * @return {boolean}
+ * @param {number[]} nums
+ * @return {number}
  */
-var repeatedSubstringPattern = function(s) {
-  const length = s.length;
-
-  for (let i = 1; i * 2 <= length; i++) {
-    // 能整除才能保证可以重复多次
-    if (length % i === 0) {
-      let match = true;
-      for (let j = i; j < length; j++) {
-        if (s.charAt(j - i) !== s.charAt(j)) {
-          match = false;
-          break;
-        }
-      }
-      if (match) {
-        return true;
-      }
-    }
+var rob = function(nums) {
+  if (nums.length === 1) return nums[0];
+  const dp = [0, nums[0]];
+  for (let i = 2; i < nums.length; i++) {
+    dp[i] = Math.max(dp[i - 2] + nums[i - 1], dp[i - 1]);
   }
-  return false;
+  const dp1 = [0, 0];
+  for (let i = 2; i <= nums.length; i++) {
+    dp1[i] = Math.max(dp1[i - 2] + nums[i - 1], dp1[i - 1]);
+  }
+  return Math.max(dp1[nums.length], dp[nums.length - 1]);
 };
 
-// console.log(repeatedSubstringPattern("abab")); // true
-// console.log(repeatedSubstringPattern("bbbbb")); // true
-// console.log(repeatedSubstringPattern("aba")); // false
-console.log(repeatedSubstringPattern("abcabcabcabc")); // true
+console.log(rob([2, 3, 2])); // 3
+console.log(rob([1, 2, 3, 1])); // 4
+console.log(rob([2, 3, 2, 6, 7, 8])); // 17
