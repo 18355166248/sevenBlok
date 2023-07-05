@@ -1,20 +1,25 @@
+// 给你一个整数数组 nums ，数组中的元素 互不相同 。返回该数组所有可能的子集（幂集）。
+// 解集 不能 包含重复的子集。你可以按 任意顺序 返回解集。
+
 /**
  * @param {number[]} nums
- * @return {number}
+ * @return {number[][]}
  */
-var rob = function(nums) {
-  if (nums.length === 1) return nums[0];
-  const dp = [0, nums[0]];
-  for (let i = 2; i < nums.length; i++) {
-    dp[i] = Math.max(dp[i - 2] + nums[i - 1], dp[i - 1]);
+var subsets = function(nums) {
+  const list = [];
+
+  function back(index, path) {
+    list.push(path);
+
+    for (let i = index; i < nums.length; i++) {
+      back(i + 1, path.concat(nums[i]));
+    }
   }
-  const dp1 = [0, 0];
-  for (let i = 2; i <= nums.length; i++) {
-    dp1[i] = Math.max(dp1[i - 2] + nums[i - 1], dp1[i - 1]);
-  }
-  return Math.max(dp1[nums.length], dp[nums.length - 1]);
+
+  back(0, []);
+
+  return list;
 };
 
-console.log(rob([2, 3, 2])); // 3
-console.log(rob([1, 2, 3, 1])); // 4
-console.log(rob([2, 3, 2, 6, 7, 8])); // 17
+console.log(subsets([1, 2, 3])); // [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+// console.log(subsets([0])); // [[],[0]]

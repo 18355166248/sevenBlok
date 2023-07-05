@@ -9,15 +9,13 @@
 // 输出：[[1]]
 var permute = function(nums) {
   const length = nums.length;
-  const obj = {};
   const totalArr = [];
   function dfs(arr) {
     if (arr.length === length) return totalArr.push(arr);
     for (let i = 0; i < length; i++) {
-      if (obj[i]) continue;
-      obj[i] = true;
-      dfs([...arr, nums[i]]);
-      obj[i] = false;
+      if (!arr.includes(nums[i])) {
+        dfs([...arr, nums[i]]);
+      }
     }
   }
 
