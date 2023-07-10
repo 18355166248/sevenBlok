@@ -1,0 +1,48 @@
+// 给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 '.' 和 '*' 的正则表达式匹配。
+// '.' 匹配任意单个字符
+// '*' 匹配零个或多个前面的那一个元素
+// 所谓匹配，是要涵盖 整个 字符串 s的，而不是部分字符串。
+
+/**
+ * @param {string} s
+ * @param {string} p
+ * @return {boolean}
+ */
+var isMatch = function(s, p) {
+  const m = s.length;
+  const n = p.length;
+
+  const f = Array.from({ length: m + 1 }, () => Array(n + 1).fill(false));
+
+  f[0][0] = true; // 表示空字符串
+
+  for (let i = 0; i <= m; i++) {
+    // 0已经有值了 所以从索引1开始
+    for (let j = 1; j <= n; j++) {
+      // 判断字符串p中是否存在*
+      if (p.charAt(j - 1) === "*") {
+        f[i][j] = f[i][j - 2]; // 匹配0次的情况
+        if (matches(s, p, i, j - 1)) {
+          f[i][j] = f[i][j] || f[i - 1][j];
+        }
+      } else {
+        if (matches(s, p, i, j)) {
+          f[i][j] = f[i - 1][j - 1];
+        }
+      }
+    }
+  }
+  console.log(f, m, n);
+  return f[m][n] || false;
+};
+
+function matches(s, p, i, j) {
+  if (i === 0) return false;
+  if (p.charAt(j - 1) === ".") return true;
+  return s.charAt(i - 1) === p.charAt(j - 1);
+}
+
+// console.log(isMatch("aa", "a")); // false
+// console.log(isMatch("aa", "a*")); // true
+console.log(isMatch("ab", ".*")); // true
+// console.log(isMatch("ab", "*")); // false
