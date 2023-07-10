@@ -22,6 +22,7 @@ var isMatch = function(s, p) {
       // 判断字符串p中是否存在*
       if (p.charAt(j - 1) === "*") {
         f[i][j] = f[i][j - 2]; // 匹配0次的情况
+        // 匹配多次的情况
         if (matches(s, p, i, j - 1)) {
           f[i][j] = f[i][j] || f[i - 1][j];
         }
@@ -32,7 +33,6 @@ var isMatch = function(s, p) {
       }
     }
   }
-  console.log(f, m, n);
   return f[m][n] || false;
 };
 
