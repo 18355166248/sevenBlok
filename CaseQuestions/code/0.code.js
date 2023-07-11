@@ -1,31 +1,34 @@
 /**
- * @param {string} s
- * @return {string}
+ * @param {number[]} height
+ * @return {number}
  */
-var longestPalindrome = function(s) {
-  if (s.length < 2) return s;
+var trap = function(height) {
+  let total = 0;
 
-  let str = "";
-
-  // 从中间往两边移动 注意单数双数的长度的字符串
-  for (let i = 0; i < s.length; i++) {
-    getStr(i, i);
-    getStr(i, i + 1);
-  }
-
-  function getStr(left, right) {
-    while (left >= 0 && right < s.length && s[left] === s[right]) {
-      left--;
-      right++;
+  for (let i = 1; i < height.length - 1; i++) {
+    // 找到左边的最大值
+    let maxLeft = 0;
+    for (let l = i - 1; l >= 0; l--) {
+      if (height[l] > maxLeft) {
+        maxLeft = height[l];
+      }
     }
 
-    if (right - left - 1 > str.length) {
-      str = s.substring(left + 1, right); // 字符串不包含left和right
+    // 找到右边的最大值
+    let maxRight = 0;
+    for (let r = i + 1; r < height.length; r++) {
+      if (height[r] > maxRight) {
+        maxRight = height[r];
+      }
+    }
+    // 两边最高的墙中 最矮的那个 且大于当前墙 那差值就是可以塞的水
+    const min = Math.min(maxLeft, maxRight);
+    if (min > height[i]) {
+      total += min - height[i];
     }
   }
 
-  return str;
+  return total;
 };
 
-console.log(longestPalindrome("babad")); // bab
-console.log(longestPalindrome("cbbd")); // bb
+console.log(trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1])); // 6
