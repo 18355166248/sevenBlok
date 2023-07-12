@@ -43,6 +43,6 @@ function matches(s, p, i, j) {
 }
 
 // console.log(isMatch("aa", "a")); // false
-// console.log(isMatch("aa", "a*")); // true
-console.log(isMatch("ab", ".*")); // true
+console.log(isMatch("aa", "a*")); // true
+// console.log(isMatch("ab", ".*")); // true
 // console.log(isMatch("ab", "*")); // false

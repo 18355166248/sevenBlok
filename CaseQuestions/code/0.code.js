@@ -1,34 +1,46 @@
+// 给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 '.' 和 '*' 的正则表达式匹配。
+// '.' 匹配任意单个字符
+// '*' 匹配零个或多个前面的那一个元素
+// 所谓匹配，是要涵盖 整个 字符串 s的，而不是部分字符串。
+
 /**
- * @param {number[]} height
- * @return {number}
+ * @param {string} s
+ * @param {string} p
+ * @return {boolean}
  */
-var trap = function(height) {
-  let total = 0;
+var isMatch = function(s, p) {
+  const m = s.length;
+  const n = p.length;
 
-  for (let i = 1; i < height.length - 1; i++) {
-    // 找到左边的最大值
-    let maxLeft = 0;
-    for (let l = i - 1; l >= 0; l--) {
-      if (height[l] > maxLeft) {
-        maxLeft = height[l];
-      }
-    }
+  // 生成一个dp 长宽基于 m+1 * n+1
+  const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(false));
+  dp[0][0] = true; // 0 0 表示空字符串 默认是匹配的
 
-    // 找到右边的最大值
-    let maxRight = 0;
-    for (let r = i + 1; r < height.length; r++) {
-      if (height[r] > maxRight) {
-        maxRight = height[r];
+  for (let i = 0; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      // 一种情况就是可能是 *  这种情况复杂很多 0匹配的话是 dp[i][j - 2]  如果s[i] === p[j-1] 则 dp[i][j] = dp[i - 1][j]
+      // 另外一种不是 * 就是判断 i-i j-i 是不是相等的 符合的话赋值给当前
+      if (p.charAt(j - 1) === "*") {
+        // 两种情况 一种是0匹配 一种是大于0匹配
+        dp[i][j] = dp[i][j - 2];
+        if (matches(s, p, i, j - 1)) {
+          dp[i][j] = dp[i][j] || dp[i - 1][j];
+        }
+      } else {
+        if (matches(s, p, i, j)) dp[i][j] = dp[i - 1][j - 1];
       }
-    }
-    // 两边最高的墙中 最矮的那个 且大于当前墙 那差值就是可以塞的水
-    const min = Math.min(maxLeft, maxRight);
-    if (min > height[i]) {
-      total += min - height[i];
     }
   }
-
-  return total;
+  return dp[m][n] || false;
 };
 
-console.log(trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1])); // 6
+function matches(s, p, i, j) {
+  if (i === 0) return false;
+  if (p.charAt(j - 1) === ".") return true;
+  return s.charAt(i - 1) === p.charAt(j - 1);
+}
+
+console.log(isMatch("aa", "a")); // false
+console.log(isMatch("aa", "a*")); // true
+console.log(isMatch("ab", ".*")); // true
+console.log(isMatch("ab", "*")); // false
