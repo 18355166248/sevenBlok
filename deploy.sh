@@ -14,10 +14,11 @@ cd docs/.vuepress/distBlok
 
 git init
 git add -A
+git branch -m master main
 git commit -m 'feat: deploy'
 
 # 如果发布到 https://<18355166248>.github.io
-git push -f git@github.com:18355166248/18355166248.github.io.git main
+git push git@github.com:18355166248/18355166248.github.io.git main -f
 
 # 如果发布到 https://<18355166248>.github.io/<REPO>
 # git push -f git@github.com:18355166248/sevenBlok.git master:seven-blog
