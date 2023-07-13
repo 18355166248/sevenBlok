@@ -5,8 +5,6 @@
  * @return {number}
  */
 
-const { max } = require("lodash");
-
 // 按行求
 var trap = function(height) {
   let total = 0;
