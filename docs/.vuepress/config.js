@@ -10,7 +10,7 @@ const sidebar = autoGetSidebarOptionBySrcDir(
 );
 
 module.exports = {
-  title: "柒世(SMegalo)",
+  title: "Swell",
   description: "2021, 学习进步!",
   port: 8082,
   base: "/",

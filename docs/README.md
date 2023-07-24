@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /seven.png
+heroImage:
 actionText: start
 actionLink: /ForentEnd/javascript/
 features:
