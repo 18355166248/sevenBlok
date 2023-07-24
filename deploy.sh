@@ -14,7 +14,7 @@ cd docs/.vuepress/distBlok
 
 git init
 git add -A
-git branch -m master main
+git checkout -b main
 git commit -m 'feat: deploy'
 
 # 如果发布到 https://<18355166248>.github.io
