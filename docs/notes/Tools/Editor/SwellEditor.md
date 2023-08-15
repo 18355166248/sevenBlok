@@ -35,7 +35,7 @@
 
 <video id="video" controls="" preload="none" poster="封面">
   <source id="mp4" src="./assets/demo.mov" type="video/mp4">
-</videos>
+</video>
 
 ### 布局
 
