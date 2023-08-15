@@ -33,8 +33,8 @@
 
 先看下预览
 
-<video id="video" controls="" preload="none" poster="封面">
-  <source id="mp4" src="./assets/demo.mov" type="video/mp4">
+<video id="video" controls="" poster="封面" loop preload  muted autoplay="autoplay" style="width: 50vw" playsinline="true">
+  <source src="/movies/demo.mov" type="video/mp4" />
 </video>
 
 ### 布局
@@ -296,8 +296,7 @@ addEventListener("message", async (event) => {
 
 预览区要处理的工作比较多
 
-1. 引入 mdx, 支持将左侧的代码通过 mdxjs 编译成html代码块
-2. 支持 md 的额外功能, 包括表格, 数学符号, 代码块主题, react组件渲染
-3. css样式的加载
+1. 引入 mdx, 支持将左侧的代码通过 mdxjs 编译成 html 代码块
+2. 支持 md 的额外功能, 包括表格, 数学符号, 代码块主题, react 组件渲染
+3. css 样式的加载
 4. 手机模式的预览和可拖拽控制宽高
-
