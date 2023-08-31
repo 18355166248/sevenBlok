@@ -45,7 +45,7 @@ Babel 应用: 利用 @babel/register 实现即时编译（在 Node 环境下使�
 
 但请注意这种方法并不适合正式产品环境使用。 直接部署用此方式编译的代码不是好的做法。 在部署之前预先编译会更好。 不过用在构建脚本或是其他本地运行的脚本中是非常合适的。
 
-#### [例子](https://github.com/18355166248/megalo-note/tree/main/packages/Babel/src/babel-register.js)
+#### [例子( 点击查看源码 )](https://github.com/18355166248/megalo-note/tree/main/packages/Babel/src/babel-register.js)
 
 可以看到项目引入了 1.js, 但是 1.js 内部使用了 ES6 import 语法, import 语法是不能再 node 环境直接使用的, 所以直接报错了, 但是在顶部引入了 @babel/register, 并注册了 presets, 这样就可以正常执行了
 
@@ -56,7 +56,7 @@ Babel 应用: 利用 @babel/register 实现即时编译（在 Node 环境下使�
 工具包有很多方法, 具体可看[官网文档](https://babeljs.io/docs/babel-core#transform)
 看 API 我们可以大致分为 4 类, 转换字符串代码, 转换文件代码, 通过 ast 转换成代码, 将代码转换成 ast, 每个方法又有三种方法, callback 拿结果, 同步拿结果, promise 拿结果
 
-#### [例子](https://github.com/18355166248/megalo-note/tree/main/packages/Babel/src/babel-core.js)
+#### [例子( 点击查看源码 )](https://github.com/18355166248/megalo-note/tree/main/packages/Babel/src/babel-core.js)
 
 看例子可以看到我们通过 @babel/core 可以将代码转化成我们配置的兼容性代码
 
@@ -70,13 +70,13 @@ Babel 应用: 利用 @babel/register 实现即时编译（在 Node 环境下使�
 
 我们可以解析 react 组件
 
-#### [例子](https://github.com/18355166248/megalo-note/tree/main/packages/Babel/src/babel-react.js)
+#### [例子( 点击查看源码 )](https://github.com/18355166248/megalo-note/tree/main/packages/Babel/src/babel-react.js)
 
 ### @babel/preset-typescript
 
 我们可以解析 .ts 文件 的 typescript
 
-#### [例子](https://github.com/18355166248/megalo-note/tree/main/packages/Babel/.babelrc) 下配置了 @babel/preset-typescript
+#### [例子( 点击查看源码 )](https://github.com/18355166248/megalo-note/tree/main/packages/Babel/.babelrc) 下配置了 @babel/preset-typescript
 
 ### @babel/standalone
 
@@ -114,7 +114,7 @@ Babel 应用: 利用 @babel/register 实现即时编译（在 Node 环境下使�
 
 将 ast 转成代码
 
-#### [例子](https://github.com/18355166248/megalo-note/tree/main/packages/Babel/src/babel-generator.js)
+#### [例子( 点击查看源码 )](https://github.com/18355166248/megalo-note/tree/main/packages/Babel/src/babel-generator.js)
 
 ### @babel/code-frame
 
@@ -150,7 +150,7 @@ const location = {
 
 babel 模板功能, 支持动态替换字符串
 
-#### [例子](https://github.com/18355166248/megalo-note/tree/main/packages/Babel/src/babel-template.js)
+#### [例子( 点击查看源码 )](https://github.com/18355166248/megalo-note/tree/main/packages/Babel/src/babel-template.js)
 
 ### @babel/traverse
 
