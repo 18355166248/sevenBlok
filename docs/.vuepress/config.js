@@ -181,6 +181,10 @@ module.exports = {
             text: "VsCode",
             link: "/notes/Tools/Vscode/",
           },
+          {
+            text: "Editor",
+            link: "/notes/Tools/Editor/",
+          },
         ],
       },
       {
