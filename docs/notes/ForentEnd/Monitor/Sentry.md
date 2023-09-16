@@ -2,15 +2,50 @@
 
 本文将采用 @sentry/react 进行搭建
 
+## 导航
+
+- [sentry 官方文档](https://docs.sentry.io/platforms/javascript/)
+
+### 安装依赖
+
+```js
+yarn add @sentry/react
+yarn add -D @sentry/webpack-plugin
+```
+
 ### 初始化
 
 ```javascript
-Sentry.init({
-  dsn: CLIENT_KEY,
-  environment: BUILD_ENV,
-  sampleRate: 0.1,
-  release: `${projectName}:last`,
-});
+// https://docs.sentry.io/platforms/javascript/guides/react/features/react-router/?original_referrer=https%3A%2F%2Fdocs.sentry.io%2Fplatforms%2Fjavascript%2Fguides%2Freact%2F
+/**
+ * 初始化 Sentry
+ */
+isProd &&
+  Sentry.init({
+    dsn: "", // 填写 Client Keys DSN
+    tracesSampleRate: 0.1, // 它的值决定了性能指标数据上报的频率 如果 tracesSampleRate 为 0.7, 那么用户在使用应用时，70% 的几率会上报性能数据，30% 的几率不会上报性能数据。注意，如果 tracesSampleRate 设置为 0，则不上报性能指标数据。
+    release: packageInfo.version || "last", // 版本号控制
+
+    replaysSessionSampleRate: 0.1, // 上传报错视频回顾采样率10%
+
+    // If the entire session is not sampled, use the below sample rate to sample
+    // sessions when an error occurs.
+    // 对整个报错会话采用100%采样
+    replaysOnErrorSampleRate: 1.0,
+    integrations: [
+      new Sentry.Replay(),
+      new Sentry.BrowserTracing({
+        // react-router 确保收集有关页面加载和相关请求的运行状况的有意义的性能数据
+        routingInstrumentation: Sentry.reactRouterV6Instrumentation(
+          useEffect,
+          useLocation,
+          useNavigationType,
+          createRoutesFromChildren,
+          matchRoutes
+        ),
+      }),
+    ],
+  });
 ```
 
 #### [Sentry Common Options](https://docs.sentry.io/platforms/javascript/configuration/options/)
@@ -27,11 +62,6 @@ Sentry.init({
   - 超过 200 个字符
 - environment
   默认情况下，SDK 将尝试从 SENTRY_ENVIRONMENT 环境变量中读取该值（浏览器 SDK 除外）
-- sampleRate
-  配置错误事件的采样率，范围为 0.0 到 1.0。默认值为 1.0，表示发送了 100％ 的错误事件
-- maxBreadcrumbs
-  捕获面包屑-路径最长
-- initialScope
 
 #### 如果你要删除很多重复的数据用下面这种方式
 
@@ -51,43 +81,19 @@ If you use Webpack in your project, we recommend generating and uploading your s
 
 ```javascript
 // webpack.config.js
-const SentryWebpackPlugin = require("@sentry/webpack-plugin");
+const { sentryWebpackPlugin } = require("@sentry/webpack-plugin");
 
 module.exports = {
-  // other webpack configuration
-  devtool: "source-map",
-  plugins: [
-    new SentryWebpackPlugin({
-      // sentry-cli configuration - can also be done directly through sentry-cli
-      // see https://docs.sentry.io/product/cli/configuration/ for details
-      authToken: process.env.SENTRY_AUTH_TOKEN,
-      org: "example-org",
-      project: "example-project",
-      release: process.env.SENTRY_RELEASE,
+  // ... other config above ...
 
-      // other SentryWebpackPlugin configuration
-      include: ".",
-      ignore: ["node_modules", "webpack.config.js"],
+  devtool: "source-map", // Source map generation must be turned on
+  plugins: [
+    sentryWebpackPlugin({
+      url: process.env.REACT_APP_SOURCE_MAPPING_URL, // 上传 sourcemap 的地址
+      org: "xmly", // 组织名
+      project: projectName, // package.json 的name
+      authToken: process.env.SENTRY_AUTH_TOKEN, // 用户的授权token
     }),
   ],
 };
 ```
-
-使用[SourceMapDevToolPlugin](https://webpack.js.org/plugins/source-map-dev-tool-plugin/)自定义 sourcemap 的上传地址
-
-本插件实现了对 source map 生成，进行更细粒度的控制。它可以替代 devtool 选项。
-
-```javascript
-new webpack.SourceMapDevToolPlugin({
-  publicPath: sourceMappingURL,
-  filename: "[file].map",
-});
-```
-
-### 注意
-
-1. @sentry/webpack-plugin 和 sentry.Init 的 release 要保证一致, 不然 sentry 后端找不到对应的 map
-
-## 导航
-
-- [sentry 官方文档](https://docs.sentry.io/platforms/javascript/)
