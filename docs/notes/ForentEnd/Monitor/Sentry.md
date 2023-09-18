@@ -1,5 +1,8 @@
 # Sentry
 
+Package: npm:@sentry/react
+Version: 7.69.0
+
 本文将采用 @sentry/react 进行搭建
 
 ## 导航
@@ -97,3 +100,183 @@ module.exports = {
   ],
 };
 ```
+
+### [react 配置](https://docs.sentry.io/platforms/javascript/guides/react/features/?original_referrer=https%3A%2F%2Fcn.bing.com%2F)
+
+react 项目一般需要配置下才能上报报错, 如下
+
+#### React Error Boundary
+
+Learn how the React SDK exports an error boundary component that leverages React component APIs.
+
+```js
+import React from "react";
+import * as Sentry from "@sentry/react";
+
+import { Example } from "../example";
+
+function FallbackComponent() {
+  return <div>An error has occurred</div>;
+}
+
+const myFallback = <FallbackComponent />;
+// Alternatively:
+// const myFallback = () => <FallbackComponent />;
+
+class App extends React.Component {
+  render() {
+    return (
+      <Sentry.ErrorBoundary fallback={myFallback} showDialog>
+        <Example />
+      </Sentry.ErrorBoundary>
+    );
+  }
+}
+
+export default App;
+```
+
+当然也可以自己手动上报
+
+```js
+import React from "react";
+import { isFunction } from "lodash-es";
+import "./index.scoped.scss";
+import { CloseCircleOutlined } from "@ant-design/icons";
+import { Button } from "antd";
+import * as Sentry from "@sentry/react";
+
+// 出错后显示的元素类型
+type FallbackElement = React.ReactElement<
+  unknown,
+  string | React.FC | typeof React.Component
+> | null;
+
+// 出错显示组件的 props
+export interface FallbackProps {
+  error: Error;
+}
+
+type ErrorInfoType = Record<string, unknown>;
+
+// 本组件 ErrorBoundary 的 props
+interface ErrorBoundaryProps {
+  fallback?: FallbackElement;
+  onError?: (error: Error, info: ErrorInfoType) => void;
+}
+
+// 本组件 ErrorBoundary 的 props
+interface ErrorBoundaryState {
+  error: Error | null; // 将 hasError 的 boolean 改为 Error 类型，提供更丰富的报错信息
+}
+
+// 初始状态
+const initialState: ErrorBoundaryState = {
+  error: null,
+};
+
+class ErrorBoundary extends React.Component<
+  React.PropsWithChildren<ErrorBoundaryProps>,
+  ErrorBoundaryState
+> {
+  state = initialState;
+
+  static getDerivedStateFromError(error: Error) {
+    return { error };
+  }
+
+  componentDidCatch(error: Error, errorInfo: any) {
+    if (process.env.NODE_ENV === "production") {
+      // 手动上报
+      Sentry.captureException(error, { extra: errorInfo });
+    }
+
+    if (isFunction(this.props.onError)) {
+      this.props.onError(error, errorInfo.componentStack);
+    }
+  }
+
+  try = () => {
+    this.setState(initialState);
+  };
+
+  render() {
+    const { fallback } = this.props;
+    const { error } = this.state;
+
+    if (error !== null) {
+      if (React.isValidElement(fallback)) {
+        return fallback;
+      }
+
+      return (
+        <div className="error pt-20">
+          <div>
+            <CloseCircleOutlined className="close-icon" />
+          </div>
+          <div className="my-4">出错了, 请刷新重试</div>
+          <div>
+            <Button type="primary" size="small" onClick={this.try}>
+              重试
+            </Button>
+          </div>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+
+export default ErrorBoundary;
+```
+
+#### React Router
+
+Learn about Sentry's React Router integration.
+
+这里我这边只说下 React Router6 的接入方法
+
+> 需要 sentry (Available in version 7.21.0 and above)
+
+```js
+import { createBrowserRouter } from "react-router-dom";
+import * as Sentry from "@sentry/react";
+
+Sentry.init({
+  dsn: "https://examplePublicKey@o0.ingest.sentry.io/0",
+  integrations: [
+    new Sentry.BrowserTracing({
+      routingInstrumentation: Sentry.reactRouterV6Instrumentation(
+        React.useEffect,
+        useLocation,
+        useNavigationType,
+        createRoutesFromChildren,
+        matchRoutes
+      ),
+    }),
+  ],
+  tracesSampleRate: 1.0,
+});
+
+// 使用的是 createBrowserRouter
+const sentryCreateBrowserRouter = Sentry.wrapCreateBrowserRouter(
+  createBrowserRouter
+);
+
+const router = sentryCreateBrowserRouter([
+  // ...
+]);
+```
+
+#### Redux
+
+Learn about Sentry's Redux integration.
+
+[文档](https://docs.sentry.io/platforms/javascript/guides/react/features/redux/?original_referrer=https%3A%2F%2Fcn.bing.com%2F)
+
+#### Track React Components
+
+Learn how Sentry's React SDK allows you to monitor the rendering performance of your application and its components.
+
+[文档](https://docs.sentry.io/platforms/javascript/guides/react/features/component-tracking/?original_referrer=https%3A%2F%2Fcn.bing.com%2F)
