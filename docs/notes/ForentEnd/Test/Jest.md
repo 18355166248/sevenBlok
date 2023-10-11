@@ -104,3 +104,14 @@ jest -u
 ```
 
 这个命令会将新的快照更新到已有快照
+
+## 常见问题
+
+1. module is not defined
+
+```js
+ReferenceError: module is not defined in ES module scope
+This file is being treated as an ES module because it has a '.js' file extension and '/Users/xmly/Study/code/swell-node-core/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+```
+
+这个问题只需要将 package.json 里面的"type": "module" 删除即可

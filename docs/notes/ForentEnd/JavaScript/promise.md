@@ -208,3 +208,44 @@
    }
 
 ```
+
+## async promise
+
+```js
+let num = 1;
+async function pro() {
+  console.log(`${num}-1`);
+  const rr = await new Promise((resolve, reject) => {
+    setTimeout(async () => {
+      console.log(`${num}-2`);
+      try {
+        await new Promise((resolve1) => {
+          resolve1(`${num}-3`);
+        }).then(async (res) => {
+          if (num === 1) {
+            num++;
+
+            await pro()
+              .then(resolve)
+              .catch(reject);
+          }
+          console.log(res);
+          reject(`${num}-error`);
+        });
+        resolve(`${num}-4`);
+      } catch (error) {
+        reject(error);
+      }
+    }, 1000);
+  });
+
+  console.log(rr);
+}
+pro()
+  .then(() => {
+    console.log(5);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+```
