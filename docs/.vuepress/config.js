@@ -32,6 +32,7 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
+        docs: resolve("../../docs"),
         "@public": resolve("./public"),
       },
     },
