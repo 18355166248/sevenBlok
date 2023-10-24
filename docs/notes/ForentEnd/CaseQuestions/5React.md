@@ -409,7 +409,7 @@ Diff 算法的设计目标是保持性能并最小化操作，以便在组件状
 ```
 
 ```js
-3 .newChildren 遍历完，oldFiber 没遍历完
+3. newChildren 遍历完，oldFiber 没遍历完
 
 意味着本次更新比之前的节点数量少，有节点被删除了。所以需要遍历剩下的 oldFiber，依次标记 Deletion。
 
