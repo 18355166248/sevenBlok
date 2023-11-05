@@ -694,6 +694,6 @@ V8 中主垃圾回收器就采用标记清除法进行垃圾回收。主要流�
 - 标记：遍历调用栈，看老生代区域堆中的对象是否被引用，被引用的对象标记为活动对象，没有被引用的对象（待清理）标记为垃圾数据。
 - 垃圾清理：将所有垃圾数据清理掉
 
-![](../../../.vuepress/public/javascript/mark-sweep.webp)
+![](../../../.vuepress/public/javascript/mark-sweep.png)
 
 :::

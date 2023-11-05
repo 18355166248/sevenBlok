@@ -294,6 +294,8 @@ es 的 import 引入是静态引入，commonjs 的 require 引入是动态引入
 
 通过 optimization.innerGraph（生产环境下默认开启）选项，Webpack 5 可以分析特定类型导出项中对导入项的依赖关系，从而找到更多未被使用的导入模块并加以移除
 
+### !!! 注意：确保没有编译器将您的 ES2015 模块语法转换为 CommonJS （这是现在常用的 @babel/preset-env 的默认行为），通常我们配置 js 兼容会有该配置项。
+
 :::
 
 ## 为什么 vite、snowpack 可以比 webpack 快那么多？具体原理是
