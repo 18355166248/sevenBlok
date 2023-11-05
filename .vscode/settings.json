@@ -1,0 +1,5 @@
+{
+  "pasteImage.path": "${projectRoot}/docs/.vuepress/public/paste",
+  "pasteImage.namePrefix": "paste-img-",
+  "pasteImage.defaultName": "Y-MM-DD_HH_mm_ss"
+}
