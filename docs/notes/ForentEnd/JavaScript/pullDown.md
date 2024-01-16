@@ -10,18 +10,14 @@
 
 一开始看了微信的向上滚动, 看到有点像自己的需求效果
 
-<video width="335" height="720" controls>
-    <source src="./mp4/wx-pullScroll.mp4" type="video/mp4">
-</video>
+![](@public/javascript/pulldown/wx-pullScroll.gif)
 
 然后想了下之前使用过的框架, 也通过各个网站搜索了下其他开发者的实现方式, 最终确定先使用
 [better-scroll](https://better-scroll.github.io/docs/zh-CN/) 尝试下实现, 正好 better-scroll 已经支持上拉加载历史记录的功能, 于是就决定使用这个框架来实现.
 
 ## 实现([better-scroll](<(https://better-scroll.github.io/docs/zh-CN/)>))
 
-<video width="375" height="667" controls>
-    <source src="./mp4/better-pull-down.mov" type="video/mp4">
-</video>
+![](@public/javascript/pulldown/better-pull-down.gif)
 
 看上面的录屏可以发现, 使用了 better-scroll 的 pull-down 功能, 在触发下拉刷新的时候, 请求服务端拿到历史数据列表, 将数据 unshift 到列表顶部, 但是滚动条直接置顶了, 并没有保持在页面的当前位置, 通过几次尝试, 发现无法完美的解决这个问题. 于是考虑放弃 better-scroll
 
@@ -241,9 +237,7 @@ export default ScrollToTop;
 以上就是我最终完成的组件代码，其中`InfiniteScroll`组件是[react-infinite-scroll-component](https://www.npmjs.com/package/react
 下拉刷新手动实现的, 且只会执行一次, 后续加载只需要滚动即可。
 
-<video width="375" height="667" controls>
-    <source src="./mp4/InfiniteScroll-guide.mov" type="video/mp4">
-</video>
+![](@public/javascript/pulldown/InfiniteScroll-guide.gif)
 
 ## 补充
 
