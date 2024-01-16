@@ -245,6 +245,19 @@ export default ScrollToTop;
     <source src="./mp4/InfiniteScroll-guide.mov" type="video/mp4">
 </video>
 
+## 补充
+
+后期在测试的过程中, 又发现了一个诡异的 bug, 就是在测试机红米手机上, 下拉刷新不生效. 经过排查发现是`InfiniteScroll`组件在获取滚动节点的 scrollTop 参数的时候, 获取到的值是 0, 但是其实页面已经翻转了, 所以这个值应该给是负数才对. 我看了下仓库的 issues, 发现 2021 年 1 月 12 日有人提了[fix: scrollTop issue on mobile in inverse mode #257](https://github.com/ankeetmaini/react-infinite-scroll-component/pull/257), 但是至今没有处理, 提出该问题的小伙伴倒是给出了[解决方案](https://github.com/ankeetmaini/react-infinite-scroll-component/issues/242).
+
+```js
+If you want to install this:
+npm i vj-abishek/react-infinite-scroll-component#mobile
+```
+
+参考了下解决方案发现就是在执行 isElementAtTop 这个函数的时候, 去判断下谷歌浏览器版本号, 低于等于 80 版本的话走另外一套逻辑, 我通过 patch-package 打上了这个补丁, 解决了问题. 因为该小伙伴的代码也有问题, 这里就不细说了, 所以我没有直接引用.
+
+自此, `兼容低版本谷歌浏览器的手机下拉刷新功能就解决了`
+
 # 总结
 
 在接收这个需求的过程中, 确实走了很多弯路, 且最后的实现也不是完全靠自己, 还是依赖了三方库, 虽然很轻量, 但是开发时间确实很紧张, 有些功能确实靠自己去写, 很担心会出现一些兼容问题.
