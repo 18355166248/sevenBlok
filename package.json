@@ -7,7 +7,7 @@
     "start": "npm run dev",
     "build": "vuepress build docs",
     "push": "bash deploy.sh",
-    "leecodeSidebar": "node ./utils/index.js",
+    "leecodeSidebar": "node ./utils/leecodeSidebar.js",
     "leecodeCopy": "node ./utils/copyFileFromCaseQuestions.js",
     "createLeecode": "npm run leecodeCopy && npm run leecodeSidebar",
     "getSidebarJSON": "node docs/.vuepress/config.js"
@@ -24,9 +24,10 @@
     "@vuepress/plugin-search": "^1.9.9",
     "directory-tree": "^2.3.1",
     "husky": "^4.2.3",
+    "prettier": "^3.3.0",
     "sass-loader": "^7.1.0",
     "scss-loader": "^0.0.1",
-    "vuepress": "^1.4.0"
+    "vuepress": "^1.9.10"
   },
   "directories": {
     "doc": "docs"

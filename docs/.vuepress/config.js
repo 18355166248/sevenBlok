@@ -195,6 +195,10 @@ module.exports = {
             text: "LeetCode",
             link: "/notes/Algorithm/LeetCode/",
           },
+          {
+            text: "分类",
+            link: "/notes/Algorithm/LeetCodeClass/",
+          },
         ],
       },
       {

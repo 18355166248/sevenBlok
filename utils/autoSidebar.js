@@ -1,10 +1,15 @@
 const path = require("path");
 const dirTree = require("directory-tree");
+const { startsWith } = require("lodash");
 const SRC_PATH = path.resolve(__dirname, "./src");
+
+// 默认置顶的文件名
+const topList = ["README.md", "index.md", "Index.md", "INDEX.md"];
+const collapsableAuto = ["LeetcodeClass"];
 
 // 针对tree 排序, 将 README.md 排到第一位
 function moveREADMETop(list) {
-  const readmeIndex = list.findIndex((v) => v.name === "README.md");
+  const readmeIndex = list.findIndex((v) => topList.includes(v.name));
   if (readmeIndex > -1) {
     list.unshift(list.splice(readmeIndex, 1)[0]);
   }
@@ -18,9 +23,22 @@ function toSidebarOption(tree = []) {
   moveREADMETop(tree);
   return tree.map((v) => {
     if (v.type === "directory") {
+      let title = v.name.split("-")[1];
+
+      const isCollapsable = collapsableAuto.some(
+        (v1) => v.path.indexOf(v1) > -1
+      );
+      try {
+        if (v.children[0] && v.children[0].name.startsWith("0.title__")) {
+          title = v.children[0].name.split("0.title__")[1];
+          title = title.replaceAll(/\.(md|js)/g, "");
+        }
+      } catch (error) {
+        console.log("🚀 ~ returntree.map ~ error:", error);
+      }
       return {
-        title: v.name.split("-")[1],
-        collapsable: false, // 可选的, 默认值是 true,
+        title,
+        collapsable: isCollapsable, // 可选的, 默认值是 true,
         sidebarDepth: 1,
         children: toSidebarOption(v.children),
       };
