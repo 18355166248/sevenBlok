@@ -34,6 +34,7 @@ module.exports = {
       alias: {
         docs: resolve("../../docs"),
         "@public": resolve("./public"),
+        "@": resolve("./"),
       },
     },
   },

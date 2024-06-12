@@ -36,6 +36,9 @@ function toSidebarOption(tree = []) {
       } catch (error) {
         console.log("🚀 ~ returntree.map ~ error:", error);
       }
+      // 对带有符号 . 的文件 取点前面的字符做从大到小的排序
+      v.children.sort((a, b) => a.name.split('.')[0] - b.name.split('.')[0]);
+
       return {
         title,
         collapsable: isCollapsable, // 可选的, 默认值是 true,
