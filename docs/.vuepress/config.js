@@ -134,6 +134,19 @@ module.exports = {
         ],
       },
       {
+        text: "AI",
+        items: [
+          {
+            text: "代码",
+            link: "/notes/AI/Code/",
+          },
+          {
+            text: "聊天",
+            link: "/notes/AI/Chat/",
+          },
+        ],
+      },
+      {
         text: "转载文章",
         items: [
           {
