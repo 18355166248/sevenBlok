@@ -153,7 +153,7 @@ window.onload = () => {
 ## Dom(documnet Object Modal 文档对象模型)和Cssom(css Object Modal)执行顺序
 
 ::: details 点击
-![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91c2VyLWdvbGQtY2RuLnhpdHUuaW8vMjAyMC8zLzMxLzE3MTMwZTA5N2RlYzFkYzU?x-oss-process=image/format,png)
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91c2VyLWdvbGQtY2RuLnhpdHUuaW8vMjAyMC8zLzMxLzE3MTMwZTA5N2RlYzFkYzU?x-oss-process=image/format,png"  />
 
 在接收到HTML数据之后的预解析过程中，HTML预解析器识别出来了有CSS文件和JavaScript文件需要下载，然后就同时发起这两个文件的下载请求，需要注意的是，这两个文件的下载过程是重叠的，所以下载时间按照最久的那个文件来算。
 
