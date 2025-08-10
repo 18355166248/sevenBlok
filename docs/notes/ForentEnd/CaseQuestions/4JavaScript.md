@@ -602,17 +602,388 @@ function report(error) {
 
 ::: details 点击查看实现代码
 
-1. 箭头函数语法上比普通函数更加简洁(ES6 中每一种函数都可以使用形参赋默认值和剩余运算符)
-2. 箭头函数没有自己的 THIS，它里面的 THIS 是继承函数所处上下文中的 THIS（使用 CALL/APPY 等任何方式都无法改变 THIS 的指向） 3.箭头函数中没有 ARGUMENTS(类数组)，智能基于。。。ARG 获取传递的参数集合（数组）
-3. 箭头函数不能被 NEW 执行（因为：箭头函数没有 THIS 也没有 prototype）
-   :::
+#### 1. 语法差异
+
+- **箭头函数**：语法更简洁，适合简单的函数表达式
+
+  ```js
+  // 普通函数
+  function add(a, b) {
+    return a + b;
+  }
+
+  // 箭头函数
+  const add = (a, b) => a + b;
+  ```
+
+#### 2. this 绑定机制
+
+- **普通函数**：this 的值取决于函数如何被调用
+
+  ```js
+  const obj = {
+    name: "obj",
+    sayName: function () {
+      console.log(this.name);
+    },
+  };
+
+  obj.sayName(); // 'obj'
+  const fn = obj.sayName;
+  fn(); // undefined (严格模式下) 或 window (非严格模式)
+  ```
+
+- **箭头函数**：this 继承自定义时的上下文，无法通过 call、apply、bind 改变
+
+  ```js
+  const obj = {
+    name: "obj",
+    sayName: () => {
+      console.log(this.name);
+    },
+  };
+
+  obj.sayName(); // undefined (this 指向 window)
+  obj.sayName.call({ name: "newObj" }); // 仍然是 undefined
+  ```
+
+#### 3. arguments 对象
+
+- **普通函数**：有 arguments 对象（类数组）
+
+  ```js
+  function test() {
+    console.log(arguments); // Arguments(3) [1, 2, 3]
+  }
+  test(1, 2, 3);
+  ```
+
+- **箭头函数**：没有 arguments 对象，需要使用剩余参数语法
+  ```js
+  const test = (...args) => {
+    console.log(args); // [1, 2, 3]
+  };
+  test(1, 2, 3);
+  ```
+
+#### 4. 构造函数能力
+
+- **普通函数**：可以作为构造函数使用 new 关键字
+
+  ```js
+  function Person(name) {
+    this.name = name;
+  }
+  const person = new Person("John"); // 正常工作
+  ```
+
+- **箭头函数**：不能作为构造函数，没有 prototype 属性
+  ```js
+  const Person = (name) => {
+    this.name = name;
+  };
+  const person = new Person("John"); // TypeError: Person is not a constructor
+  ```
+
+#### 5. 原型链
+
+- **普通函数**：有 prototype 属性
+
+  ```js
+  function test() {}
+  console.log(test.prototype); // {constructor: ƒ}
+  ```
+
+- **箭头函数**：没有 prototype 属性
+  ```js
+  const test = () => {};
+  console.log(test.prototype); // undefined
+  ```
+
+#### 6. 适用场景
+
+- **箭头函数适合**：
+
+  - 简单的函数表达式
+  - 需要保持 this 指向的场景
+  - 回调函数
+  - 立即执行函数
+
+- **普通函数适合**：
+  - 需要作为构造函数
+  - 需要动态 this 绑定
+  - 需要访问 arguments 对象
+  - 方法定义
+
+#### 7. 实际应用示例
+
+```js
+class Timer {
+  constructor() {
+    this.seconds = 0;
+
+    // 普通函数 - this 会改变
+    setInterval(function () {
+      this.seconds++;
+      console.log(this.seconds); // NaN，this 指向 setInterval 的上下文
+    }, 1000);
+
+    // 箭头函数 - this 继承自 Timer 实例
+    setInterval(() => {
+      this.seconds++;
+      console.log(this.seconds); // 正常工作
+    }, 1000);
+  }
+}
+```
+
+:::
 
 ### 跨域的解决方案 并且解决前后端分离项目跨域，配置多个域名
 
 ::: details 点击查看实现代码
-体量大的情况跨域的解决方案, 不要让运维通过 nginx 改 通过 java 配置
 
-项目前后端分离以后需要配置跨域，且需要允许浏览器多个域名跨域。我们知道 Access-Control-Allow-Origin 里面是只可以写一个域名的，但是我们可以通过配置一个可被允许的 origins 数组，然后判断前端请求中的 origin 是否在这个数组中来解决这个问题~
+#### 1. 什么是跨域
+
+跨域是指浏览器禁止向不同源的服务器发送请求，包括：
+
+- 不同域名
+- 不同端口
+- 不同协议
+- 不同子域名
+
+#### 2. 常见的跨域解决方案
+
+##### 2.1 CORS（跨域资源共享）- 推荐方案
+
+```java
+// Spring Boot 配置 CORS
+@Configuration
+public class CorsConfig implements WebMvcConfigurer {
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOriginPatterns("*")  // 允许所有域名，生产环境建议配置具体域名
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .allowCredentials(true)
+                .maxAge(3600);
+    }
+}
+```
+
+##### 2.2 动态配置多个域名
+
+```java
+@Component
+public class CorsFilter implements Filter {
+
+    // 配置允许的域名列表
+    private static final List<String> ALLOWED_ORIGINS = Arrays.asList(
+        "http://localhost:3000",
+        "http://localhost:8080",
+        "https://yourdomain.com",
+        "https://admin.yourdomain.com"
+    );
+
+    @Override
+    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
+            throws IOException, ServletException {
+        HttpServletResponse response = (HttpServletResponse) res;
+        HttpServletRequest request = (HttpServletRequest) req;
+
+        String origin = request.getHeader("Origin");
+
+        // 检查请求的 Origin 是否在允许列表中
+        if (ALLOWED_ORIGINS.contains(origin)) {
+            response.setHeader("Access-Control-Allow-Origin", origin);
+        }
+
+        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Max-Age", "3600");
+
+        // 处理预检请求
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            response.setStatus(HttpServletResponse.SC_OK);
+            return;
+        }
+
+        chain.doFilter(req, res);
+    }
+}
+```
+
+##### 2.3 配置文件方式
+
+```yaml
+# application.yml
+cors:
+  allowed-origins:
+    - http://localhost:3000
+    - http://localhost:8080
+    - https://yourdomain.com
+    - https://admin.yourdomain.com
+  allowed-methods:
+    - GET
+    - POST
+    - PUT
+    - DELETE
+    - OPTIONS
+  allowed-headers:
+    - "*"
+  allow-credentials: true
+  max-age: 3600
+```
+
+#### 3. 前端跨域解决方案
+
+##### 3.1 代理配置（开发环境）
+
+```javascript
+// vite.config.js
+export default defineConfig({
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:8080",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
+  },
+});
+
+// webpack.config.js
+module.exports = {
+  devServer: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:8080",
+        changeOrigin: true,
+        pathRewrite: {
+          "^/api": "",
+        },
+      },
+    },
+  },
+};
+```
+
+##### 3.2 请求拦截器配置
+
+```javascript
+// axios 配置
+import axios from "axios";
+
+const instance = axios.create({
+  baseURL:
+    process.env.NODE_ENV === "development" ? "/api" : "https://yourdomain.com",
+  timeout: 10000,
+  withCredentials: true,
+});
+
+// 请求拦截器
+instance.interceptors.request.use(
+  (config) => {
+    // 添加认证信息
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// 响应拦截器
+instance.interceptors.response.use(
+  (response) => response.data,
+  (error) => {
+    if (error.response?.status === 401) {
+      // 处理未授权
+      localStorage.removeItem("token");
+      window.location.href = "/login";
+    }
+    return Promise.reject(error);
+  }
+);
+
+export default instance;
+```
+
+#### 4. 生产环境部署方案
+
+##### 4.1 Nginx 反向代理
+
+```nginx
+server {
+    listen 80;
+    server_name yourdomain.com;
+
+    # 前端静态文件
+    location / {
+        root /var/www/html;
+        try_files $uri $uri/ /index.html;
+    }
+
+    # API 代理
+    location /api/ {
+        proxy_pass http://backend:8080/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+##### 4.2 Docker 部署
+
+```dockerfile
+# Dockerfile
+FROM nginx:alpine
+COPY dist/ /usr/share/nginx/html/
+COPY nginx.conf /etc/nginx/nginx.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+#### 5. 安全注意事项
+
+1. **生产环境不要使用 `*`**：明确指定允许的域名
+2. **限制允许的方法和头部**：只允许必要的 HTTP 方法和请求头
+3. **设置合理的 maxAge**：避免频繁的预检请求
+4. **启用 HTTPS**：生产环境必须使用 HTTPS
+5. **定期审查允许的域名列表**：及时移除不再使用的域名
+
+#### 6. 测试跨域配置
+
+```javascript
+// 测试脚本
+async function testCors() {
+  try {
+    const response = await fetch("https://yourdomain.com/api/test", {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log("跨域请求成功:", data);
+    }
+  } catch (error) {
+    console.error("跨域请求失败:", error);
+  }
+}
+
+testCors();
+```
+
 :::
 
 ### 简单数据类型和复杂数据类型的区别
@@ -773,21 +1144,12 @@ function decodeURIComponentSafely(uri) {
 
 ::: details 点击查看
 
-```js
+````js
 function filterRepeat(list) {
-  const set = new Set();
-  const res = new Set();
-  for (let i = 0; i < list.length; i++) {
-    if (!set.has(list[i])) {
-      set.add(list[i]);
-      res.add(list[i]);
-    }
-  }
-
-  return Array.from(res);
+  // 方案1: 简单去重（适用于基本类型和引用类型）
+  return [...new Set(list)];
 }
-```
-
+````
 :::
 
 ### class 实现继承如何使用 es5 实现
@@ -821,7 +1183,7 @@ function inherit(Child, Parent) {
     }
 }
 
-```
+````
 
 方法 2:
 
