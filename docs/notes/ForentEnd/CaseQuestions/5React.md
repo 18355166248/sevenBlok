@@ -33,28 +33,184 @@ function handleClick(e) {
 
 #### 共同作用
 
-数据依赖发生变化，才会重新计算结果，起到缓存的作用
+数据依赖发生变化，才会重新计算结果，起到缓存的作用，避免不必要的重复计算和渲染
 
 #### 区别
 
-userMemo 计算结果是 return 回来的值
-useCallback 计算结果是函数，用于缓存函数
+- **useMemo**: 缓存计算结果，返回计算后的值
+- **useCallback**: 缓存函数引用，返回缓存的函数
+
+#### useMemo 使用场景
+
+1. **昂贵的计算操作**
+
+   ```jsx
+   const expensiveValue = useMemo(() => {
+     return computeExpensiveValue(a, b);
+   }, [a, b]);
+   ```
+
+2. **避免子组件不必要的重新渲染**
+
+   ```jsx
+   const memoizedObject = useMemo(
+     () => ({
+       id: props.id,
+       name: props.name,
+     }),
+     [props.id, props.name]
+   );
+   ```
+
+3. **过滤或排序大量数据**
+   ```jsx
+   const filteredUsers = useMemo(() => {
+     return users.filter((user) => user.age > 18);
+   }, [users]);
+   ```
+
+#### useCallback 使用场景
+
+1. **传递给子组件的回调函数**
+
+   ```jsx
+   const handleClick = useCallback(() => {
+     console.log("Button clicked");
+   }, []);
+   ```
+
+2. **避免子组件因为函数引用变化而重新渲染**
+
+   ```jsx
+   const handleSubmit = useCallback((data) => {
+     submitData(data);
+   }, []);
+   ```
+
+3. **作为 useEffect 的依赖项**
+
+   ```jsx
+   const fetchData = useCallback(() => {
+     // 获取数据的逻辑
+   }, []);
+
+   useEffect(() => {
+     fetchData();
+   }, [fetchData]);
+   ```
+
+#### 注意事项
+
+- 不要过度使用，只有在确实需要优化性能时才使用
+- 依赖数组要准确，避免遗漏依赖导致的问题
+- 对于简单的计算或对象创建，直接创建可能比使用 useMemo 更高效
 
 ## 3. 有没有使用过 react 的 useContext？如何避免 react context 导致的重复不必要的渲染问题？
 
 ::: details 点击
-解决方案看 https://zhuanlan.zhihu.com/p/50336226
+解决方案看 [https://zhuanlan.zhihu.com/p/50336226](https://zhuanlan.zhihu.com/p/50336226)
 
 思路就是再使用 context 的时候，独立声明高阶组件包裹下面的 children，这样组件内部改变 context 不会影响外面调用 context 的组件，避免不必要的渲染
 
-#### 作用
+1.  合理拆分 Context（粒度化）
+    ​​场景​​：单个 Context 包含过多数据（如用户信息、主题、配置）
+    ​​方案​​：按数据用途拆分为多个独立 Context
 
-数据上下文初始化，用于所有子组件可以快速获取，使用
+2.  优化 Context 值引用
+
+```js
+const contextValue = useMemo(() => ({
+user,
+login: () => setUser(newUser)
+}), [user]); // 仅当 user 变化时更新引用
+
+return <MyContext.Provider value={contextValue}>;
+```
+
+3. 控制组件重渲染范围
+
+- ​​策略 1​​：对纯展示组件使用 React.memo
+- ​​策略 2​​：分离状态读取与交互逻辑
+
+4. 结合 useReducer管理复杂状态
+
 :::
 
 ## 4. useLayoutEffect 与 useEffect 区别, useLayoutEffect 使用场景？以及这两个执行的先后顺序？
 
-useLayoutEffect 和 useEffect 差不多，区别只是它是在 commit 阶段的 layout 阶段同步执行所有 fiber 节点的 updateQueue 中的 effect。
+### 主要区别
+
+**useEffect：**
+
+- 异步执行，不会阻塞浏览器绘制
+- 在浏览器绘制完成后执行
+- 适合大多数副作用操作
+
+**useLayoutEffect：**
+
+- 同步执行，会阻塞浏览器绘制
+- 在 DOM 更新后、浏览器绘制前执行
+- 适合需要同步更新 DOM 的场景
+
+### 执行顺序
+
+1. **组件渲染** → 2. **DOM 更新** → 3. **useLayoutEffect 执行** → 4. **浏览器绘制** → 5. **useEffect 执行**
+
+### useLayoutEffect 使用场景
+
+**适用场景：**
+
+- 需要同步测量 DOM 元素尺寸
+- 需要同步更新 DOM 样式，避免闪烁
+- 需要同步操作 DOM 元素（如 focus、scroll 等）
+
+**示例代码：**
+
+```jsx
+import React, { useLayoutEffect, useRef, useState } from "react";
+
+function MeasureComponent() {
+  const [width, setWidth] = useState(0);
+  const ref = useRef();
+
+  useLayoutEffect(() => {
+    // 同步测量 DOM 元素尺寸
+    setWidth(ref.current.offsetWidth);
+  }, []);
+
+  return <div ref={ref}>宽度: {width}px</div>;
+}
+```
+
+**避免闪烁的示例：**
+
+```jsx
+function Tooltip({ children, position }) {
+  const [tooltipStyle, setTooltipStyle] = useState({});
+  const tooltipRef = useRef();
+
+  useLayoutEffect(() => {
+    // 同步计算位置，避免闪烁
+    const rect = tooltipRef.current.getBoundingClientRect();
+    setTooltipStyle({
+      left: position.x - rect.width / 2,
+      top: position.y - rect.height - 10,
+    });
+  }, [position]);
+
+  return (
+    <div ref={tooltipRef} style={tooltipStyle}>
+      {children}
+    </div>
+  );
+}
+```
+
+### 注意事项
+
+- **性能影响**：useLayoutEffect 会阻塞浏览器绘制，过度使用会影响性能
+- **默认选择**：优先使用 useEffect，只有在需要同步更新 DOM 时才使用 useLayoutEffect
+- **服务端渲染**：useLayoutEffect 在服务端渲染时会产生警告，因为服务端没有 DOM
 
 ## 5. 子组件不依赖父组件的任何 props 属性值，如果父组件状态改变了，子组件会不会进行 diff 以及 re-render？子组件的真实 DOM 会不会重新生成。如果子组件会重新渲染，那怎么才能在没有任何依赖的情况下，让子组件不渲染？
 
@@ -68,17 +224,81 @@ React 17 引入了一项优化措施，称为"跳过无关更新"（Skip unneces
 
 ## 6. 在两个组件中使用相同的自定义 Hook 会共享 state 吗？
 
-不会共享
+**不会共享 state**
 
-> 注意：
+### 原因分析
 
-自定义 Hook 必须以 “use” 开头
-在两个组件中使用相同的 Hook 不会 共享 state
-自定义 Hook 每次调用 Hook，它都会获取独立的 stat
+每个组件调用自定义 Hook 时，都会创建独立的 state 实例。这是因为：
+
+1. **Hook 调用是独立的**：每次调用 Hook 都会创建新的 state 变量
+2. **组件隔离**：不同组件之间的 state 是完全隔离的
+3. **闭包特性**：每个 Hook 调用都有自己的闭包作用域
+
+### 代码示例
+
+```jsx
+// 自定义 Hook
+function useCounter(initialValue) {
+  const [count, setCount] = useState(initialValue);
+
+  const increment = () => setCount(count + 1);
+  const decrement = () => setCount(count - 1);
+
+  return { count, increment, decrement };
+}
+
+// 组件A
+function ComponentA() {
+  const { count, increment, decrement } = useCounter(0);
+
+  return (
+    <div>
+      <h3>Component A: {count}</h3>
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+    </div>
+  );
+}
+
+// 组件B
+function ComponentB() {
+  const { count, increment, decrement } = useCounter(10);
+
+  return (
+    <div>
+      <h3>Component B: {count}</h3>
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+    </div>
+  );
+}
+```
+
+在上面的例子中：
+
+- `ComponentA` 的 `count` 初始值为 0
+- `ComponentB` 的 `count` 初始值为 10
+- 两个组件的 state 完全独立，互不影响
+
+### 注意事项
+
+1. **命名规范**：自定义 Hook 必须以 "use" 开头
+2. **调用规则**：Hook 只能在函数组件或自定义 Hook 的顶层调用
+3. **状态隔离**：每次调用 Hook 都会获取独立的 state
+4. **性能考虑**：虽然不共享 state，但 Hook 的逻辑可以复用
+
+### 如果需要共享状态
+
+如果确实需要在组件间共享状态，可以考虑：
+
+1. **状态提升**：将状态提升到共同的父组件
+2. **Context API**：使用 React Context 进行状态共享
+3. **状态管理库**：如 Redux、Zustand 等
+4. **自定义 Hook + Context**：结合使用实现状态共享
 
 ## 7. 如何做到只有在更新时运行 effect ？
 
-https://blog.csdn.net/NinthMonee/article/details/113564439
+[https://blog.csdn.net/NinthMonee/article/details/113564439](https://blog.csdn.net/NinthMonee/article/details/113564439)
 
 这是个比较罕见的使用场景。如果你需要的话，你可以 使用一个可变的 ref 手动存储一个布尔值来表示是首次渲染还是后续渲染，然后在你的 effect 中检查这个标识。（如果你发现自己经常在这么做，你可以为之创建一个自定义 Hook。）
 
@@ -283,7 +503,7 @@ scheduler 包中调度原理, 也就是 React 两大工作循环中的任务调�
   });
 
   export const getInitList = () => {
-    return function(dispatch) {
+    return function (dispatch) {
       axios.get("/api/initList.json").then((res) => {
         //调用上面的initList，向store发送数据修改的请求
         //然后reducers通过action的type的值进行处理，返回一个新的state
