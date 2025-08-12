@@ -354,53 +354,839 @@ function MyComponent() {
 
 ## 10. react 组件封装的看法，有没有做过 DOM 结构比较复杂的组件，以及怎么做复杂组件的性能测试？
 
+:::details
+
+### 组件封装的原则
+
+1. **单一职责原则**：每个组件只负责一个功能
+2. **可复用性**：组件应该能够在不同场景下复用
+3. **可维护性**：组件结构清晰，易于理解和修改
+4. **可测试性**：组件应该易于进行单元测试
+
+### 复杂组件的性能测试方法
+
+#### 1. React DevTools Profiler
+
+```jsx
+import { Profiler } from "react";
+
+function onRenderCallback(
+  id, // 发生提交的 Profiler 树的 "id"
+  phase, // "mount" (首次挂载) 或 "update" (重新渲染)
+  actualDuration, // 渲染花费的时间
+  baseDuration, // 估计不使用 memoization 的情况下渲染整棵子树需要的时间
+  startTime, // 本次渲染开始的时间
+  commitTime // 本次渲染被提交的时间
+) {
+  console.log("渲染时间:", actualDuration);
+}
+
+<Profiler id="ComplexComponent" onRender={onRenderCallback}>
+  <ComplexComponent />
+</Profiler>;
+```
+
+#### 2. 性能监控工具
+
+- **Lighthouse**：分析页面性能
+- **WebPageTest**：详细的性能测试
+- **React Performance**：专门的 React 性能分析
+
+#### 3. 代码层面的性能优化
+
+```jsx
+// 使用 React.memo 避免不必要的重渲染
+const ComplexComponent = React.memo(({ data }) => {
+  // 组件逻辑
+});
+
+// 使用 useMemo 缓存计算结果
+const expensiveValue = useMemo(() => {
+  return computeExpensiveValue(data);
+}, [data]);
+
+// 使用 useCallback 缓存函数
+const handleClick = useCallback(() => {
+  // 处理逻辑
+}, []);
+```
+
+#### 4. 虚拟化长列表
+
+```jsx
+import { FixedSizeList as List } from "react-window";
+
+const VirtualizedList = ({ items }) => (
+  <List height={400} itemCount={items.length} itemSize={35} itemData={items}>
+    {({ index, style, data }) => <div style={style}>{data[index].name}</div>}
+  </List>
+);
+```
+
+:::
+
 ## 11. React Portal 有哪些使用场景？
 
+:::details
+
+### 什么是 React Portal
+
+React Portal 提供了一种将子节点渲染到父组件 DOM 层级之外的 DOM 节点中的方法。通过 `ReactDOM.createPortal(child, container)` 实现。
+
+### 主要使用场景
+
+#### 1. 模态框（Modal）
+
+```jsx
+import ReactDOM from "react-dom";
+
+function Modal({ children, isOpen }) {
+  if (!isOpen) return null;
+
+  return ReactDOM.createPortal(
+    <div className="modal-overlay">
+      <div className="modal-content">{children}</div>
+    </div>,
+    document.body // 渲染到 body 下，避免 z-index 问题
+  );
+}
+```
+
+#### 2. 工具提示（Tooltip）
+
+```jsx
+function Tooltip({ children, content, position }) {
+  const [show, setShow] = useState(false);
+  const [tooltipStyle, setTooltipStyle] = useState({});
+
+  const handleMouseEnter = (e) => {
+    const rect = e.target.getBoundingClientRect();
+    setTooltipStyle({
+      position: "fixed",
+      left: rect.left + rect.width / 2,
+      top: rect.top - 10,
+      transform: "translateX(-50%)",
+    });
+    setShow(true);
+  };
+
+  return (
+    <>
+      <span onMouseEnter={handleMouseEnter} onMouseLeave={() => setShow(false)}>
+        {children}
+      </span>
+      {show &&
+        ReactDOM.createPortal(
+          <div className="tooltip" style={tooltipStyle}>
+            {content}
+          </div>,
+          document.body
+        )}
+    </>
+  );
+}
+```
+
+#### 3. 下拉菜单（Dropdown）
+
+```jsx
+function Dropdown({ trigger, menu }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [position, setPosition] = useState({});
+
+  const handleClick = (e) => {
+    const rect = e.target.getBoundingClientRect();
+    setPosition({
+      top: rect.bottom + 5,
+      left: rect.left,
+    });
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <>
+      <div onClick={handleClick}>{trigger}</div>
+      {isOpen &&
+        ReactDOM.createPortal(
+          <div className="dropdown-menu" style={position}>
+            {menu}
+          </div>,
+          document.body
+        )}
+    </>
+  );
+}
+```
+
+#### 4. 通知提示（Notification）
+
+```jsx
+function Notification({ message, type, duration = 3000 }) {
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsVisible(false), duration);
+    return () => clearTimeout(timer);
+  }, [duration]);
+
+  if (!isVisible) return null;
+
+  return ReactDOM.createPortal(
+    <div className={`notification notification-${type}`}>{message}</div>,
+    document.body
+  );
+}
+```
+
+### Portal 的优势
+
+1. **避免 CSS 层级问题**：可以渲染到任何 DOM 节点，避免 z-index 和 overflow 问题
+2. **更好的性能**：避免复杂的 CSS 定位计算
+3. **更灵活的结构**：可以在 DOM 树中的任何位置渲染组件
+4. **更好的可访问性**：可以确保组件在正确的 DOM 层级中
+
+### 注意事项
+
+1. **事件冒泡**：Portal 中的事件仍然会冒泡到 React 树中
+2. **清理工作**：确保在组件卸载时清理 Portal 创建的元素
+3. **服务端渲染**：Portal 在服务端渲染时需要注意兼容性
+
+:::
+
 ## 12.react hook、高阶组件、render Prop 适应场景？
+
+:::details
+
+### 三种模式的对比
+
+| 特性       | React Hooks | 高阶组件 (HOC) | Render Props |
+| ---------- | ----------- | -------------- | ------------ |
+| 学习成本   | 低          | 中等           | 中等         |
+| 代码复用性 | 高          | 高             | 高           |
+| 逻辑内聚性 | 高          | 中等           | 中等         |
+| 性能优化   | 内置        | 需要手动优化   | 需要手动优化 |
+| 调试友好性 | 好          | 中等           | 中等         |
+
+### React Hooks 适用场景
+
+```jsx
+function useCounter(initialValue = 0) {
+  const [count, setCount] = useState(initialValue);
+
+  const increment = () => setCount(count + 1);
+  const decrement = () => setCount(count - 1);
+  const reset = () => setCount(initialValue);
+
+  return { count, increment, decrement, reset };
+}
+
+// 使用
+function Counter() {
+  const { count, increment, decrement } = useCounter(0);
+  return (
+    <div>
+      <span>{count}</span>
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+    </div>
+  );
+}
+```
+
+### 高阶组件 (HOC) 适用场景
+
+```jsx
+function withAuth(WrappedComponent) {
+  return function AuthenticatedComponent(props) {
+    const { isAuthenticated, user } = useAuth();
+
+    if (!isAuthenticated) {
+      return <LoginPage />;
+    }
+
+    return <WrappedComponent {...props} user={user} />;
+  };
+}
+```
+
+### Render Props 适用场景
+
+```jsx
+function MouseTracker({ render }) {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (event) => {
+    setPosition({
+      x: event.clientX,
+      y: event.clientY,
+    });
+  };
+
+  return <div onMouseMove={handleMouseMove}>{render(position)}</div>;
+}
+
+// 使用
+<MouseTracker
+  render={({ x, y }) => (
+    <h1>
+      鼠标位置: ({x}, {y})
+    </h1>
+  )}
+/>;
+```
+
+### 选择建议
+
+1. **优先使用 Hooks**：对于大部分场景，Hooks 是最佳选择
+2. **HOC 用于横切关注点**：如权限控制、日志记录等
+3. **Render Props 用于复杂渲染逻辑**：当需要灵活控制渲染内容时
+4. **混合使用**：在实际项目中，三种模式可以结合使用
+
+:::
 
 ## 13. setState 是异步还是同步？什么情况下是异步？什么情况下是同步？具体哪些场景?
 
 :::details 点开
 
-react18 之前
+### React 18 之前的行为
 
 setState 的“异步”并不是说内部由异步代码实现，其实本身执行的过程和代码都是同步的，只是合成事件和钩子函数的调用顺序在更新之前，导致在合成事件和钩子函数中没法立马拿到更新后的值，形成了所谓的“异步”，
 
-react18
+### React 18 的变化
 
 [官方说明](https://github.com/reactwg/react-18/discussions/21)
 
-从 react 18 开始, 使用了 createRoot 创建应用后, 所有的更新都会自动进行批处理(也就是异步合并).使用 render 的应用会保持之前的行为.
-如果你想保持同步更新行为, 可以使用 ReactDOM.flushSync()
+从 React 18 开始，使用了 `createRoot` 创建应用后，所有的更新都会自动进行批处理（也就是异步合并）。使用 `render` 的应用会保持之前的行为。
+
+如果你想保持同步更新行为，可以使用 `ReactDOM.flushSync()`。
+
+### 具体场景分析
+
+#### 1. 合成事件中的 setState（异步）
+
+```jsx
+function handleClick() {
+  console.log("setState 前:", this.state.count); // 0
+  this.setState({ count: this.state.count + 1 });
+  console.log("setState 后:", this.state.count); // 仍然是 0
+}
+
+// 在 React 18 中，所有合成事件都是异步的
+<button onClick={handleClick}>点击</button>;
+```
+
+#### 2. 生命周期中的 setState（异步）
+
+```jsx
+componentDidMount() {
+  console.log('setState 前:', this.state.count); // 0
+  this.setState({ count: this.state.count + 1 });
+  console.log('setState 后:', this.state.count); // 仍然是 0
+}
+```
+
+#### 3. 原生事件中的 setState（同步）
+
+```jsx
+componentDidMount() {
+  // 原生 DOM 事件
+  document.getElementById('button').addEventListener('click', () => {
+    console.log('setState 前:', this.state.count); // 0
+    this.setState({ count: this.state.count + 1 });
+    console.log('setState 后:', this.state.count); // 1，同步更新
+  });
+}
+```
+
+#### 4. setTimeout 中的 setState（同步）
+
+```jsx
+handleClick = () => {
+  setTimeout(() => {
+    console.log("setState 前:", this.state.count); // 0
+    this.setState({ count: this.state.count + 1 });
+    console.log("setState 后:", this.state.count); // 1，同步更新
+  }, 0);
+};
+```
+
+#### 5. Promise 中的 setState（同步）
+
+```jsx
+handleClick = async () => {
+  await Promise.resolve();
+  console.log("setState 前:", this.state.count); // 0
+  this.setState({ count: this.state.count + 1 });
+  console.log("setState 后:", this.state.count); // 1，同步更新
+};
+```
+
+### React 18 中的强制同步更新
+
+```jsx
+import { flushSync } from "react-dom";
+
+function handleClick() {
+  console.log("setState 前:", count); // 0
+
+  // 强制同步更新
+  flushSync(() => {
+    setCount(count + 1);
+  });
+
+  console.log("setState 后:", count); // 1，同步更新
+}
+```
+
+### 批处理的影响
+
+#### 多个 setState 的合并
+
+```jsx
+function handleClick() {
+  // React 18 中，这些会被自动批处理
+  setCount(count + 1);
+  setCount(count + 1);
+  setCount(count + 1);
+
+  // 最终结果：count 只增加 1，而不是 3
+}
+```
+
+#### 避免批处理
+
+```jsx
+function handleClick() {
+  // 使用 flushSync 避免批处理
+  flushSync(() => {
+    setCount(count + 1);
+  });
+
+  flushSync(() => {
+    setCount(count + 1);
+  });
+
+  // 最终结果：count 增加 2
+}
+```
+
+### 最佳实践
+
+1. **不要依赖 setState 的同步性**：始终认为 setState 是异步的
+2. **使用回调函数**：当需要基于之前的状态更新时
+   ```jsx
+   setCount((prevCount) => prevCount + 1);
+   ```
+3. **使用 useEffect**：当需要在状态更新后执行副作用时
+   ```jsx
+   useEffect(() => {
+     console.log("count 更新后:", count);
+   }, [count]);
+   ```
+4. **避免在事件处理中直接读取状态**：使用函数式更新或 useEffect
 
 :::
 
 ## 14. hook 为什么不能写在判断语句里面
 
-因为 hook 组件渲染必须有一样的渲染顺序, 假如 hook 写在判断语句里面, 那么渲染顺序就不可控了
+:::details 点开
 
-hook 组件的状态初始化是用链表的形式存储的, 假如说你有 hook 在判断语句里面, 那么在组件重新执行的时候有可能不能拿到这个 hook 并放入进链表中, 这个时候 react 在更新的时候就会出现错乱, 造成 hook 更新不准确的情况
+### Hook 的调用规则
+
+React Hooks 必须遵循以下规则：
+
+1. **只能在函数组件的顶层调用 Hook**
+2. **不能在循环、条件或嵌套函数中调用 Hook**
+3. **只能在 React 函数组件或自定义 Hook 中调用 Hook**
+
+### 为什么不能写在判断语句里面
+
+#### 1. Hook 调用顺序必须保持一致
+
+React 依赖 Hook 的调用顺序来正确地将 state 与对应的 Hook 关联起来。如果 Hook 在条件语句中，会导致调用顺序不一致：
+
+```jsx
+// ❌ 错误示例
+function MyComponent({ condition }) {
+  const [count, setCount] = useState(0);
+
+  if (condition) {
+    const [name, setName] = useState(""); // 这个 Hook 可能不会执行
+  }
+
+  const [age, setAge] = useState(0);
+
+  return <div>{count}</div>;
+}
+```
+
+#### 2. Hook 内部使用链表存储状态
+
+React 内部使用链表来存储每个 Hook 的状态。Hook 的调用顺序决定了它们在链表中的位置：
+
+```jsx
+// 第一次渲染
+function MyComponent() {
+  const [count, setCount] = useState(0); // Hook 1: 位置 0
+  const [name, setName] = useState(""); // Hook 2: 位置 1
+  const [age, setAge] = useState(0); // Hook 3: 位置 2
+}
+
+// 第二次渲染（如果条件变化）
+function MyComponent() {
+  const [count, setCount] = useState(0); // Hook 1: 位置 0
+  // const [name, setName] = useState('');      // Hook 2: 位置 1 (缺失)
+  const [age, setAge] = useState(0); // Hook 3: 位置 2 (但实际是 Hook 2)
+}
+```
+
+#### 3. 具体问题示例
+
+```jsx
+// ❌ 错误示例
+function BuggyComponent({ shouldShowName }) {
+  const [count, setCount] = useState(0);
+
+  if (shouldShowName) {
+    const [name, setName] = useState(""); // 条件性 Hook
+  }
+
+  const [age, setAge] = useState(0);
+
+  // 当 shouldShowName 从 true 变为 false 时
+  // React 会认为 name 状态变成了 age 状态
+  // 导致状态混乱
+}
+```
+
+### 正确的解决方案
+
+#### 1. 将条件逻辑移到 Hook 内部
+
+```jsx
+// ✅ 正确示例
+function MyComponent({ condition }) {
+  const [count, setCount] = useState(0);
+
+  // 将条件逻辑移到 Hook 内部
+  const [name, setName] = useState("");
+  const displayName = condition ? name : "";
+
+  const [age, setAge] = useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      {condition && <p>Name: {displayName}</p>}
+      <p>Age: {age}</p>
+    </div>
+  );
+}
+```
+
+#### 2. 使用条件渲染而不是条件 Hook
+
+```jsx
+// ✅ 正确示例
+function MyComponent({ condition }) {
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState("");
+  const [age, setAge] = useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      {condition && <NameInput name={name} setName={setName} />}
+      <p>Age: {age}</p>
+    </div>
+  );
+}
+
+function NameInput({ name, setName }) {
+  return <input value={name} onChange={(e) => setName(e.target.value)} />;
+}
+```
+
+#### 3. 使用自定义 Hook 封装条件逻辑
+
+```jsx
+// ✅ 正确示例
+function useConditionalState(condition, initialValue) {
+  const [state, setState] = useState(initialValue);
+
+  if (!condition) {
+    return [initialValue, () => {}]; // 返回默认值和不做任何事的函数
+  }
+
+  return [state, setState];
+}
+
+function MyComponent({ condition }) {
+  const [count, setCount] = useState(0);
+  const [name, setName] = useConditionalState(condition, "");
+  const [age, setAge] = useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      {condition && <p>Name: {name}</p>}
+      <p>Age: {age}</p>
+    </div>
+  );
+}
+```
+
+### 总结
+
+Hook 不能写在判断语句里面的根本原因是：
+
+1. **React 依赖 Hook 的调用顺序来管理状态**
+2. **Hook 内部使用链表存储，顺序变化会导致状态错乱**
+3. **违反 Hook 规则会导致不可预测的行为和错误**
+
+正确的做法是将条件逻辑移到 Hook 内部，或者使用条件渲染来替代条件 Hook。
+
+:::
 
 ## 15. react-redux 在 react 和 redux 之间做了什么处理
 
-> react-redux 是将 react 和 reudx 有机关联的组件
+:::details 点开
 
-react-redux 有 2 个方法: Provider Connect
+### 什么是 react-redux
 
-1. Provider 用做 redux 数据 store 的初始化
+react-redux 是将 React 和 Redux 有机关联的组件，它提供了 React 组件与 Redux store 之间的绑定，使得 React 组件能够读取 Redux 状态并分发 actions。
 
-   1. 提供了 store 的 getState, dispatch, subscrib 三个方法
-   2. Provider 使用了 Context, 解决 store 数据在嵌套组件使用一套数据的问题
-   3. Provider 要求内部有且只能有一个组件, 这个使用到了 Children(this.props.children)
+### 核心组件
 
-2. Connect
-   1. 高阶函数, 通过 context 调用 store 里面暴露出来的方法,用于传递给组件, 同时订阅组件的渲染事件
+#### 1. Provider 组件
 
-react-redux 使用了 Context 上下文做数据的初始化, 这样所以子组件都可以通过 this.context.store 共享数据
-然后内部实现了一套 Store 方法, 用于数据的删改查和发布订阅更新子组件
-再用 HOC(高阶组件)把 store 上面的 store.gerState(), store.dispatch(), store.subscribe()封装起来, 这里就是 connect 组件干的事了
+Provider 是一个高阶组件，用于将 Redux store 注入到 React 组件树中：
 
-## React 项目兼容低版本浏览器
+```jsx
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import rootReducer from "./reducers";
+
+const store = createStore(rootReducer);
+
+function App() {
+  return (
+    <Provider store={store}>
+      <TodoApp />
+    </Provider>
+  );
+}
+```
+
+**Provider 的作用：**
+
+1. **提供 store 的 getState, dispatch, subscribe 三个方法**
+2. **使用 React Context API**，解决 store 数据在嵌套组件中使用一套数据的问题
+3. **要求内部有且只能有一个组件**，这个使用到了 `Children(this.props.children)`
+
+**Provider 的实现原理：**
+
+```jsx
+// 简化版的 Provider 实现
+class Provider extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      store: props.store,
+    };
+  }
+
+  render() {
+    return Children.only(this.props.children);
+  }
+
+  getChildContext() {
+    return {
+      store: this.state.store,
+    };
+  }
+}
+```
+
+#### 2. Connect 高阶组件
+
+Connect 是一个高阶函数，通过 context 调用 store 里面暴露出来的方法，用于传递给组件，同时订阅组件的渲染事件：
+
+```jsx
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => ({
+  todos: state.todos,
+  visibilityFilter: state.visibilityFilter,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  addTodo: (text) => dispatch({ type: "ADD_TODO", text }),
+  toggleTodo: (id) => dispatch({ type: "TOGGLE_TODO", id }),
+});
+
+const TodoList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoListComponent);
+```
+
+**Connect 的工作原理：**
+
+```jsx
+// 简化版的 connect 实现
+function connect(mapStateToProps, mapDispatchToProps) {
+  return function (WrappedComponent) {
+    return class ConnectedComponent extends Component {
+      constructor(props, context) {
+        super(props, context);
+        this.store = context.store;
+        this.state = mapStateToProps(this.store.getState());
+      }
+
+      componentDidMount() {
+        this.unsubscribe = this.store.subscribe(() => {
+          this.setState(mapStateToProps(this.store.getState()));
+        });
+      }
+
+      componentWillUnmount() {
+        this.unsubscribe();
+      }
+
+      render() {
+        const dispatchProps = mapDispatchToProps(this.store.dispatch);
+        return (
+          <WrappedComponent
+            {...this.props}
+            {...this.state}
+            {...dispatchProps}
+          />
+        );
+      }
+    };
+  };
+}
+```
+
+### 现代 React Redux 用法（Hooks）
+
+#### 1. useSelector Hook
+
+```jsx
+import { useSelector } from "react-redux";
+
+function TodoList() {
+  const todos = useSelector((state) => state.todos);
+  const visibilityFilter = useSelector((state) => state.visibilityFilter);
+
+  return (
+    <ul>
+      {todos.map((todo) => (
+        <li key={todo.id}>{todo.text}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+#### 2. useDispatch Hook
+
+```jsx
+import { useDispatch } from "react-redux";
+
+function AddTodo() {
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch({ type: "ADD_TODO", text: e.target.todo.value });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input name="todo" />
+      <button type="submit">Add Todo</button>
+    </form>
+  );
+}
+```
+
+### 数据流机制
+
+#### 1. 状态读取流程
+
+```
+React 组件 → useSelector → Redux Store → getState() → 返回状态
+```
+
+#### 2. 状态更新流程
+
+```
+React 组件 → useDispatch → dispatch(action) → Reducer → 更新 Store → 通知订阅者 → 重新渲染组件
+```
+
+### 性能优化
+
+#### 1. 浅比较优化
+
+```jsx
+// 使用 shallowEqual 进行浅比较
+import { shallowEqual, useSelector } from "react-redux";
+
+function TodoList() {
+  const todos = useSelector(
+    (state) => state.todos,
+    shallowEqual // 只在引用变化时重新渲染
+  );
+
+  return <TodoItems todos={todos} />;
+}
+```
+
+#### 2. 选择器优化
+
+```jsx
+import { createSelector } from "reselect";
+
+const selectTodos = (state) => state.todos;
+const selectVisibilityFilter = (state) => state.visibilityFilter;
+
+const selectVisibleTodos = createSelector(
+  [selectTodos, selectVisibilityFilter],
+  (todos, visibilityFilter) => {
+    switch (visibilityFilter) {
+      case "SHOW_ALL":
+        return todos;
+      case "SHOW_COMPLETED":
+        return todos.filter((todo) => todo.completed);
+      case "SHOW_ACTIVE":
+        return todos.filter((todo) => !todo.completed);
+      default:
+        return todos;
+    }
+  }
+);
+
+function TodoList() {
+  const visibleTodos = useSelector(selectVisibleTodos);
+  return <TodoItems todos={visibleTodos} />;
+}
+```
+
+### 总结
+
+react-redux 在 React 和 Redux 之间做了以下处理：
+
+1. **使用 Context API**：通过 Provider 将 store 注入到组件树中
+2. **状态订阅机制**：通过 Connect 或 Hooks 订阅 store 变化
+3. **自动重新渲染**：当 store 状态变化时，自动触发组件重新渲染
+4. **性能优化**：提供浅比较和选择器优化，避免不必要的重新渲染
+5. **类型安全**：支持 TypeScript，提供完整的类型定义
+
+:::
+
+## 16. React 项目兼容低版本浏览器
 
 1.安装 react-app-polyfill 和 core-js
 
@@ -436,31 +1222,31 @@ import 'react-app-polyfill/stable' 3.修改 package.json 的配置
 不是使用create-react-app创建的项目
 无需配置react-app-polyfill和package.json，其他的同上
 
-## React 有哪些常用的 hooks
+## 17. React 有哪些常用的 hooks
 
 ::: details 点击
 我们参考 [React18](https://react.dev/reference/react)
 
-useCallback // 缓存函数
-useMemo // 缓存数据
-useContext // 读取和订阅 context 在组件中
-useEffect // 订阅更新
-useId // 生成唯一的 ID 可以传递给辅助功能属性
-useImperativeHandle // 配合 forwardRef 传递数据给父组件
-useLayoutEffect // 在浏览器重新绘制屏幕之前激发
-useEffect // 组件的一些异步操作
-useReducer // 添加一个 reducer 在你的组价内
-useRef // 生成一个改变不会触发组件更新的值
-useState // 生成一个状态变量在你的组件中
-useTransition // 在不影响浏览器渲染的情况下执行
-useDeferredValue // 允许您推迟更新 UI 的一部分
+useCallback // 缓存函数 <br/>
+useMemo // 缓存数据 <br/>
+useContext // 读取和订阅 context 在组件中 <br/>
+useEffect // 订阅更新 <br/>
+useId // 生成唯一的 ID 可以传递给辅助功能属性 <br/>
+useImperativeHandle // 配合 forwardRef 传递数据给父组件 <br/>
+useLayoutEffect // 在浏览器重新绘制屏幕之前激发 <br/>
+useEffect // 组件的一些异步操作 <br/>
+useReducer // 添加一个 reducer 在你的组价内 <br/>
+useRef // 生成一个改变不会触发组件更新的值 <br/>
+useState // 生成一个状态变量在你的组件中 <br/>
+useTransition // 在不影响浏览器渲染的情况下执行 <br/>
+useDeferredValue // 允许您推迟更新 UI 的一部分 <br/>
 
-useSyncExternalStore // 提供给第三方库比如 redux 可以同步拿到最新的数据
-useInsertionEffect // 在使用 css-in-js 会用到 插入样式在 DOM 渲染前
-useDebugValue // 配合 React DevTools 使用
+useSyncExternalStore // 提供给第三方库比如 redux 可以同步拿到最新的数据 <br/>
+useInsertionEffect // 在使用 css-in-js 会用到 插入样式在 DOM 渲染前 <br/>
+useDebugValue // 配合 React DevTools 使用 <br/>
 :::
 
-## react16 新增了哪些生命周期、有什么作用，为什么去掉某些 15 的生命周期
+## 18. react16 新增了哪些生命周期、有什么作用，为什么去掉某些 15 的生命周期
 
 ::: details 点击
 react16 删除了 componentWillMount componentWillUpdate componentWillReceiveProps
@@ -480,7 +1266,7 @@ react16 新增了 getDerivedStateFromProps getSnapshotBeforeUpdate
 相对于 React15，React16 的生命周期中去掉了 componentWillMout 和 componentWillUpdate 方法，并且使用 getDerivedStateFromProps 方法替代了之前的 componentWillReceiveprops，使得 React 的生命周期更纯粹，只用来做专门的事情，避免大量业务逻辑代码嵌入生命周期，同时也是在为 Fiber 架构铺路
 :::
 
-## fiber 怎样的，如何实现异步渲染
+## 19. fiber 怎样的，如何实现异步渲染
 
 ::: details 点击
 fiberRoot fiber workInProgress
@@ -489,7 +1275,7 @@ fiberRoot fiber workInProgress
 scheduler 包中调度原理, 也就是 React 两大工作循环中的任务调度循环. 并介绍了时间切片和可中断渲染等特性在任务调度循环中的实现. scheduler 包是 React 运行时的心脏, 为了提升调度性能, 注册 task 之前, 在 react-reconciler 包中做了节流和防抖等措施.
 :::
 
-## redux 和 redux-saga 的区别和原理
+## 20. redux 和 redux-saga 的区别和原理
 
 ::: details 点击
 
@@ -516,7 +1302,7 @@ scheduler 包中调度原理, 也就是 React 两大工作循环中的任务调�
 * redux-saga: redux-saga 也是 redux 的一个中间件，可以处理异步 action 通过 generator 实现
   :::
 
-## useEffect 实现原理
+## 21. useEffect 实现原理
 
 ::: details 点击
 
@@ -531,7 +1317,7 @@ mountState 会返回 state 和 dispatch 函数，dispatch 函数里会记录更�
 再次渲染的时候会执行 updateState，会取出 hook.queue，根据优先级确定最终的 state 返回，这样渲染出的就是最新的结果。
 :::
 
-## react 组件如何做性能优化，说说 pureComponent
+## 22. react 组件如何做性能优化，说说 pureComponent
 
 ::: details 点击
 
@@ -572,7 +1358,7 @@ function checkShouldComponentUpdate(
 
 :::
 
-## react diff 算法
+## 23. react diff 算法
 
 :::details 打开
 
@@ -600,7 +1386,7 @@ Diff 算法的设计目标是保持性能并最小化操作，以便在组件状
 
 :::
 
-## react key 机制
+## 24. react key 机制
 
 :::details 打开
 
