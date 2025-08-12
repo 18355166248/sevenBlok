@@ -4,8 +4,8 @@
 
 ## 1. tree shaking 原理
 
-- ES6 Module 引入进行静态分析, 故而编译的时候正确判断到底加载了哪些模块
-- 静态分析程序流, 判断哪些模块和变量未被使用或者引用, 进行删除无用代码
+- ES6 Module 引入进行静态分析，编译时正确判断加载的模块
+- 静态分析程序流，判断未使用的模块和变量，删除无用代码
 
 ## 2. babel-polyfill 和 babel-runtime 区别
 
@@ -95,129 +95,67 @@ webpack 监听文件变化主要是通过 webpack-dev-middleware 这个库来完
 setupHooks 方法用来注册监听事件，当监听到 webpack 编译结束时，通过 websocket 给浏览器发通知，浏览器拿到 hash 只之后就可以做检查更新逻辑。
 :::
 
-## webpack 中 chunkHash 与 contentHash 区别；
+## 5. webpack 中 chunkHash 与 contentHash 区别
 
 ::: details 点击查看
-hash
-所有文件哈希值相同，只要改变内容跟之前的不一致，所有哈希值都改变，没有做到缓存意义
-chunkhash
-当有多个 chunk，形成多个 bundle 时，如果只有一个 chunk 和一个 bundle 内容变了，其他的 bundle 的 hash 都会发生变化，因为大家都是公用的一个 hash，这个时候 chunkhash 的作用就出来了。它根据不同的入口文件(Entry)进行依赖文件解析、构建对应的 chunk，生成对应的哈希值。
-contenthash
-在打包的时候我们会在 js 中导入 css 文件，因为他们是同一个入口文件，如果我只改了 js 得代码，但是他的 css 抽取生成 css 文件时候 hash 也会跟着变换。这个时候 contenthash 的作用就出来了。
 
-### 总结
+- **hash**：所有文件哈希值相同，内容变化时所有哈希值都改变
+- **chunkhash**：根据入口文件生成不同哈希值，只有变化的 chunk 哈希值改变
+- **contenthash**：根据文件内容生成哈希值，主要用于 CSS 文件提取
 
-hash 所有文件哈希值相同； chunkhash 根据不同的入口文件(Entry)进行依赖文件解析、构建对应的 chunk，生成对应的哈希值； contenthash 计算与文件内容本身相关，主要用在 css 抽取 css 文件时。
-:::
+**使用场景**：
 
-## 写过 webpack 的 loader 和 plugin 么
+- hash：开发环境
+- chunkhash：生产环境 JS 文件
+- contenthash：生产环境 CSS 文件
+  :::
 
-[自己写的 demo](https://github.com/18355166248/webpack-custom-loader-plugin)
+## 6. 写过 webpack 的 loader 和 plugin 么
 
-::: details 点击
+::: details 点击查看
 
-### Loader
-
-执行顺序: 相同优先级的 loader 执行顺序为：从右到左，从下到上
-
-#### 开发 loader
-
-可以使用官方的 [loader-runner](github.com/webpack/loader-runner) 调试自定义 loader
-
-我们看一个简单的 babel-loader
+### Loader 开发
 
 ```js
-const babel = require("@babel/core");
-const schemaJson = require("./scheme.json"); // 这个就是 loader 参数的格式规范 可以通过  schema-utils 做扩展校验 也可以使用 this.getOptions(scheme) 做校验
-
-module.exports = function(content, map, meta) {
-  const options = this.getOptions(schemaJson);
-  const callback = this.async(); // 异步loader
-
-  babel.transform(content, options, function(err, result) {
-    if (err) {
-      callback(err); // 报错
-      return;
-    }
-    callback(null, result.code, map, meta); // 传递给下一个 loader
-  });
+module.exports = function (content, map, meta) {
+  const callback = this.async();
+  // 处理逻辑
+  callback(null, processedContent, map, meta);
 };
 ```
 
-### Plugin
+**执行顺序**：从右到左，从下到上
 
-写 plugin 可以看下官方提供的[钩子](https://www.webpackjs.com/api/compiler-hooks/)
-插件就像是一个插入到生产线中的一个功能，在特定的时机对生产线上的资源做处理。
-
-钩子的本质就是：事件 实现是通过 [tapable](https://github.com/webpack/tapable) 实现的
-
-Plugin 构建对象 需要知道两个概念 一个是 Compiler, 另一个是 Compilation
-
-我们看一个简单的自定义 Plugin
+### Plugin 开发
 
 ```js
-class BannerWebpackPlugin {
-  constructor(options) {
-    this.options = options;
-  }
-
+class MyPlugin {
   apply(compiler) {
-    // 在资源输出之前触发
-    compiler.hooks.emit.tap("BannerWebpackPlugin", (compilation) => {
-      const extensions = ["js", "css"];
-      // 1. 获取即将输出的资源文件: compilation.assets
-      // 2. 过滤只保留js和css资源
-      const assets = Object.keys(compilation.assets).filter((path) => {
-        const splitted = path.split(".");
-        const ext = splitted[splitted.length - 1];
-        return extensions.includes(ext);
-      });
-      const prefix = `/*
-      * Author: ${this.options.author}
-      */`;
-      // 3. 遍历资源在顶部添加注释
-      assets.forEach((asset) => {
-        // 获取代码
-        const source = compilation.assets[asset].source();
-        // 拼接上注释
-        const content = prefix + source;
-        // 修改资源
-        compilation.assets[asset] = {
-          source() {
-            return content;
-          },
-          size() {
-            return content.length;
-          },
-        };
-      });
+    compiler.hooks.emit.tap("MyPlugin", (compilation) => {
+      // 处理逻辑
     });
   }
 }
-
-module.exports = BannerWebpackPlugin;
 ```
 
+**核心概念**：Compiler（编译器）、Compilation（构建过程）
 :::
 
-## webpack 处理 image 是用哪个 loader，限制生成 image 大小的是哪个？
+## 7. webpack 处理 image 是用哪个 loader
 
-::: details 点击
+::: details 点击查看
 
-- file-loader 将文件上的 import / require（）解析为 url，并将该文件发射到输出目录中。
-- url-loader 可以识别图片的大小，然后把图片转换成 base64，从而减少代码的体积，如果图片超过设定的现在，就还是用 file-loader 来处理。
+- **file-loader**：将文件解析为 URL，发射到输出目录
+- **url-loader**：识别图片大小，小图片转 base64，大图片用 file-loader 处理
 
-提示：给图片配了 url-loader 在配置里面就不要再给图片配 file-loader 了
+**配置注意**：使用 url-loader 时无需再配置 file-loader
 :::
 
-## webpack 怎么将 多个 css 文件 合并成一个
+## 8. webpack 怎么将多个 CSS 文件合并成一个
 
-::: details 点击
-使用 [mini-css-extract-plugin](https://webpack.docschina.org/plugins/mini-css-extract-plugin#root)
+::: details 点击查看
 
-使用 optimization.splitChunks.cacheGroups 选项，所有的 CSS 可以被提取到一个 CSS 文件中。
-
-webpack.config.js
+使用 `mini-css-extract-plugin` 和 `optimization.splitChunks.cacheGroups`：
 
 ```js
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -235,78 +173,42 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-    }),
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
-      },
-    ],
-  },
+  plugins: [new MiniCssExtractPlugin()],
 };
 ```
 
 :::
 
-## webpack 的摇树对 commonjs 和 es6 module 都生效么，原理是？
+## 9. webpack 的摇树对 commonjs 和 es6 module 都生效么
 
-::: details 点击
-webpack4 对 commonjs 不生效
-webpack5 对 commonjs 生效
+::: details 点击查看
 
-es 的 import 引入是静态引入，commonjs 的 require 引入是动态引入。
+- **webpack4**：只对 ES6 Module 生效
+- **webpack5**：对 CommonJS 和 ES6 Module 都生效
 
-原理:
+**原理**：
 
-1. 收集模块导出的内容
-   （1）ESM 导出语句会转换为 Dependency 对象，记录到 module 对象的 dependencies 集合。
-
-（2）webpack 使用 FlagDependencyExportsPlugin 插件从 entry 入口开始，遍历所有 module 对象，将其 dependencies 集合中的导出值，放入 ModuleGraph 中存储，完成模块导出内容的收集。
-
-2. 标记模块导出的内容
-   模块导出信息收集完毕后，Webpack 需要标记出各个模块哪些导出值有被其它模块用到，哪些没有：
-   webpack 使用在 FlagDependencyUsagePlugin 插件中，逐步遍历 ModuleGraph 存储的所有 moudle 的导出值，每个导出值会被编译器方法（compilation.getDependencyReferencedExports 方法）所检验，确定其对应是否被其它模块使用，如果被其他模块所使用，将该导出值放入到 webpack 导出对象中（ **webpack_exports**），未被使用的值都不会定义在 **webpack_exports** 对象中，形成一段不可能被执行的 Dead Code 效果。
-
+1. 收集模块导出内容
+2. 标记被使用的导出
 3. 删除无效代码
-   由 Terser、UglifyJS 等 DCE 工具“摇”掉这部分无效代码，构成完整的 Tree Shaking 操作。
 
-#### webpack4 和 webpack5 中 tree shaking 的区别
-
-##### webpack4：
-
-1. Tree Shaking 只支持 ES 模块的使用，不支持 require 这种动态引入模块的方式。
-
-2. 只分析浅层的模块导出与引入关系，进行 dead-code 的去除。
-
-##### webpack5: (尝试过 确实生效了)
-
-1. Webpack 5 中增加了对一些 CommonJS 风格模块代码的静态分析功功能。
-   支持 exports.xxx、this.exports.xxx、module.exports.xxx 语法的导出分析。
-   支持 object.defineProperty(exports, "xxxx", ...) 语法的导出分析。
-   支持 require('xxxx').xxx 语法的导入分析。
-
-2. 支持对嵌套引入模块的依赖分析优化，还增加了分析模块中导出项与导入项的依赖关系的功能。
-
-通过 optimization.innerGraph（生产环境下默认开启）选项，Webpack 5 可以分析特定类型导出项中对导入项的依赖关系，从而找到更多未被使用的导入模块并加以移除
-
-### !!! 注意：确保没有编译器将您的 ES2015 模块语法转换为 CommonJS （这是现在常用的 @babel/preset-env 的默认行为），通常我们配置 js 兼容会有该配置项。
-
+**注意**：确保 Babel 配置不会将 ES6 Module 转换为 CommonJS
 :::
 
-## 为什么 vite、snowpack 可以比 webpack 快那么多？具体原理是
+## 10. 为什么 vite、snowpack 可以比 webpack 快那么多
 
-::: details 点击
+::: details 点击查看
 
-- webpack 先打包，再启动开发服务器，请求服务器时直接给予打包后的结果；
-- vite 直接启动开发服务器，请求哪个模块再对哪个模块进行实时编译；
-- 由于现代浏览器本身就支持 ES Modules，会主动发起请求去获取所需文件。vite 充分利用这点，将开 发环境下的模块文件，就作为浏览器要执行的文件，而不是像 webpack 先打包，交给浏览器执行的文件是打包后的；
-- 由于 vite 启动的时候不需要打包，也就无需分析模块依赖、编译，所以启动速度非常快。当浏览器请求 需要的模块时，再对模块进行编译，这种按需动态编译的模式，极大缩短了编译时间，当项目越大，文件 越多时，vite 的开发时优势越明显；
-- 在 HRM 方面，当某个模块内容改变时，让浏览器去重新请求该模块即可，而不是像 webpack 重新将该模块的所有依赖重新编译；
-- 当需要打包到生产环境时，vite 使用传统的 rollup 进行打包，所以，vite 的优势是体现在开发阶 段，另外，由于 vite 使用的是 ES Module，所以代码中不可以使用 CommonJs；
+**webpack 方式**：先打包，再启动开发服务器
 
+**vite 方式**：直接启动开发服务器，按需编译模块
+
+**优势**：
+
+- 启动速度快（无需打包）
+- 按需编译（请求时编译）
+- 利用浏览器 ES Module 支持
+- HMR 更高效（只重新请求变化模块）
+
+**生产环境**：vite 使用 rollup 打包，webpack 优势仍在
 :::

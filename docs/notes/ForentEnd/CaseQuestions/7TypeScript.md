@@ -2,6 +2,11 @@
 
 [[toc]]
 
+## 类型体操地址
+
+- [type-challenges](https://github.com/type-challenges/type-challenges)
+- [liaoyio challenges](https://liaoyio.github.io/notes/web/ts/challenges)
+
 ## type 和 interface 的差别
 
 type: 类型别名 interface: 接口

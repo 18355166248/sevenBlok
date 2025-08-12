@@ -1432,9 +1432,7 @@ Diff 算法的设计目标是保持性能并最小化操作，以便在组件状
 我们需要使用 key。
 
 为了快速的找到 key 对应的 oldFiber，我们将所有还未处理的 oldFiber 存入以 key 为 key，oldFiber 为 value 的 Map 中。
-```
 
-```js
 接下来遍历剩余的 newChildren，通过 newChildren[i].key 就能在 existingChildren 中找到 key 相同的 oldFiber
 
 标记节点是否移动
